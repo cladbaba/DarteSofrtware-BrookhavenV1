@@ -1,0 +1,830 @@
+-- [[ DARTE SOFTWARE V17 | APEX CUSTOM ENGINE - FULL OVERHAUL ]] --
+-- [[ FIX: AUTO-CANVAS SCALING & UI LIMIT REMOVAL ]] --
+
+local Players = game:GetService("Players")
+local UIS = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+local TweenService = game:GetService("TweenService")
+local CoreGui = game:GetService("CoreGui")
+local TextChatService = game:GetService("TextChatService")
+local HttpService = game:GetService("HttpService")
+local VirtualUser = game:GetService("VirtualUser")
+local Camera = workspace.CurrentCamera
+local LocalPlayer = Players.LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+
+-- [ GLOBAL STATES ]
+local States = { 
+    Fly = false, Noclip = false, ESP = false, Tracers = false, InfJump = false,
+    ClickTP = false, AutoClick = false, AntiBan = false,
+    SpinBot = false, SafeESP = false, AntiAFK = true,
+    Orbiting = false, FullBright = false, SolidBody = false,
+    GhostMode = false, RainbowESP = false, Magnet = false,
+    MassTP = false, AntiSit = false, AntiFling = false
+}
+_G.Spamming = false
+_G.TPTarget = nil
+local OrbitTarget = nil
+local SelectedTarget = nil
+
+_G.VisualConfigs = { 
+    MenuRGB = false, 
+    RainbowPlayers = false, 
+    RainbowPlayersEnabled = false,
+    OriginalColors = {} 
+}
+
+-- [ GAMEPASS SPOOFER ]
+pcall(function()
+    local mt = getrawmetatable(game)
+    local old = mt.__namecall
+    setreadonly(mt, false)
+    mt.__namecall = newcclosure(function(self, ...)
+        local method = getnamecallmethod()
+        if not checkcaller() and (method == "UserOwnsGamePassAsync" or method == "PlayerOwnsAsset") then return true end
+        return old(self, ...)
+    end)
+    setreadonly(mt, true)
+end)
+
+-- [ 1. KRAL TACLI D INTRO SİSTEMİ ]
+local function StartDarteIntro()
+    if CoreGui:FindFirstChild("DarteIntroSystem") then CoreGui.DarteIntroSystem:Destroy() end
+    local sg = Instance.new("ScreenGui", CoreGui)
+    sg.Name = "DarteIntroSystem"
+    local MainFrame = Instance.new("Frame", sg)
+    MainFrame.Size = UDim2.new(1, 0, 1, 0)
+    MainFrame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+    local Logo = Instance.new("TextLabel", MainFrame)
+    Logo.AnchorPoint = Vector2.new(0.5, 0.5); Logo.Position = UDim2.new(0.5, 0, 0.5, 0); Logo.BackgroundTransparency = 1
+    Logo.Text = "👑\nD"; Logo.TextColor3 = Color3.fromRGB(255, 215, 0); Logo.TextSize = 150; Logo.Font = Enum.Font.SpecialElite; Logo.TextTransparency = 1
+    
+    TweenService:Create(Logo, TweenInfo.new(3), {TextTransparency = 0}):Play()
+    task.wait(4.5)
+    for i = 1, 50 do
+        local p = Instance.new("Frame", MainFrame)
+        p.Size = UDim2.new(0, 8, 0, 8); p.Position = UDim2.new(0.5, math.random(-150, 150), 0.5, math.random(-110, 110)); p.BackgroundColor3 = Color3.fromRGB(255, 215, 0); p.BorderSizePixel = 0
+        TweenService:Create(p, TweenInfo.new(1.2), {Position = p.Position + UDim2.new(0, math.random(-400, 400), 0, math.random(-400, 400)), BackgroundTransparency = 1}):Play()
+        Logo.TextTransparency = i / 50
+    end
+    task.wait(1.5)
+    sg:Destroy()
+end
+
+task.spawn(StartDarteIntro)
+task.wait(8.2)
+
+-- ==========================================
+-- [ 2. DARTE APEX UI ENGINE ]
+-- ==========================================
+local DarteEngine = {}
+local AccentColor = Color3.fromRGB(255, 215, 0)
+local ThemeObjects = {} 
+
+if CoreGui:FindFirstChild("DarteApex") then CoreGui.DarteApex:Destroy() end
+local DarteUI = Instance.new("ScreenGui", CoreGui)
+DarteUI.Name = "DarteApex"
+DarteUI.ResetOnSpawn = false
+
+local MainFrame = Instance.new("Frame", DarteUI)
+MainFrame.Name = "Main"
+MainFrame.Size = UDim2.new(0, 600, 0, 400)
+MainFrame.Position = UDim2.new(0.5, -300, 0.5, -200)
+MainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
+MainFrame.BorderSizePixel = 0
+Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0, 8)
+
+local TopBar = Instance.new("Frame", MainFrame)
+TopBar.Size = UDim2.new(1, 0, 0, 40); TopBar.BackgroundColor3 = Color3.fromRGB(20, 20, 20); TopBar.BorderSizePixel = 0
+Instance.new("UICorner", TopBar).CornerRadius = UDim.new(0, 8)
+local BottomFix = Instance.new("Frame", TopBar)
+BottomFix.Size = UDim2.new(1, 0, 0, 10); BottomFix.Position = UDim2.new(0, 0, 1, -10); BottomFix.BackgroundColor3 = Color3.fromRGB(20, 20, 20); BottomFix.BorderSizePixel = 0
+
+local TitleContainer = Instance.new("Frame", TopBar)
+TitleContainer.Name = "TitleContainer"
+TitleContainer.Size = UDim2.new(0, 400, 1, 0)
+TitleContainer.Position = UDim2.new(0, 12, 0, 0)
+TitleContainer.BackgroundTransparency = 1
+
+local TitleLayout = Instance.new("UIListLayout", TitleContainer)
+TitleLayout.FillDirection = Enum.FillDirection.Horizontal
+TitleLayout.VerticalAlignment = Enum.VerticalAlignment.Center
+TitleLayout.Padding = UDim.new(0, 8) -- Logo ile yazı arasındaki boşluk
+
+-- [ 2. LOGO EKLEME ]
+local LogoImg = Instance.new("ImageLabel", TitleContainer)
+LogoImg.Name = "DarteLogo"
+LogoImg.Size = UDim2.new(0, 26, 0, 26) -- İdeal küçük logo boyutu
+LogoImg.BackgroundTransparency = 1
+-- 👇 BURAYA ROBLOX'A YÜKLEDİĞİN LOGONUN ID'SİNİ YAZ 👇
+LogoImg.Image = "rbxassetid://138381282255655" 
+LogoImg.ScaleType = Enum.ScaleType.Fit
+
+-- [ 3. METİN EKLEME ]
+local TitleText = Instance.new("TextLabel", TitleContainer)
+TitleText.Name = "TitleText"
+TitleText.Text = "DARTE SOFTWARE V17 - APEX"
+TitleText.TextColor3 = AccentColor
+TitleText.Font = Enum.Font.GothamBold
+TitleText.TextSize = 15
+TitleText.Size = UDim2.new(0, 250, 1, 0)
+TitleText.TextXAlignment = Enum.TextXAlignment.Left
+TitleText.BackgroundTransparency = 1
+
+-- Renk değişimi sistemine metni kaydet
+table.insert(ThemeObjects, {Obj = TitleText, Prop = "TextColor3"})
+
+local TabContainer = Instance.new("ScrollingFrame", MainFrame)
+TabContainer.Size = UDim2.new(0, 150, 1, -50); TabContainer.Position = UDim2.new(0, 10, 0, 45); TabContainer.BackgroundTransparency = 1; TabContainer.ScrollBarThickness = 0
+local TabList = Instance.new("UIListLayout", TabContainer); TabList.Padding = UDim.new(0, 5)
+
+-- AUTO CANVAS FOR TABS
+TabList:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+    TabContainer.CanvasSize = UDim2.new(0, 0, 0, TabList.AbsoluteContentSize.Y)
+end)
+
+local PageContainer = Instance.new("Frame", MainFrame)
+PageContainer.Size = UDim2.new(1, -175, 1, -50); PageContainer.Position = UDim2.new(0, 165, 0, 45); PageContainer.BackgroundTransparency = 1
+
+local dragging, dragStart, startPos
+TopBar.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then dragging = true; dragStart = input.Position; startPos = MainFrame.Position end
+end)
+UIS.InputChanged:Connect(function(input)
+    if dragging and input.UserInputType == Enum.UserInputType.MouseMovement then
+        local delta = input.Position - dragStart
+        MainFrame.Position = UDim2.new(startPos.X.Scale, startPos.X.Offset + delta.X, startPos.Y.Scale, startPos.Y.Offset + delta.Y)
+    end
+end)
+UIS.InputEnded:Connect(function(input) if input.UserInputType == Enum.UserInputType.MouseButton1 then dragging = false end end)
+
+function DarteEngine:MakeTab(tabName)
+    local TabBtn = Instance.new("TextButton", TabContainer)
+    TabBtn.Size = UDim2.new(1, 0, 0, 32); TabBtn.BackgroundColor3 = Color3.fromRGB(25, 25, 25); TabBtn.Text = tabName; TabBtn.TextColor3 = Color3.fromRGB(150, 150, 150); TabBtn.Font = Enum.Font.GothamSemibold; TabBtn.TextSize = 13; Instance.new("UICorner", TabBtn).CornerRadius = UDim.new(0, 6)
+
+    local Page = Instance.new("ScrollingFrame", PageContainer)
+    Page.Size = UDim2.new(1, 0, 1, 0); Page.BackgroundTransparency = 1; Page.ScrollBarThickness = 2; Page.ScrollBarImageColor3 = AccentColor; table.insert(ThemeObjects, {Obj = Page, Prop = "ScrollBarImageColor3"}); Page.Visible = false
+    local PageList = Instance.new("UIListLayout", Page); PageList.Padding = UDim.new(0, 6); PageList.SortOrder = Enum.SortOrder.LayoutOrder
+    
+    -- AUTO CANVAS FOR PAGES (Fixes menu being cut off)
+    PageList:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+        Page.CanvasSize = UDim2.new(0, 0, 0, PageList.AbsoluteContentSize.Y + 10)
+    end)
+
+    TabBtn.MouseButton1Click:Connect(function()
+        for _, v in pairs(PageContainer:GetChildren()) do if v:IsA("ScrollingFrame") then v.Visible = false end end
+        for _, v in pairs(TabContainer:GetChildren()) do if v:IsA("TextButton") then v.TextColor3 = Color3.fromRGB(150, 150, 150) end end
+        Page.Visible = true; TabBtn.TextColor3 = AccentColor
+    end)
+    if #TabContainer:GetChildren() == 2 then Page.Visible = true; TabBtn.TextColor3 = AccentColor; table.insert(ThemeObjects, {Obj = TabBtn, Prop = "TextColor3"}) end
+
+    local TabElements = {}
+
+    function TabElements:AddToggle(text, callback)
+        local state = false
+        local TBtn = Instance.new("TextButton", Page)
+        TBtn.Size = UDim2.new(1, -10, 0, 35); TBtn.BackgroundColor3 = Color3.fromRGB(25, 25, 25); TBtn.Text = "   " .. text; TBtn.TextColor3 = Color3.fromRGB(220, 220, 220); TBtn.Font = Enum.Font.Gotham; TBtn.TextSize = 13; TBtn.TextXAlignment = Enum.TextXAlignment.Left; Instance.new("UICorner", TBtn).CornerRadius = UDim.new(0, 6)
+        local Indicator = Instance.new("Frame", TBtn)
+        Indicator.Size = UDim2.new(0, 18, 0, 18); Indicator.Position = UDim2.new(1, -30, 0.5, -9); Indicator.BackgroundColor3 = Color3.fromRGB(40, 40, 40); Instance.new("UICorner", Indicator).CornerRadius = UDim.new(0, 4)
+
+        TBtn.MouseButton1Click:Connect(function()
+            state = not state
+            TweenService:Create(Indicator, TweenInfo.new(0.2), {BackgroundColor3 = state and AccentColor or Color3.fromRGB(40, 40, 40)}):Play()
+            if state then table.insert(ThemeObjects, {Obj = Indicator, Prop = "BackgroundColor3"}) end
+            callback(state)
+        end)
+    end
+
+    function TabElements:AddButton(text, callback)
+        local Btn = Instance.new("TextButton", Page)
+        Btn.Size = UDim2.new(1, -10, 0, 35); Btn.BackgroundColor3 = Color3.fromRGB(25, 25, 25); Btn.Text = text; Btn.TextColor3 = Color3.fromRGB(220, 220, 220); Btn.Font = Enum.Font.Gotham; Btn.TextSize = 13; Instance.new("UICorner", Btn).CornerRadius = UDim.new(0, 6)
+        Btn.MouseButton1Click:Connect(function()
+            TweenService:Create(Btn, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(40,40,40)}):Play(); task.wait(0.1); TweenService:Create(Btn, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(25,25,25)}):Play()
+            callback()
+        end)
+    end
+
+    function TabElements:AddSlider(text, max, min, callback)
+        local SFrame = Instance.new("Frame", Page)
+        SFrame.Size = UDim2.new(1, -10, 0, 45); SFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25); Instance.new("UICorner", SFrame).CornerRadius = UDim.new(0, 6)
+        local Lbl = Instance.new("TextLabel", SFrame)
+        Lbl.Text = text; Lbl.TextColor3 = Color3.new(1,1,1); Lbl.BackgroundTransparency = 1; Lbl.Size = UDim2.new(1, -20, 0, 20); Lbl.Position = UDim2.new(0, 10, 0, 5); Lbl.TextXAlignment = Enum.TextXAlignment.Left; Lbl.Font = Enum.Font.Gotham; Lbl.TextSize = 12
+        local ValLbl = Instance.new("TextLabel", SFrame)
+        ValLbl.Text = tostring(min); ValLbl.TextColor3 = AccentColor; table.insert(ThemeObjects, {Obj = ValLbl, Prop = "TextColor3"}); ValLbl.BackgroundTransparency = 1; ValLbl.Size = UDim2.new(0, 50, 0, 20); ValLbl.Position = UDim2.new(1, -60, 0, 5); ValLbl.TextXAlignment = Enum.TextXAlignment.Right; ValLbl.Font = Enum.Font.GothamBold; ValLbl.TextSize = 12
+        local Track = Instance.new("Frame", SFrame)
+        Track.Size = UDim2.new(1, -20, 0, 6); Track.Position = UDim2.new(0, 10, 0, 30); Track.BackgroundColor3 = Color3.fromRGB(40,40,40); Instance.new("UICorner", Track).CornerRadius = UDim.new(1,0)
+        local Fill = Instance.new("Frame", Track)
+        Fill.Size = UDim2.new(0, 0, 1, 0); Fill.BackgroundColor3 = AccentColor; table.insert(ThemeObjects, {Obj = Fill, Prop = "BackgroundColor3"}); Instance.new("UICorner", Fill).CornerRadius = UDim.new(1,0)
+
+        local sliding = false
+        Track.InputBegan:Connect(function(input) if input.UserInputType == Enum.UserInputType.MouseButton1 then sliding = true end end)
+        UIS.InputEnded:Connect(function(input) if input.UserInputType == Enum.UserInputType.MouseButton1 then sliding = false end end)
+        UIS.InputChanged:Connect(function(input)
+            if sliding and input.UserInputType == Enum.UserInputType.MouseMovement then
+                local percent = math.clamp((input.Position.X - Track.AbsolutePosition.X) / Track.AbsoluteSize.X, 0, 1)
+                local value = math.floor(min + ((max - min) * percent))
+                Fill.Size = UDim2.new(percent, 0, 1, 0); ValLbl.Text = tostring(value)
+                callback(value)
+            end
+        end)
+    end
+
+    function TabElements:AddDropdown(text, options, callback)
+        local DFrame = Instance.new("Frame", Page)
+        DFrame.Size = UDim2.new(1, -10, 0, 35); DFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25); DFrame.ClipsDescendants = true; Instance.new("UICorner", DFrame).CornerRadius = UDim.new(0, 6)
+        local Lbl = Instance.new("TextLabel", DFrame)
+        Lbl.Text = "   " .. text; Lbl.TextColor3 = Color3.new(1,1,1); Lbl.BackgroundTransparency = 1; Lbl.Size = UDim2.new(1, 0, 0, 35); Lbl.TextXAlignment = Enum.TextXAlignment.Left; Lbl.Font = Enum.Font.Gotham; Lbl.TextSize = 13
+        local Btn = Instance.new("TextButton", DFrame)
+        Btn.Size = UDim2.new(1,0,0,35); Btn.BackgroundTransparency = 1; Btn.Text = ""
+        local Scroll = Instance.new("ScrollingFrame", DFrame)
+        Scroll.Size = UDim2.new(1, 0, 1, -35); Scroll.Position = UDim2.new(0, 0, 0, 35); Scroll.BackgroundTransparency = 1; Scroll.ScrollBarThickness = 2; Scroll.ScrollBarImageColor3 = AccentColor
+        local SList = Instance.new("UIListLayout", Scroll); SList.Padding = UDim.new(0, 2)
+
+        -- AUTO CANVAS FOR DROPDOWN
+        SList:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+            Scroll.CanvasSize = UDim2.new(0, 0, 0, SList.AbsoluteContentSize.Y + 5)
+        end)
+
+        local open = false
+        local DropObj = {}
+        function DropObj:Refresh(newOpts)
+            for _, v in pairs(Scroll:GetChildren()) do if v:IsA("TextButton") then v:Destroy() end end
+            for _, opt in pairs(newOpts) do
+                local OptBtn = Instance.new("TextButton", Scroll)
+                OptBtn.Size = UDim2.new(1, 0, 0, 25); OptBtn.BackgroundColor3 = Color3.fromRGB(30,30,30); OptBtn.Text = opt; OptBtn.TextColor3 = Color3.new(1,1,1); OptBtn.Font = Enum.Font.Gotham; OptBtn.TextSize = 12; Instance.new("UICorner", OptBtn).CornerRadius = UDim.new(0,4)
+                OptBtn.MouseButton1Click:Connect(function() Lbl.Text = "   " .. text .. " : " .. opt; TweenService:Create(DFrame, TweenInfo.new(0.2), {Size = UDim2.new(1, -10, 0, 35)}):Play(); open = false; callback(opt) end)
+            end
+        end
+        
+        Btn.MouseButton1Click:Connect(function() 
+            open = not open
+            -- Limit dropdown height to 150px or content size to avoid going off-screen
+            local targetSize = open and math.min(SList.AbsoluteContentSize.Y + 45, 180) or 35
+            TweenService:Create(DFrame, TweenInfo.new(0.2), {Size = UDim2.new(1, -10, 0, targetSize)}):Play() 
+        end)
+        
+        DropObj:Refresh(options)
+        return DropObj
+    end
+    return TabElements
+end
+
+function DarteEngine:ChangeTheme(color)
+    AccentColor = color
+    for _, item in pairs(ThemeObjects) do if item.Obj and item.Obj.Parent then pcall(function() item.Obj[item.Prop] = color end) end end
+end
+
+MainFrame.Size = UDim2.new(0,0,0,0)
+TweenService:Create(MainFrame, TweenInfo.new(1, Enum.EasingStyle.Back), {Size = UDim2.new(0, 600, 0, 400)}):Play()
+
+local function GetPlayersList()
+    local t = {}
+    for _, p in pairs(Players:GetPlayers()) do if p ~= LocalPlayer then table.insert(t, p.DisplayName or p.Name) end end
+    table.sort(t) -- Sort alphabetically for better usage
+    return t
+end
+
+-- ==========================================
+-- [ 3. STICKY MENU RGB (KUSURSUZ ENTEGRASYON) ]
+-- ==========================================
+local RGBFolder = Instance.new("Folder", DarteUI); RGBFolder.Name = "StickyRGB"
+local function CreateLine()
+    local f = Instance.new("Frame", RGBFolder); f.BorderSizePixel = 0; f.ZIndex = 10; f.Visible = false; return f
+end
+local TopL, BotL, LftL, RgtL = CreateLine(), CreateLine(), CreateLine(), CreateLine()
+local Thickness = 2
+
+RunService.RenderStepped:Connect(function()
+    if _G.VisualConfigs.MenuRGB and MainFrame.Visible and DarteUI.Enabled then
+        local pos = MainFrame.AbsolutePosition
+        local size = MainFrame.AbsoluteSize
+        local color = Color3.fromHSV(tick() % 5 / 5, 1, 1)
+
+        TopL.Visible = true; BotL.Visible = true; LftL.Visible = true; RgtL.Visible = true
+        TopL.BackgroundColor3 = color; BotL.BackgroundColor3 = color; LftL.BackgroundColor3 = color; RgtL.BackgroundColor3 = color
+
+        TopL.Position = UDim2.new(0, pos.X, 0, pos.Y); TopL.Size = UDim2.new(0, size.X, 0, Thickness)
+        BotL.Position = UDim2.new(0, pos.X, 0, pos.Y + size.Y - Thickness); BotL.Size = UDim2.new(0, size.X, 0, Thickness)
+        LftL.Position = UDim2.new(0, pos.X, 0, pos.Y); LftL.Size = UDim2.new(0, Thickness, 0, size.Y)
+        RgtL.Position = UDim2.new(0, pos.X + size.X - Thickness, 0, pos.Y); RgtL.Size = UDim2.new(0, Thickness, 0, size.Y)
+    else
+        TopL.Visible = false; BotL.Visible = false; LftL.Visible = false; RgtL.Visible = false
+    end
+end)
+
+-- ==========================================
+-- [ 4. HİLE ÖZELLİKLERİ VE SEKMELER ]
+-- ==========================================
+
+-- // 🚀 MOVEMENT \\
+local MoveTab = DarteEngine:MakeTab("🚀 Movement")
+local FlySpeed = 2; local FlyLoop; local FlyConn
+local function ToggleFly()
+    States.Fly = not States.Fly
+    local Char = LocalPlayer.Character
+    if not Char or not Char:FindFirstChild("HumanoidRootPart") then return end
+    local HRP = Char.HumanoidRootPart; local Hum = Char:FindFirstChildOfClass("Humanoid")
+    if States.Fly then
+        if Hum then Hum.PlatformStand = true end
+        FlyLoop = RunService.Heartbeat:Connect(function()
+            local Look = Camera.CFrame.LookVector; local Right = Camera.CFrame.RightVector; local Move = Vector3.new(0,0,0)
+            if UIS:IsKeyDown(Enum.KeyCode.W) then Move = Move + Look end
+            if UIS:IsKeyDown(Enum.KeyCode.S) then Move = Move - Look end
+            if UIS:IsKeyDown(Enum.KeyCode.A) then Move = Move - Right end
+            if UIS:IsKeyDown(Enum.KeyCode.D) then Move = Move + Right end
+            if UIS:IsKeyDown(Enum.KeyCode.Space) then Move = Move + Vector3.new(0,1,0) end
+            if UIS:IsKeyDown(Enum.KeyCode.LeftShift) then Move = Move - Vector3.new(0,1,0) end
+            if Move.Magnitude > 0 then Move = Move.Unit * FlySpeed end
+            HRP.CFrame = HRP.CFrame + Move; HRP.Velocity = Vector3.new(0,0,0) 
+        end)
+    else
+        if FlyLoop then FlyLoop:Disconnect() end
+        if Hum then Hum.PlatformStand = false end
+    end
+end
+if FlyConn then FlyConn:Disconnect() end
+FlyConn = UIS.InputBegan:Connect(function(input, proc) if not proc and input.KeyCode == Enum.KeyCode.E then ToggleFly() end end)
+
+MoveTab:AddToggle("Serbest Fly (E Tuşu)", function(v) if v ~= States.Fly then ToggleFly() end end)
+MoveTab:AddSlider("Fly Hızı", 15, 1, function(s) FlySpeed = s end)
+MoveTab:AddSlider("Yürüme Hızı", 300, 16, function(s) if LocalPlayer.Character then LocalPlayer.Character.Humanoid.WalkSpeed = s end end)
+MoveTab:AddToggle("SpinBot", function(v) States.SpinBot = v end)
+
+-- // [ 👁️ VISUALS ] \\
+local VisTab = DarteEngine:MakeTab("👁️ Visuals")
+
+VisTab:AddSlider("Görüş Açısı (FOV)", 120, 70, function(v) 
+    workspace.CurrentCamera.FieldOfView = v 
+end)
+
+VisTab:AddButton("FOV Sıfırla (70)", function() 
+    workspace.CurrentCamera.FieldOfView = 70 
+end)
+
+VisTab:AddToggle("Rainbow Players", function(v) 
+    _G.VisualConfigs.RainbowPlayersEnabled = v 
+end)
+
+VisTab:AddToggle("Rainbow Highlight ESP", function(v) 
+    States.RainbowESP = v 
+    if not v then 
+        for _, p in pairs(Players:GetPlayers()) do 
+            pcall(function() 
+                if p.Character and p.Character:FindFirstChild("DarteRainbowHigh") then 
+                    p.Character.DarteRainbowHigh:Destroy() 
+                end 
+            end) 
+        end 
+    end
+end)
+
+VisTab:AddToggle("Sticky Menu RGB", function(v) 
+    _G.VisualConfigs.MenuRGB = v 
+end)
+
+-- [ STICKY RGB MOTORU ]
+-- (Bu kısım menünün etrafındaki çizgiyi çizer, kodun RenderStepped kısmında olmalı veya buraya yapıştırabilirsin)
+local RGBFolder = DarteUI:FindFirstChild("StickyRGB") or Instance.new("Folder", DarteUI)
+RGBFolder.Name = "StickyRGB"
+local function CreateLine() 
+    local f = Instance.new("Frame", RGBFolder)
+    f.BorderSizePixel = 0; f.ZIndex = 10; f.Visible = false; return f 
+end
+local TopL, BotL, LftL, RgtL = CreateLine(), CreateLine(), CreateLine(), CreateLine()
+
+RunService.RenderStepped:Connect(function()
+    if _G.VisualConfigs.MenuRGB and MainFrame.Visible and DarteUI.Enabled then
+        local pos, size = MainFrame.AbsolutePosition, MainFrame.AbsoluteSize
+        local clr = Color3.fromHSV(tick() % 5 / 5, 1, 1)
+        TopL.Visible, BotL.Visible, LftL.Visible, RgtL.Visible = true, true, true, true
+        TopL.BackgroundColor3, BotL.BackgroundColor3, LftL.BackgroundColor3, RgtL.BackgroundColor3 = clr, clr, clr, clr
+        TopL.Position, TopL.Size = UDim2.new(0, pos.X, 0, pos.Y), UDim2.new(0, size.X, 0, 2)
+        BotL.Position, BotL.Size = UDim2.new(0, pos.X, 0, pos.Y + size.Y - 2), UDim2.new(0, size.X, 0, 2)
+        LftL.Position, LftL.Size = UDim2.new(0, pos.X, 0, pos.Y), UDim2.new(0, 2, 0, size.Y)
+        RgtL.Position, RgtL.Size = UDim2.new(0, pos.X + size.X - 2, 0, pos.Y), UDim2.new(0, 2, 0, size.Y)
+    else 
+        TopL.Visible, BotL.Visible, LftL.Visible, RgtL.Visible = false, false, false, false 
+    end
+end)
+
+-- // 📍 TELEPORTS & WORLD \\
+local TPTab = DarteEngine:MakeTab("📍 World & TP")
+local PDrop = TPTab:AddDropdown("Oyuncu Seç", GetPlayersList(), function(s) _G.TPTarget = s end)
+TPTab:AddButton("Işınlan", function()
+    for _, p in pairs(Players:GetPlayers()) do
+        if p.DisplayName == _G.TPTarget or p.Name == _G.TPTarget then
+            if p.Character and p.Character:FindFirstChild("HumanoidRootPart") then LocalPlayer.Character:PivotTo(p.Character.HumanoidRootPart.CFrame + Vector3.new(0,3,0)) end
+        end
+    end
+end)
+TPTab:AddButton("Listeyi Yenile", function() PDrop:Refresh(GetPlayersList()) end)
+TPTab:AddToggle("CTRL + Click TP", function(v) States.ClickTP = v end)
+TPTab:AddToggle("Noclip (Duvar Geçme)", function(v) States.Noclip = v end)
+TPTab:AddToggle("Ev Ban Kaldır (Anti-Ban)", function(v) States.AntiBan = v end)
+TPTab:AddButton("Smart UI Purge", function()
+    for _, gui in pairs(CoreGui:GetChildren()) do
+        if gui:IsA("ScreenGui") then
+            local name = gui.Name:lower()
+            if not name:find("chat") and not name:find("roblox") and not name:find("bubble") and not name:find("darte") then gui:Destroy() end
+        end
+    end
+end)
+TPTab:AddButton("FPS Boost", function()
+    for _,v in pairs(workspace:GetDescendants()) do
+        if v:IsA("BasePart") then v.Material = Enum.Material.SmoothPlastic end
+        if v:IsA("Texture") or v:IsA("Decal") then v:Destroy() end
+    end
+end)
+TPTab:AddToggle("Katı Madde (SolidBody)", function(v) States.SolidBody = v end)
+local AutoReturnTrue = false; local RealLastPos = nil
+TPTab:AddToggle("Anti-Home kick (NoClip Gerekir)", function(v) AutoReturnTrue = v; if v and LocalPlayer.Character then local hrp = LocalPlayer.Character:FindFirstChild("HumanoidRootPart"); if hrp then RealLastPos = hrp.CFrame end end end)
+TPTab:AddToggle("Anti-Fling (Ghost Mode)", function(v) States.GhostMode = v end)
+
+TPTab:AddButton("Fast Server Hop", function()
+    local Http = game:GetService("HttpService")
+    local TPS = game:GetService("TeleportService")
+    local Servers = Http:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100"))
+    for _, s in pairs(Servers.data) do
+        if s.playing < s.maxPlayers and s.id ~= game.JobId then
+            TPS:TeleportToPlaceInstance(game.PlaceId, s.id, LocalPlayer)
+            break
+        end
+    end
+end)
+
+TPTab:AddButton("Quick Rejoin", function()
+    game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, LocalPlayer)
+end)
+
+-- // 🤡 TROLL MASTER \\
+local TrollTab = DarteEngine:MakeTab("🤡 Troll Master")
+local OrbitDropdown = TrollTab:AddDropdown("Kalkan Hedefi Seç", GetPlayersList(), function(s) for _, p in pairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then OrbitTarget = p break end end end)
+TrollTab:AddToggle("Atomik Kalkan (Orbit)", function(v)
+    States.Orbiting = v
+    if v then
+        if not OrbitTarget or not OrbitTarget.Character then States.Orbiting = false; return end
+        task.spawn(function()
+            while States.Orbiting do pcall(function() LocalPlayer.Character.HumanoidRootPart.CFrame = OrbitTarget.Character.HumanoidRootPart.CFrame * CFrame.new(math.random(-10, 10), math.random(-2, 8), math.random(-10, 10)) end); RunService.Heartbeat:Wait() end
+        end)
+    end
+end)
+local MagnetTarget, MagnetLoop = nil, nil
+TrollTab:AddDropdown("Mıknatıs Hedefi Seç", GetPlayersList(), function(s) for _, p in pairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then MagnetTarget = p break end end end)
+TrollTab:AddToggle("Player Magnet (60 FPS)", function(v)
+    States.Magnet = v
+    if v then
+        if not MagnetTarget or not MagnetTarget.Character then States.Magnet = false return end
+        MagnetLoop = RunService.RenderStepped:Connect(function()
+            if States.Magnet and MagnetTarget and MagnetTarget.Character and LocalPlayer.Character then
+                pcall(function()
+                    local victimRoot = MagnetTarget.Character:FindFirstChild("HumanoidRootPart"); local myRoot = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+                    if victimRoot and myRoot then victimRoot.CFrame = myRoot.CFrame * CFrame.new(0, 0, -3); victimRoot.Velocity = Vector3.new(0,0,0) end
+                end)
+            else if MagnetLoop then MagnetLoop:Disconnect() end end
+        end)
+    else if MagnetLoop then MagnetLoop:Disconnect() end end
+end)
+local HeadSpinning, HeadLoop = false, nil
+TrollTab:AddToggle("Head Orbit", function(v)
+    HeadSpinning = v
+    local char = LocalPlayer.Character; local hum = char:FindFirstChildOfClass("Humanoid")
+    if v then
+        if hum then hum:SetStateEnabled(Enum.HumanoidStateType.Dead, false); hum.BreakJointsOnDeath = false end
+        HeadLoop = RunService.RenderStepped:Connect(function()
+            if HeadSpinning and char and char:FindFirstChild("Head") then pcall(function()
+                local head = char.Head; local neck = char:FindFirstChild("Neck", true)
+                if neck then neck.MaxVelocity = 0; neck.C0 = neck.C0 * CFrame.Angles(0, math.rad(50), 0) else head.CFrame = head.CFrame * CFrame.Angles(0, math.rad(50), 0) end
+            end) else if HeadLoop then HeadLoop:Disconnect() end end
+        end)
+    else
+        if HeadLoop then HeadLoop:Disconnect() end
+        if hum then hum:SetStateEnabled(Enum.HumanoidStateType.Dead, true) end
+        pcall(function() local neck = char:FindFirstChild("Neck", true); if neck then neck.C0 = CFrame.new(0, 1, 0) * CFrame.Angles(math.rad(-90), math.rad(180), 0) end end)
+    end
+end)
+local GlitchIndex, GlitchLoop = 1, nil
+TrollTab:AddToggle("İlüzyonik Glitch (Mass TP)", function(v)
+    States.MassTP = v
+    if v then
+        GlitchLoop = RunService.RenderStepped:Connect(function()
+            local targets = {}
+            for _, p in pairs(Players:GetPlayers()) do if p ~= LocalPlayer and p.Character and p.Character:FindFirstChild("HumanoidRootPart") then table.insert(targets, p) end end
+            if #targets > 0 then
+                if GlitchIndex > #targets then GlitchIndex = 1 end
+                local targetPlayer = targets[GlitchIndex]
+                local myRoot = LocalPlayer.Character:FindFirstChild("HumanoidRootPart"); local targetRoot = targetPlayer.Character.HumanoidRootPart
+                if myRoot and targetRoot then pcall(function() myRoot.CFrame = targetRoot.CFrame * CFrame.new(0, 0, -3) * CFrame.Angles(0, math.rad(180), 0); myRoot.Velocity = Vector3.new(0,0,0) end) end
+                GlitchIndex = GlitchIndex + 1
+            end
+        end)
+    else if GlitchLoop then GlitchLoop:Disconnect() end; GlitchIndex = 1 end
+end)
+TrollTab:AddToggle("Anti-Sit (Kucaklama Engelleyici)", function(v)
+    States.AntiSit = v
+    if v then task.spawn(function() while States.AntiSit do local hum = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Humanoid Kullancısı"); if hum and hum.Sit then hum.Sit = false; LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 2, 0) end; task.wait(0.1) end end) end
+end)
+local SAP_Target, SAP_Active, SAP_Speed = nil, false, 50
+TrollTab:AddDropdown("Kurban Seç (SAP)", GetPlayersList(), function(s) for _, p in pairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then SAP_Target = p break end end end)
+TrollTab:AddSlider("Döngü Sertliği", 300, 20, function(s) SAP_Speed = s end)
+TrollTab:AddToggle("Sapık Değilsen Açma", function(v)
+    SAP_Active = v
+    if v then
+        if not SAP_Target or not SAP_Target.Character then SAP_Active = false; return end
+        task.spawn(function()
+            while SAP_Active do pcall(function()
+                local hrp = LocalPlayer.Character.HumanoidRootPart; local tRoot = SAP_Target.Character.HumanoidRootPart
+                hrp.CFrame = tRoot.CFrame * CFrame.new(0, 0, 5)
+                local startTime = tick()
+                while SAP_Active and (hrp.Position - (tRoot.CFrame * CFrame.new(0,0,0.5)).Position).Magnitude > 0.5 do
+                    hrp.Velocity = (tRoot.CFrame * CFrame.new(0,0,0.5).Position - hrp.Position).Unit * SAP_Speed; task.wait()
+                    if tick() - startTime > 1 then break end
+                end
+            end); task.wait(0.01) end
+        end)
+    end
+end)
+local ShadowTarget, ShadowConn = nil, nil
+TrollTab:AddDropdown("Gölge Hedefi Seç", GetPlayersList(), function(s) for _, p in pairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then ShadowTarget = p break end end end)
+TrollTab:AddToggle("7/24 Yapış (Gölge)", function(v)
+    _G.ShadowActive = v
+    if v then
+        if not ShadowTarget or not ShadowTarget.Character then _G.ShadowActive = false; return end
+        ShadowConn = RunService.Stepped:Connect(function()
+            if _G.ShadowActive and ShadowTarget and ShadowTarget.Character then pcall(function()
+                local myPart = LocalPlayer.Character.HumanoidRootPart; local targetPart = ShadowTarget.Character.HumanoidRootPart
+                myPart.CFrame = targetPart.CFrame * CFrame.new(0, 0, 1); myPart.Velocity = Vector3.new(0,0,0)
+            end) else if ShadowConn then ShadowConn:Disconnect() end end
+        end)
+    else if ShadowConn then ShadowConn:Disconnect() end end
+end)
+
+-- // 💀 KILL V5 \\
+local KillTab = DarteEngine:MakeTab("💀 Kill V5")
+local KillDrop = KillTab:AddDropdown("Kurban Seç", GetPlayersList(), function(v) SelectedTarget = game.Players:FindFirstChild(v) end)
+KillTab:AddButton("Listeyi Yenile", function() KillDrop:Refresh(GetPlayersList()) end)
+
+KillTab:AddButton("ZORTLAT (ANTI-TP BYPASS)", function()
+    local lp = game.Players.LocalPlayer; local char = lp.Character; local hrp = char and char:FindFirstChild("HumanoidRootPart")
+    if not SelectedTarget or not SelectedTarget.Character then return end
+    local targetHrp = SelectedTarget.Character:FindFirstChild("HumanoidRootPart")
+    local tool = char:FindFirstChildOfClass("Tool") or lp.Backpack:FindFirstChildOfClass("Tool")
+    if not tool then return end
+    local startPos = hrp.CFrame
+    task.spawn(function()
+        local connection = game:GetService("RunService").Stepped:Connect(function() for _, v in pairs(char:GetDescendants()) do if v:IsA("BasePart") then v.CanCollide = false end end end)
+        for i = 1, 15 do hrp.CFrame = targetHrp.CFrame * CFrame.new(0, 0, 1.8) * CFrame.Angles(0, math.rad(180), 0); task.wait(0.01) end
+        tool.Parent = char
+        local t = tick(); while tick() - t < 0.5 do hrp.CFrame = targetHrp.CFrame * CFrame.new(0, 0, 1.8); task.wait() end
+        hrp.CFrame = CFrame.new(hrp.Position.X, -350, hrp.Position.Z)
+        local sTime = tick(); while tick() - sTime < 0.4 do hrp.CFrame = CFrame.new(hrp.Position.X, -350 + (math.random(-1,1)/10), hrp.Position.Z); task.wait() end
+        tool.Parent = lp.Backpack; task.wait(0.1)
+        for i = 1, 10 do hrp.CFrame = startPos; task.wait(0.01) end
+        connection:Disconnect()
+    end)
+end)
+
+KillTab:AddButton("MERKEZE PAKETLE", function()
+    local lp = game.Players.LocalPlayer; local char = lp.Character; local hrp = char and char:FindFirstChild("HumanoidRootPart")
+    if not SelectedTarget or not SelectedTarget.Character then return end
+    local targetHrp = SelectedTarget.Character:FindFirstChild("HumanoidRootPart")
+    local tool = char:FindFirstChildOfClass("Tool") or lp.Backpack:FindFirstChildOfClass("Tool")
+    if not tool then return end
+    local startPos = hrp.CFrame
+    task.spawn(function()
+        local connection = game:GetService("RunService").Stepped:Connect(function() if char then for _, v in pairs(char:GetDescendants()) do if v:IsA("BasePart") then v.CanCollide = false end end end end)
+        tool.Parent = char
+        for i = 1, 15 do if targetHrp then hrp.CFrame = targetHrp.CFrame * CFrame.new(0, 0, 1.8) * CFrame.Angles(0, math.rad(180), 0) end; task.wait(0.01) end
+        local t = tick(); while tick() - t < 0.5 do if targetHrp then hrp.CFrame = targetHrp.CFrame * CFrame.new(0, 0, 1.8) end; task.wait() end
+        hrp.CFrame = startPos
+        local sTime = tick(); while tick() - sTime < 0.4 do hrp.CFrame = startPos * CFrame.new(math.random(-1,1)/10, 0, math.random(-1,1)/10); task.wait() end
+        tool.Parent = lp.Backpack; task.wait(0.1); hrp.CFrame = startPos
+        connection:Disconnect()
+    end)
+end)
+
+-- // 🛠️ TOOLS \\
+local UtilTab = DarteEngine:MakeTab("🛠️ Tools")
+local SpyTarget = nil
+UtilTab:AddDropdown("Spy Hedefi", GetPlayersList(), function(s) for _, p in pairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then SpyTarget = p break end end end)
+UtilTab:AddToggle("Spectre Mode (İzle)", function(v) if v then if SpyTarget and SpyTarget.Character then Camera.CameraSubject = SpyTarget.Character.Humanoid end else Camera.CameraSubject = LocalPlayer.Character.Humanoid end end)
+
+local fcRunning, fcCam, fcSpeed, fcRot = false, workspace.CurrentCamera, 1.5, Vector2.new(0,0)
+UtilTab:AddToggle("Freecam (Gelişmiş)", function(v)
+    fcRunning = v
+    if v then
+        LocalPlayer.Character.HumanoidRootPart.Anchored = true; fcCam.CameraType = Enum.CameraType.Scriptable
+        task.spawn(function()
+            while fcRunning do
+                local move = Vector3.new(0,0,0)
+                if UIS:IsKeyDown(Enum.KeyCode.W) then move = move + fcCam.CFrame.LookVector end
+                if UIS:IsKeyDown(Enum.KeyCode.S) then move = move - fcCam.CFrame.LookVector end
+                if UIS:IsKeyDown(Enum.KeyCode.A) then move = move - fcCam.CFrame.RightVector end
+                if UIS:IsKeyDown(Enum.KeyCode.D) then move = move + fcCam.CFrame.RightVector end
+                if UIS:IsKeyDown(Enum.KeyCode.E) then move = move + Vector3.new(0,1,0) end
+                if UIS:IsKeyDown(Enum.KeyCode.Q) then move = move - Vector3.new(0,1,0) end
+                fcCam.CFrame = fcCam.CFrame + (move * fcSpeed)
+                if UIS:IsMouseButtonPressed(Enum.UserInputType.MouseButton2) then
+                    UIS.MouseBehavior = Enum.MouseBehavior.LockCurrentPosition; local delta = UIS:GetMouseDelta(); fcRot = fcRot - Vector2.new(delta.Y, delta.X) * 0.4
+                    fcCam.CFrame = CFrame.new(fcCam.CFrame.Position) * CFrame.Angles(0, math.rad(fcRot.Y), 0) * CFrame.Angles(math.rad(fcRot.X), 0, 0)
+                else UIS.MouseBehavior = Enum.MouseBehavior.Default end
+                task.wait()
+            end
+            fcCam.CameraType = Enum.CameraType.Custom; LocalPlayer.Character.HumanoidRootPart.Anchored = false
+        end)
+    else fcCam.CameraType = Enum.CameraType.Custom; if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then LocalPlayer.Character.HumanoidRootPart.Anchored = false end end
+end)
+
+UtilTab:AddButton("Infinite Yield Admin", function() loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))() end)
+UtilTab:AddToggle("Anti-AFK", function(v) States.AntiAFK = v; if v then LocalPlayer.Idled:Connect(function() if States.AntiAFK then VirtualUser:Button2Down(Vector2.new(0,0), fcCam.CFrame); task.wait(1); VirtualUser:Button2Up(Vector2.new(0,0), fcCam.CFrame) end end) end end)
+UtilTab:AddButton("Remote Event Logger Başlat", function()
+    local oldNamecall; oldNamecall = hookmetamethod(game, "__namecall", function(self, ...)
+        local method = getnamecallmethod(); local args = {...}
+        if not checkcaller() and (method == "FireServer" or method == "InvokeServer") then print("--- DARTE LOGGER ---"); print("Event: " .. self.Name); print("Args: ", unpack(args)) end
+        return oldNamecall(self, ...)
+    end)
+end)
+UtilTab:AddToggle("Auto Chat Translator", function(v)
+    _G.Translate = v
+    if v then game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Connect(function(data)
+        if _G.Translate and data.FromSpeaker ~= LocalPlayer.Name then
+            local msg = data.Message; local url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=tr&dt=t&q=" .. HttpService:UrlEncode(msg)
+            pcall(function() local res = game:HttpGet(url); local translation = res:match('^%[%[%["(.-)","'); if translation then print("["..data.FromSpeaker.."]: " .. translation) end end)
+        end
+    end) end
+end)
+UtilTab:AddToggle("Reklam Spamı", function(v)
+    _G.Spamming = v
+    task.spawn(function()
+        local msg = {"DarteSoftware V1 | En İyisi! /dartesoftware", "/dartesoftware", "En İyi Ücretsiz Script"}; local i = 1
+        while _G.Spamming do
+            if TextChatService.ChatVersion == Enum.ChatVersion.TextChatService then TextChatService.TextChannels.RBXGeneral:SendAsync(msg[i]) else game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg[i], "All") end
+            i = i % #msg + 1; task.wait(6)
+        end
+    end)
+end)
+
+local DashFrame = nil
+UtilTab:AddToggle("Admin Dashboard & FPS", function(v)
+    if v then
+        DashFrame = Instance.new("Frame", DarteUI)
+        DashFrame.Size = UDim2.new(0, 180, 0, 100)
+        DashFrame.Position = UDim2.new(1, -200, 1, -120)
+        DashFrame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+        DashFrame.BackgroundTransparency = 0.5
+        Instance.new("UICorner", DashFrame)
+        
+        local info = Instance.new("TextLabel", DashFrame)
+        info.Size = UDim2.new(1, -10, 1, -10); info.Position = UDim2.new(0, 5, 0, 5)
+        info.BackgroundTransparency = 1; info.TextColor3 = Color3.new(1,1,1); info.TextSize = 12; info.Font = Enum.Font.Code
+        info.TextXAlignment = Enum.TextXAlignment.Left; info.TextYAlignment = Enum.TextYAlignment.Top
+
+        task.spawn(function()
+            while DashFrame and task.wait(0.5) do
+                local fps = math.floor(1/RunService.RenderStepped:Wait())
+                local ping = math.floor(LocalPlayer:GetNetworkPing() * 1000)
+                local players = #game.Players:GetPlayers()
+                local uptime = math.floor(workspace.DistributedGameTime)
+                info.Text = string.format("FPS: %d\nPING: %dms\nPLAYERS: %d\nUPTIME: %ds\nSERVER: %s", fps, ping, players, uptime, game.JobId:sub(1,8))
+            end
+        end)
+    else
+        if DashFrame then DashFrame:Destroy() end
+    end
+end)
+
+-- // 🏠 EV IŞINLANMA (GTA 5) \\
+local HomeTab = DarteEngine:MakeTab("🏠 Ev Işınlanma")
+local Locations = { ["Ev 1"] = Vector3.new(258, 4, 222), ["Ev 2"] = Vector3.new(221, 4, 225), ["Ev 3"] = Vector3.new(258, 21, 222), ["Ev 4"] = Vector3.new(221, 21, 225), ["Ev 5"] = Vector3.new(158, 21, 225), ["Ev 6"] = Vector3.new(-36, 19, -120), ["Ev 7"] = Vector3.new(-38, 35, -120), ["Ev 11"] = Vector3.new(-21, 34, 398), ["Ev 12"] = Vector3.new(151, 34, 398), ["Ev 13"] = Vector3.new(256, 34, 398), ["Ev 14"] = Vector3.new(252, 34, 425), ["Ev 15"] = Vector3.new(147, 34, 425), ["Ev 16"] = Vector3.new(-25, 34, 425) }
+local function GTATeleport(TargetPos)
+    local Character = LocalPlayer.Character
+    if not Character or not Character:FindFirstChild("HumanoidRootPart") then return end
+    Character.HumanoidRootPart.Anchored = true; Camera.CameraType = Enum.CameraType.Scriptable
+    local StartPos = Character.HumanoidRootPart.Position
+    TweenService:Create(Camera, TweenInfo.new(1.2, Enum.EasingStyle.Quart, Enum.EasingDirection.Out), {CFrame = CFrame.new(StartPos + Vector3.new(0, 500, 0), StartPos)}):Play(); task.wait(1.3)
+    Character.HumanoidRootPart.CFrame = CFrame.new(TargetPos + Vector3.new(0, 3, 0))
+    TweenService:Create(Camera, TweenInfo.new(1.2, Enum.EasingStyle.Quart, Enum.EasingDirection.In), {CFrame = CFrame.new(TargetPos + Vector3.new(0, 5, 10), TargetPos)}):Play(); task.wait(1.3)
+    Camera.CameraType = Enum.CameraType.Custom; Character.HumanoidRootPart.Anchored = false
+end
+for i = 1, 7 do HomeTab:AddButton("Otel Odası: " .. i, function() GTATeleport(Locations["Ev " .. i]) end) end
+for i = 11, 16 do HomeTab:AddButton("Ev No: " .. i, function() GTATeleport(Locations["Ev " .. i]) end) end
+
+-- // ⚙️ AYARLAR \\
+local SettingsTab = DarteEngine:MakeTab("⚙️ Ayarlar")
+SettingsTab:AddDropdown("Temayı Değiştir", {"Altın", "Kan Kırmızı", "Mavi", "Mor", "Yeşil"}, function(selected)
+    local colors = {["Altın"] = Color3.fromRGB(255, 215, 0), ["Kan Kırmızı"] = Color3.fromRGB(255, 0, 0), ["Mavi"] = Color3.fromRGB(0, 150, 255), ["Mor"] = Color3.fromRGB(160, 0, 255), ["Yeşil"] = Color3.fromRGB(0, 255, 120)}
+    DarteEngine:ChangeTheme(colors[selected])
+end)
+SettingsTab:AddButton("UI Gizle/Göster (Right CTRL ile de olur)", function() DarteUI.Enabled = not DarteUI.Enabled end)
+
+-- ==========================================
+-- [ 5. DRAGGABLE LOGO SİSTEMİ ]
+-- ==========================================
+local LogoGui = Instance.new("ScreenGui", CoreGui); LogoGui.Name = "DarteLogoSystem"
+local LogoFrame = Instance.new("Frame", LogoGui)
+LogoFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15); LogoFrame.Size = UDim2.new(0, 100, 0, 35); LogoFrame.Position = UDim2.new(0.05, 0, 0.1, 0); LogoFrame.Active = true
+Instance.new("UICorner", LogoFrame).CornerRadius = UDim.new(0, 6); Instance.new("UIStroke", LogoFrame).Color = Color3.new(1,1,1)
+local Lbl = Instance.new("TextLabel", LogoFrame); Lbl.Size = UDim2.new(1, 0, 1, 0); Lbl.BackgroundTransparency = 1; Lbl.Text = "DARTE"; Lbl.TextColor3 = Color3.new(1,1,1); Lbl.Font = Enum.Font.GothamBold; Lbl.TextSize = 14
+
+local dragS, startP, draggingLogo = nil, nil, false
+LogoFrame.InputBegan:Connect(function(input)
+    if input.UserInputType == Enum.UserInputType.MouseButton1 then
+        draggingLogo = true; dragS = input.Position; startP = LogoFrame.Position; local startTick = tick()
+        input.Changed:Connect(function()
+            if input.UserInputState == Enum.UserInputState.End then
+                draggingLogo = false
+                if tick() - startTick < 0.2 then DarteUI.Enabled = not DarteUI.Enabled end
+            end
+        end)
+    end
+end)
+UIS.InputChanged:Connect(function(input)
+    if draggingLogo and input.UserInputType == Enum.UserInputType.MouseMovement then
+        local delta = input.Position - dragS
+        LogoFrame.Position = UDim2.new(startP.X.Scale, startP.X.Offset + delta.X, startP.Y.Scale, startP.Y.Offset + delta.Y)
+    end
+end)
+
+-- ==========================================
+-- [ 6. ANA DÖNGÜLER (PHYSICS & VISUALS) ]
+-- ==========================================
+local function ResetPlayerColors(char)
+    if not char then return end
+    for _, part in pairs(char:GetDescendants()) do
+        if part:IsA("BasePart") or part:IsA("MeshPart") then if _G.VisualConfigs.OriginalColors[part] then part.Color = _G.VisualConfigs.OriginalColors[part] end
+        elseif part:IsA("CharacterMesh") or part:IsA("Clothing") or part:IsA("ShirtGraphic") then part.Enabled = true end
+    end
+end
+
+local function ApplyRainbowToCharacter(char, hue)
+    if not char then return end
+    local rainbowColor = Color3.fromHSV(hue, 1, 1)
+    for _, part in pairs(char:GetDescendants()) do
+        if part:IsA("BasePart") or part:IsA("MeshPart") then
+            if not _G.VisualConfigs.OriginalColors[part] then _G.VisualConfigs.OriginalColors[part] = part.Color end
+            part.Color = rainbowColor; part.Material = Enum.Material.Neon
+        elseif part:IsA("CharacterMesh") or part:IsA("Clothing") or part:IsA("ShirtGraphic") then part.Enabled = false end
+    end
+end
+
+RunService.Stepped:Connect(function()
+    pcall(function()
+        if States.Noclip and LocalPlayer.Character then for _, part in pairs(LocalPlayer.Character:GetDescendants()) do if part:IsA("BasePart") then part.CanCollide = false end end end
+        if States.SolidBody and LocalPlayer.Character then for _, v in pairs(LocalPlayer.Character:GetDescendants()) do if v:IsA("BasePart") then v.CanCollide = true; v.CollisionGroup = "Default" end end
+        elseif LocalPlayer.Character and not States.Noclip then for _, v in pairs(LocalPlayer.Character:GetDescendants()) do if v:IsA("BasePart") then v.CollisionGroup = "Players" end end end
+        if States.AntiBan then for _, obj in pairs(workspace:GetDescendants()) do if obj.Name:find("Ban") then obj:Destroy() end end end
+        if States.SpinBot and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(50), 0) end
+    end)
+end)
+
+RunService.RenderStepped:Connect(function()
+    if States.ESP then
+        for _, p in pairs(Players:GetPlayers()) do
+            if p ~= LocalPlayer and p.Character then pcall(function()
+                local high = p.Character:FindFirstChild("DarteHigh") or Instance.new("Highlight", p.Character)
+                high.Name = "DarteHigh"; high.FillColor = Color3.fromRGB(0, 255, 150); high.OutlineColor = Color3.new(1,1,1); high.FillTransparency = 0.5; high.Enabled = true
+                local head = p.Character:FindFirstChild("Head")
+                if head then
+                    local esp = head:FindFirstChild("DarteESP") or Instance.new("BillboardGui", head)
+                    esp.Name = "DarteESP"; esp.AlwaysOnTop = true; esp.Size = UDim2.new(0, 150, 0, 50); esp.StudsOffset = Vector3.new(0, 3, 0)
+                    local txt = esp:FindFirstChild("Label") or Instance.new("TextLabel", esp); txt.Name = "Label"; txt.Size = UDim2.new(1,0,1,0); txt.BackgroundTransparency = 1; txt.TextColor3 = Color3.new(1,1,1); txt.Font = Enum.Font.GothamBold; txt.TextSize = 14; txt.TextStrokeTransparency = 0
+                    txt.Text = p.DisplayName .. "\n[" .. math.floor((head.Position - Camera.CFrame.Position).Magnitude) .. "m]"
+                end
+            end) end
+        end
+    end
+    if States.SafeESP then
+        for _, v in pairs(workspace:GetDescendants()) do
+            if (v.Name == "Safe" or v.Name == "GoldSafe" or v.Name == "MoneySafe") and v:IsA("Model") then
+                if not v:FindFirstChild("SafeHigh") then
+                    local h = Instance.new("Highlight", v); h.Name = "SafeHigh"; h.FillColor = Color3.new(1,0.8,0); h.FillTransparency = 0.3
+                    local b = Instance.new("BillboardGui", v:FindFirstChildWhichIsA("BasePart")); b.Name = "DarteSafeUI"; b.AlwaysOnTop = true; b.Size = UDim2.new(0,80,0,30)
+                    local t = Instance.new("TextLabel", b); t.Size = UDim2.new(1,0,1,0); t.BackgroundTransparency = 1; t.TextColor3 = Color3.new(1,1,0); t.Text = "💰 KASA"; t.Font = Enum.Font.GothamBold
+                end
+            end
+        end
+    end
+    local hue = tick() % 3 / 3
+    for _, player in pairs(Players:GetPlayers()) do
+        if player ~= LocalPlayer and player.Character then
+            if _G.VisualConfigs.RainbowPlayersEnabled then ApplyRainbowToCharacter(player.Character, hue) else if _G.VisualConfigs.OriginalColors[next(_G.VisualConfigs.OriginalColors)] then ResetPlayerColors(player.Character) end end
+        end
+    end
+    if not _G.VisualConfigs.RainbowPlayersEnabled and next(_G.VisualConfigs.OriginalColors) then _G.VisualConfigs.OriginalColors = {} end
+    if States.RainbowESP then
+        local clr = Color3.fromHSV(hue, 1, 1)
+        for _, pl in pairs(Players:GetPlayers()) do if pl ~= LocalPlayer and pl.Character then local hl = pl.Character:FindFirstChild("DarteRainbowHigh") or Instance.new("Highlight", pl.Character); hl.Name = "DarteRainbowHigh"; hl.FillTransparency = 0.5; hl.OutlineTransparency = 0; hl.FillColor = clr; hl.OutlineColor = clr end end
+    end
+end)
+
+RunService.Heartbeat:Connect(function()
+    if States.GhostMode == true then
+        local myChar = LocalPlayer.Character; local myHrp = myChar and myChar:FindFirstChild("HumanoidRootPart")
+        if myHrp then for _, otherPlayer in pairs(Players:GetPlayers()) do if otherPlayer ~= LocalPlayer and otherPlayer.Character then local herHrp = otherPlayer.Character:FindFirstChild("HumanoidRootPart"); if herHrp and (myHrp.Position - herHrp.Position).Magnitude < 8 then myHrp.CFrame = myHrp.CFrame * CFrame.new(0, 2, 12) end end end end
+    end
+end)
+
+UIS.InputBegan:Connect(function(input, proc)
+    if not proc and States.ClickTP and input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
+        if Mouse.Hit then LocalPlayer.Character:PivotTo(CFrame.new(Mouse.Hit.p + Vector3.new(0,3,0))) end
+    end
+end)
