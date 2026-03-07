@@ -101,46 +101,65 @@ local BottomFix = Instance.new("Frame", TopBar)
 BottomFix.Size = UDim2.new(1, 0, 0, 10); BottomFix.Position = UDim2.new(0, 0, 1, -10); BottomFix.BackgroundColor3 = Color3.fromRGB(20, 20, 20); BottomFix.BorderSizePixel = 0
 
 local TitleContainer = Instance.new("Frame", TopBar)
-TitleContainer.Size = UDim2.new(0, 400, 1, 0)
+TitleContainer.Size = UDim2.new(0, 450, 1, 0) -- Genişliği biraz artırdık
 TitleContainer.Position = UDim2.new(0, 12, 0, 0)
 TitleContainer.BackgroundTransparency = 1
 
 local TitleLayout = Instance.new("UIListLayout", TitleContainer)
 TitleLayout.FillDirection = Enum.FillDirection.Horizontal
 TitleLayout.VerticalAlignment = Enum.VerticalAlignment.Center
-TitleLayout.Padding = UDim.new(0, 8)
+TitleLayout.Padding = UDim.new(0, 12) -- Boşluğu biraz artırdık
 
 local LogoImg = Instance.new("ImageLabel", TitleContainer)
-LogoImg.Size = UDim2.new(0, 28, 0, 28)
+LogoImg.Size = UDim2.new(0, 35, 0, 35) -- Logoyu biraz büyüttük (daha net görünmesi için)
 LogoImg.BackgroundTransparency = 1
+LogoImg.ImageTransparency = 1 -- Yüklenene kadar gizle
+-- KALİTE AYARI:
+LogoImg.ScaleType = Enum.ScaleType.Fit -- Resmi çerçeveye en kaliteli şekilde sığdırır
+LogoImg.ResampleMode = Enum.ResampleMode.Pixelated -- Eğer logo çok küçükse netleştirir, büyükse "Default" yapabilirsin.
 
--- LOGOYU ÇEKİCİ FONKSİYON
+-- [[ HIZLI LOGO YÜKLEME SİSTEMİ (PRE-FETCH & CACHING) ]]
 task.spawn(function()
-    -- DİKKAT: Dosya adın "DarteSoftwareLogo" olduğu için linki ona göre ayarladım
     local url = "https://raw.githubusercontent.com/cladbaba/DarteSofrtware-BrookhavenV1/main/DarteSoftwareLogo"
-    local success, content = pcall(game.HttpGet, game, url)
+    local path = "DarteTempLogo_V2.png" -- Yeni bir dosya ismi (önbelleği temizlemek için)
     
-    if success then
-        local path = "DarteTempLogo.png" -- Bilgisayara bu isimle kaydeder (sorun olmaz)
-        writefile(path, content)
-        LogoImg.Image = getcustomasset(path)
+    if writefile and readfile then
+        -- EĞER DOSYA DAHA ÖNCE İNDİRİLMEDİYSE İNDİR (BU SADECE İLK SEFERE ÖZELDİR)
+        if not isfile(path) then
+            local success, content = pcall(game.HttpGet, game, url)
+            if success then
+                writefile(path, content)
+            else
+                -- İndirme başarısızsa yedek logo (internetsiz mod)
+                LogoImg.Image = "rbxassetid://13504359733"
+                LogoImg.ImageTransparency = 0
+                return -- Fonksiyondan çık
+            end
+        end
+        
+        -- DOSYA VARSA VEYA YENİ İNDİRİLDİYSE DİREKT BİLGİSAYARDAN YÜKLE (ÇOK HIZLIDIR)
+        local asset = getcustomasset(path)
+        if asset then
+            LogoImg.Image = asset
+            LogoImg.ImageTransparency = 0 -- Logoyu göster
+        end
     else
-        -- Hata olursa (dosya bulunamazsa) yedek logo
-        LogoImg.Image = "rbxassetid://13504359733" 
+        -- Executor desteklemiyorsa (Mobil vb.) yedek ikon
+        LogoImg.Image = "rbxassetid://13504359733"
+        LogoImg.ImageTransparency = 0
     end
 end)
 
 local TitleText = Instance.new("TextLabel", TitleContainer)
 TitleText.Text = "DARTE SOFTWARE V17"
 TitleText.TextColor3 = Color3.fromRGB(255, 215, 0)
-TitleText.Font = Enum.Font.GothamBold
-TitleText.TextSize = 16
-TitleText.Size = UDim2.new(0, 250, 1, 0)
+TitleText.Font = Enum.Font.GothamBold -- En kaliteli fontlardan biridir.
+TitleText.TextSize = 18 -- Yazıyı da biraz büyüttük, uyumlu olsun.
+TitleText.Size = UDim2.new(0, 300, 1, 0)
 TitleText.TextXAlignment = Enum.TextXAlignment.Left
 TitleText.BackgroundTransparency = 1
 
 table.insert(ThemeObjects, {Obj = TitleText, Prop = "TextColor3"})
-
 local TabContainer = Instance.new("ScrollingFrame", MainFrame)
 TabContainer.Size = UDim2.new(0, 150, 1, -50); TabContainer.Position = UDim2.new(0, 10, 0, 45); TabContainer.BackgroundTransparency = 1; TabContainer.ScrollBarThickness = 0
 local TabList = Instance.new("UIListLayout", TabContainer); TabList.Padding = UDim.new(0, 5)
