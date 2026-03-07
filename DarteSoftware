@@ -116,7 +116,6 @@ LogoImg.BackgroundTransparency = 1
 LogoImg.ImageTransparency = 1 -- Yüklenene kadar gizle
 -- KALİTE AYARI:
 LogoImg.ScaleType = Enum.ScaleType.Fit -- Resmi çerçeveye en kaliteli şekilde sığdırır
-LogoImg.ResampleMode = Enum.ResampleMode.Pixelated -- Eğer logo çok küçükse netleştirir, büyükse "Default" yapabilirsin.
 
 -- [[ HIZLI LOGO YÜKLEME SİSTEMİ (PRE-FETCH & CACHING) ]]
 task.spawn(function()
