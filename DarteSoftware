@@ -101,7 +101,6 @@ local BottomFix = Instance.new("Frame", TopBar)
 BottomFix.Size = UDim2.new(1, 0, 0, 10); BottomFix.Position = UDim2.new(0, 0, 1, -10); BottomFix.BackgroundColor3 = Color3.fromRGB(20, 20, 20); BottomFix.BorderSizePixel = 0
 
 local TitleContainer = Instance.new("Frame", TopBar)
-TitleContainer.Name = "TitleContainer"
 TitleContainer.Size = UDim2.new(0, 400, 1, 0)
 TitleContainer.Position = UDim2.new(0, 12, 0, 0)
 TitleContainer.BackgroundTransparency = 1
@@ -109,29 +108,37 @@ TitleContainer.BackgroundTransparency = 1
 local TitleLayout = Instance.new("UIListLayout", TitleContainer)
 TitleLayout.FillDirection = Enum.FillDirection.Horizontal
 TitleLayout.VerticalAlignment = Enum.VerticalAlignment.Center
-TitleLayout.Padding = UDim.new(0, 8) -- Logo ile yazı arasındaki boşluk
+TitleLayout.Padding = UDim.new(0, 8)
 
--- [ 2. LOGO EKLEME ]
 local LogoImg = Instance.new("ImageLabel", TitleContainer)
-LogoImg.Name = "DarteLogo"
-LogoImg.Size = UDim2.new(0, 26, 0, 26) -- İdeal küçük logo boyutu
+LogoImg.Size = UDim2.new(0, 28, 0, 28)
 LogoImg.BackgroundTransparency = 1
--- 👇 BURAYA ROBLOX'A YÜKLEDİĞİN LOGONUN ID'SİNİ YAZ 👇
-LogoImg.Image = "rbxassetid://138381282255655" 
-LogoImg.ScaleType = Enum.ScaleType.Fit
 
--- [ 3. METİN EKLEME ]
+-- LOGOYU ÇEKİCİ FONKSİYON
+task.spawn(function()
+    -- DİKKAT: Dosya adın "DarteSoftwareLogo" olduğu için linki ona göre ayarladım
+    local url = "https://raw.githubusercontent.com/cladbaba/DarteSofrtware-BrookhavenV1/main/DarteSoftwareLogo"
+    local success, content = pcall(game.HttpGet, game, url)
+    
+    if success then
+        local path = "DarteTempLogo.png" -- Bilgisayara bu isimle kaydeder (sorun olmaz)
+        writefile(path, content)
+        LogoImg.Image = getcustomasset(path)
+    else
+        -- Hata olursa (dosya bulunamazsa) yedek logo
+        LogoImg.Image = "rbxassetid://13504359733" 
+    end
+end)
+
 local TitleText = Instance.new("TextLabel", TitleContainer)
-TitleText.Name = "TitleText"
-TitleText.Text = "DARTE SOFTWARE V17 - APEX"
-TitleText.TextColor3 = AccentColor
+TitleText.Text = "DARTE SOFTWARE V17"
+TitleText.TextColor3 = Color3.fromRGB(255, 215, 0)
 TitleText.Font = Enum.Font.GothamBold
-TitleText.TextSize = 15
+TitleText.TextSize = 16
 TitleText.Size = UDim2.new(0, 250, 1, 0)
 TitleText.TextXAlignment = Enum.TextXAlignment.Left
 TitleText.BackgroundTransparency = 1
 
--- Renk değişimi sistemine metni kaydet
 table.insert(ThemeObjects, {Obj = TitleText, Prop = "TextColor3"})
 
 local TabContainer = Instance.new("ScrollingFrame", MainFrame)
