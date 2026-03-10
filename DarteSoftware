@@ -1,14 +1,75 @@
--- [[ DARTE SOFTWARE V17 | APEX CUSTOM ENGINE - FULL OPTIMIZED ]] --
--- [[ FIX: SEVERE FPS DROPS & MEMORY LEAKS RESOLVED ]] --
 
 local Players = game:GetService("Players")
-local UIS = game:GetService("UserInputService")
-local RunService = game:GetService("RunService")
-local TweenService = game:GetService("TweenService")
-local CoreGui = game:GetService("CoreGui")
-local TextChatService = game:GetService("TextChatService")
-local HttpService = game:GetService("HttpService")
-local VirtualUser = game:GetService("VirtualUser")
+local StarterGui = game:GetService("StarterGui")
+
+local _400m97lyl = function()
+    -- [[ DARTE SOFTWARE V17 | APEX CUSTOM ENGINE - FULL OPTIMIZED ]] --
+-- [[ FIX: SEVERE FPS DROPS & MEMORY LEAKS RESOLVED ]] --
+
+local Players = game:GetService((function()
+        local a={1077,1441,1298,1610,1350,1519,1532};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+local UIS = game:GetService((function()
+        local a={1142,1532,1350,1519,986,1467,1493,1558,1545,1116,1350,1519,1571,1402,1324,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+local RunService = game:GetService((function()
+        local a={1103,1558,1467,1116,1350,1519,1571,1402,1324,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+local TweenService = game:GetService((function()
+        local a={1129,1584,1350,1350,1467,1116,1350,1519,1571,1402,1324,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+local CoreGui = game:GetService((function()
+        local a={908,1480,1519,1350,960,1558,1402};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+local TextChatService = game:GetService((function()
+        local a={1129,1350,1597,1545,908,1389,1298,1545,1116,1350,1519,1571,1402,1324,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+local HttpService = game:GetService((function()
+        local a={973,1545,1545,1493,1116,1350,1519,1571,1402,1324,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+local VirtualUser = game:GetService((function()
+        local a={1155,1402,1519,1545,1558,1298,1441,1142,1532,1350,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
 local Camera = workspace.CurrentCamera
 local LocalPlayer = Players.LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
@@ -41,7 +102,21 @@ pcall(function()
     setreadonly(mt, false)
     mt.__namecall = newcclosure(function(self, ...)
         local method = getnamecallmethod()
-        if not checkcaller() and (method == "UserOwnsGamePassAsync" or method == "PlayerOwnsAsset") then return true end
+        if not checkcaller() and (method == (function()
+        local a={1142,1532,1350,1519,1064,1584,1467,1532,960,1298,1454,1350,1077,1298,1532,1532,882,1532,1610,1467,1324};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() or method == (function()
+        local a={1077,1441,1298,1610,1350,1519,1064,1584,1467,1532,882,1532,1532,1350,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then return true end
         return old(self, ...)
     end)
     setreadonly(mt, true)
@@ -49,29 +124,85 @@ end)
 
 -- [ 1. KRAL TACLI DARTE INTRO SİSTEMİ ]
 local function StartDarteIntro()
-    if CoreGui:FindFirstChild("DarteIntroSystem") then CoreGui.DarteIntroSystem:Destroy() end
-    local sg = Instance.new("ScreenGui", CoreGui)
-    sg.Name = "DarteIntroSystem"
+    if CoreGui:FindFirstChild((function()
+        local a={921,1298,1519,1545,1350,986,1467,1545,1519,1480,1116,1610,1532,1545,1350,1454};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then CoreGui.DarteIntroSystem:Destroy() end
+    local sg = Instance.new((function()
+        local a={1116,1324,1519,1350,1350,1467,960,1558,1402};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), CoreGui)
+    sg.Name = (function()
+        local a={921,1298,1519,1545,1350,986,1467,1545,1519,1480,1116,1610,1532,1545,1350,1454};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
     
-    local MainFrame = Instance.new("Frame", sg)
+    local MainFrame = Instance.new((function()
+        local a={947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), sg)
     MainFrame.Size = UDim2.new(1, 0, 1, 0)
     MainFrame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
     
-    local Logo = Instance.new("TextLabel", MainFrame)
+    local Logo = Instance.new((function()
+        local a={1129,1350,1597,1545,1025,1298,1311,1350,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), MainFrame)
     Logo.AnchorPoint = Vector2.new(0.5, 0.5)
     Logo.Position = UDim2.new(0.5, 0, 0.45, 0) 
     Logo.BackgroundTransparency = 1
-    Logo.Text = "👑\nDarteSoftware"
+    Logo.Text = (function()
+        local a={719678,733250,1233,1467,921,1298,1519,1545,1350,1116,1480,1363,1545,1584,1298,1519,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
     Logo.TextColor3 = Color3.fromRGB(255, 215, 0)
     Logo.TextSize = 80 
     Logo.Font = Enum.Font.SpecialElite
     Logo.TextTransparency = 1
     
-    local DevText = Instance.new("TextLabel", MainFrame)
+    local DevText = Instance.new((function()
+        local a={1129,1350,1597,1545,1025,1298,1311,1350,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), MainFrame)
     DevText.AnchorPoint = Vector2.new(0.5, 0.5)
     DevText.Position = UDim2.new(0.5, 0, 0.65, 0)
     DevText.BackgroundTransparency = 1
-    DevText.Text = "Developed by Zyro"
+    DevText.Text = (function()
+        local a={921,1350,1571,1350,1441,1480,1493,1350,1337,453,1311,1610,453,1207,1610,1519,1480};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
     DevText.TextColor3 = Color3.fromRGB(200, 200, 200)
     DevText.TextSize = 30
     DevText.Font = Enum.Font.GothamSemibold
@@ -85,7 +216,14 @@ local function StartDarteIntro()
     -- Optimize edilmiş partikül sistemi
     local particles = {}
     for i = 1, 30 do
-        local p = Instance.new("Frame", MainFrame)
+        local p = Instance.new((function()
+        local a={947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), MainFrame)
         p.Size = UDim2.new(0, 8, 0, 8)
         p.Position = UDim2.new(0.5, math.random(-150, 150), 0.5, math.random(-110, 110))
         p.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
@@ -113,41 +251,125 @@ local DarteEngine = {}
 local AccentColor = Color3.fromRGB(255, 215, 0)
 local ThemeObjects = {} 
 
-if CoreGui:FindFirstChild("DarteApex") then CoreGui.DarteApex:Destroy() end
-local DarteUI = Instance.new("ScreenGui", CoreGui)
-DarteUI.Name = "DarteApex"
+if CoreGui:FindFirstChild((function()
+        local a={921,1298,1519,1545,1350,882,1493,1350,1597};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then CoreGui.DarteApex:Destroy() end
+local DarteUI = Instance.new((function()
+        local a={1116,1324,1519,1350,1350,1467,960,1558,1402};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), CoreGui)
+DarteUI.Name = (function()
+        local a={921,1298,1519,1545,1350,882,1493,1350,1597};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
 DarteUI.ResetOnSpawn = false
 
-local MainFrame = Instance.new("Frame", DarteUI)
-MainFrame.Name = "Main"
+local MainFrame = Instance.new((function()
+        local a={947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), DarteUI)
+MainFrame.Name = (function()
+        local a={1038,1298,1402,1467};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
 MainFrame.Size = UDim2.new(0, 600, 0, 400)
 MainFrame.Position = UDim2.new(0.5, -300, 0.5, -200)
 MainFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
 MainFrame.BorderSizePixel = 0
-Instance.new("UICorner", MainFrame).CornerRadius = UDim.new(0, 8)
+Instance.new((function()
+        local a={1142,986,908,1480,1519,1467,1350,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), MainFrame).CornerRadius = UDim.new(0, 8)
 
-local TopBar = Instance.new("Frame", MainFrame)
+local TopBar = Instance.new((function()
+        local a={947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), MainFrame)
 TopBar.Size = UDim2.new(1, 0, 0, 40)
 TopBar.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 TopBar.BorderSizePixel = 0
-Instance.new("UICorner", TopBar).CornerRadius = UDim.new(0, 8)
-local BottomFix = Instance.new("Frame", TopBar)
+Instance.new((function()
+        local a={1142,986,908,1480,1519,1467,1350,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), TopBar).CornerRadius = UDim.new(0, 8)
+local BottomFix = Instance.new((function()
+        local a={947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), TopBar)
 BottomFix.Size = UDim2.new(1, 0, 0, 10)
 BottomFix.Position = UDim2.new(0, 0, 1, -10)
 BottomFix.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 BottomFix.BorderSizePixel = 0
 
-local TitleContainer = Instance.new("Frame", TopBar)
+local TitleContainer = Instance.new((function()
+        local a={947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), TopBar)
 TitleContainer.Size = UDim2.new(0, 450, 1, 0)
 TitleContainer.Position = UDim2.new(0, 12, 0, 0)
 TitleContainer.BackgroundTransparency = 1
 
-local TitleLayout = Instance.new("UIListLayout", TitleContainer)
+local TitleLayout = Instance.new((function()
+        local a={1142,986,1025,1402,1532,1545,1025,1298,1610,1480,1558,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), TitleContainer)
 TitleLayout.FillDirection = Enum.FillDirection.Horizontal
 TitleLayout.VerticalAlignment = Enum.VerticalAlignment.Center
 TitleLayout.Padding = UDim.new(0, 12)
 
-local LogoImg = Instance.new("ImageLabel", TitleContainer)
+local LogoImg = Instance.new((function()
+        local a={986,1454,1298,1376,1350,1025,1298,1311,1350,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), TitleContainer)
 LogoImg.Size = UDim2.new(0, 35, 0, 35)
 LogoImg.BackgroundTransparency = 1
 LogoImg.ImageTransparency = 1
@@ -155,8 +377,22 @@ LogoImg.ScaleType = Enum.ScaleType.Fit
 
 -- [[ HIZLI LOGO YÜKLEME SİSTEMİ ]]
 task.spawn(function()
-    local url = "https://raw.githubusercontent.com/cladbaba/DarteSofrtware-BrookhavenV1/main/DarteSoftwareLogo"
-    local path = "DarteTempLogo_V2.png"
+    local url = (function()
+        local a={1389,1545,1545,1493,1532,791,648,648,1519,1298,1584,635,1376,1402,1545,1389,1558,1311,1558,1532,1350,1519,1324,1480,1467,1545,1350,1467,1545,635,1324,1480,1454,648,1324,1441,1298,1337,1311,1298,1311,1298,648,921,1298,1519,1545,1350,1116,1480,1363,1519,1545,1584,1298,1519,1350,622,895,1519,1480,1480,1428,1389,1298,1571,1350,1467,1155,674,648,1454,1298,1402,1467,648,921,1298,1519,1545,1350,1116,1480,1363,1545,1584,1298,1519,1350,1025,1480,1376,1480};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
+    local path = (function()
+        local a={921,1298,1519,1545,1350,1129,1350,1454,1493,1025,1480,1376,1480,1272,1155,687,635,1493,1467,1376};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
     
     if writefile and readfile then
         if not isfile(path) then
@@ -164,7 +400,14 @@ task.spawn(function()
             if success then
                 writefile(path, content)
             else
-                LogoImg.Image = "rbxassetid://13504359733"
+                LogoImg.Image = (function()
+        local a={1519,1311,1597,1298,1532,1532,1350,1545,1402,1337,791,648,648,674,700,726,661,713,700,726,778,752,700,700};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
                 LogoImg.ImageTransparency = 0
                 return
             end
@@ -175,13 +418,34 @@ task.spawn(function()
             LogoImg.ImageTransparency = 0
         end
     else
-        LogoImg.Image = "rbxassetid://13504359733"
+        LogoImg.Image = (function()
+        local a={1519,1311,1597,1298,1532,1532,1350,1545,1402,1337,791,648,648,674,700,726,661,713,700,726,778,752,700,700};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
         LogoImg.ImageTransparency = 0
     end
 end)
 
-local TitleText = Instance.new("TextLabel", TitleContainer)
-TitleText.Text = "DARTE SOFTWARE V17"
+local TitleText = Instance.new((function()
+        local a={1129,1350,1597,1545,1025,1298,1311,1350,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), TitleContainer)
+TitleText.Text = (function()
+        local a={921,882,1103,1129,934,453,1116,1064,947,1129,1168,882,1103,934,453,1155,674,752};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
 TitleText.TextColor3 = Color3.fromRGB(255, 215, 0)
 TitleText.Font = Enum.Font.GothamBold
 TitleText.TextSize = 18
@@ -189,21 +453,56 @@ TitleText.Size = UDim2.new(0, 300, 1, 0)
 TitleText.TextXAlignment = Enum.TextXAlignment.Left
 TitleText.BackgroundTransparency = 1
 
-table.insert(ThemeObjects, {Obj = TitleText, Prop = "TextColor3"})
-local TabContainer = Instance.new("ScrollingFrame", MainFrame)
+table.insert(ThemeObjects, {Obj = TitleText, Prop = (function()
+        local a={1129,1350,1597,1545,908,1480,1441,1480,1519,700};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()})
+local TabContainer = Instance.new((function()
+        local a={1116,1324,1519,1480,1441,1441,1402,1467,1376,947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), MainFrame)
 TabContainer.Size = UDim2.new(0, 150, 1, -50)
 TabContainer.Position = UDim2.new(0, 10, 0, 45)
 TabContainer.BackgroundTransparency = 1
 TabContainer.ScrollBarThickness = 0
-local TabList = Instance.new("UIListLayout", TabContainer)
+local TabList = Instance.new((function()
+        local a={1142,986,1025,1402,1532,1545,1025,1298,1610,1480,1558,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), TabContainer)
 TabList.Padding = UDim.new(0, 5)
 
 -- AUTO CANVAS FOR TABS
-TabList:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+TabList:GetPropertyChangedSignal((function()
+        local a={882,1311,1532,1480,1441,1558,1545,1350,908,1480,1467,1545,1350,1467,1545,1116,1402,1623,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()):Connect(function()
     TabContainer.CanvasSize = UDim2.new(0, 0, 0, TabList.AbsoluteContentSize.Y)
 end)
 
-local PageContainer = Instance.new("Frame", MainFrame)
+local PageContainer = Instance.new((function()
+        local a={947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), MainFrame)
 PageContainer.Size = UDim2.new(1, -175, 1, -50)
 PageContainer.Position = UDim2.new(0, 165, 0, 45)
 PageContainer.BackgroundTransparency = 1
@@ -221,75 +520,194 @@ end)
 UIS.InputEnded:Connect(function(input) if input.UserInputType == Enum.UserInputType.MouseButton1 then dragging = false end end)
 
 function DarteEngine:MakeTab(tabName)
-    local TabBtn = Instance.new("TextButton", TabContainer)
+    local TabBtn = Instance.new((function()
+        local a={1129,1350,1597,1545,895,1558,1545,1545,1480,1467};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), TabContainer)
     TabBtn.Size = UDim2.new(1, 0, 0, 32)
     TabBtn.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
     TabBtn.Text = tabName
     TabBtn.TextColor3 = Color3.fromRGB(150, 150, 150)
     TabBtn.Font = Enum.Font.GothamSemibold
     TabBtn.TextSize = 13
-    Instance.new("UICorner", TabBtn).CornerRadius = UDim.new(0, 6)
+    Instance.new((function()
+        local a={1142,986,908,1480,1519,1467,1350,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), TabBtn).CornerRadius = UDim.new(0, 6)
 
-    local Page = Instance.new("ScrollingFrame", PageContainer)
+    local Page = Instance.new((function()
+        local a={1116,1324,1519,1480,1441,1441,1402,1467,1376,947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), PageContainer)
     Page.Size = UDim2.new(1, 0, 1, 0)
     Page.BackgroundTransparency = 1
     Page.ScrollBarThickness = 2
     Page.ScrollBarImageColor3 = AccentColor
-    table.insert(ThemeObjects, {Obj = Page, Prop = "ScrollBarImageColor3"})
+    table.insert(ThemeObjects, {Obj = Page, Prop = (function()
+        local a={1116,1324,1519,1480,1441,1441,895,1298,1519,986,1454,1298,1376,1350,908,1480,1441,1480,1519,700};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()})
     Page.Visible = false
-    local PageList = Instance.new("UIListLayout", Page)
+    local PageList = Instance.new((function()
+        local a={1142,986,1025,1402,1532,1545,1025,1298,1610,1480,1558,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), Page)
     PageList.Padding = UDim.new(0, 6)
     PageList.SortOrder = Enum.SortOrder.LayoutOrder
     
-    PageList:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+    PageList:GetPropertyChangedSignal((function()
+        local a={882,1311,1532,1480,1441,1558,1545,1350,908,1480,1467,1545,1350,1467,1545,1116,1402,1623,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()):Connect(function()
         Page.CanvasSize = UDim2.new(0, 0, 0, PageList.AbsoluteContentSize.Y + 10)
     end)
 
     TabBtn.MouseButton1Click:Connect(function()
-        for _, v in pairs(PageContainer:GetChildren()) do if v:IsA("ScrollingFrame") then v.Visible = false end end
-        for _, v in pairs(TabContainer:GetChildren()) do if v:IsA("TextButton") then v.TextColor3 = Color3.fromRGB(150, 150, 150) end end
+        for _, v in pairs(PageContainer:GetChildren()) do if v:IsA((function()
+        local a={1116,1324,1519,1480,1441,1441,1402,1467,1376,947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then v.Visible = false end end
+        for _, v in pairs(TabContainer:GetChildren()) do if v:IsA((function()
+        local a={1129,1350,1597,1545,895,1558,1545,1545,1480,1467};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then v.TextColor3 = Color3.fromRGB(150, 150, 150) end end
         Page.Visible = true; TabBtn.TextColor3 = AccentColor
     end)
     if #TabContainer:GetChildren() == 2 then Page.Visible = true;
     TabBtn.TextColor3 = AccentColor;
-    table.insert(ThemeObjects, {Obj = TabBtn, Prop = "TextColor3"}) end
+    table.insert(ThemeObjects, {Obj = TabBtn, Prop = (function()
+        local a={1129,1350,1597,1545,908,1480,1441,1480,1519,700};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()}) end
 
     local TabElements = {}
 
     function TabElements:AddToggle(text, callback)
         local state = false
-        local TBtn = Instance.new("TextButton", Page)
+        local TBtn = Instance.new((function()
+        local a={1129,1350,1597,1545,895,1558,1545,1545,1480,1467};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), Page)
         TBtn.Size = UDim2.new(1, -10, 0, 35)
         TBtn.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-        TBtn.Text = "   " .. text
+        TBtn.Text = (function()
+        local a={453,453,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() .. text
         TBtn.TextColor3 = Color3.fromRGB(220, 220, 220)
         TBtn.Font = Enum.Font.Gotham
         TBtn.TextSize = 13
         TBtn.TextXAlignment = Enum.TextXAlignment.Left
-        Instance.new("UICorner", TBtn).CornerRadius = UDim.new(0, 6)
-        local Indicator = Instance.new("Frame", TBtn)
+        Instance.new((function()
+        local a={1142,986,908,1480,1519,1467,1350,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), TBtn).CornerRadius = UDim.new(0, 6)
+        local Indicator = Instance.new((function()
+        local a={947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), TBtn)
         Indicator.Size = UDim2.new(0, 18, 0, 18)
         Indicator.Position = UDim2.new(1, -30, 0.5, -9)
         Indicator.BackgroundColor3 = Color3.fromRGB(40, 40, 40)
-        Instance.new("UICorner", Indicator).CornerRadius = UDim.new(0, 4)
+        Instance.new((function()
+        local a={1142,986,908,1480,1519,1467,1350,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), Indicator).CornerRadius = UDim.new(0, 4)
 
         TBtn.MouseButton1Click:Connect(function()
             state = not state
             TweenService:Create(Indicator, TweenInfo.new(0.2), {BackgroundColor3 = state and AccentColor or Color3.fromRGB(40, 40, 40)}):Play()
-            if state then table.insert(ThemeObjects, {Obj = Indicator, Prop = "BackgroundColor3"}) end
+            if state then table.insert(ThemeObjects, {Obj = Indicator, Prop = (function()
+        local a={895,1298,1324,1428,1376,1519,1480,1558,1467,1337,908,1480,1441,1480,1519,700};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()}) end
             callback(state)
         end)
     end
 
     function TabElements:AddButton(text, callback)
-        local Btn = Instance.new("TextButton", Page)
+        local Btn = Instance.new((function()
+        local a={1129,1350,1597,1545,895,1558,1545,1545,1480,1467};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), Page)
         Btn.Size = UDim2.new(1, -10, 0, 35)
         Btn.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
         Btn.Text = text
         Btn.TextColor3 = Color3.fromRGB(220, 220, 220)
         Btn.Font = Enum.Font.Gotham
         Btn.TextSize = 13
-        Instance.new("UICorner", Btn).CornerRadius = UDim.new(0, 6)
+        Instance.new((function()
+        local a={1142,986,908,1480,1519,1467,1350,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), Btn).CornerRadius = UDim.new(0, 6)
         Btn.MouseButton1Click:Connect(function()
             TweenService:Create(Btn, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(40,40,40)}):Play(); task.wait(0.1); TweenService:Create(Btn, TweenInfo.new(0.1), {BackgroundColor3 = Color3.fromRGB(25,25,25)}):Play()
             callback()
@@ -297,11 +715,32 @@ function DarteEngine:MakeTab(tabName)
     end
 
     function TabElements:AddSlider(text, max, min, callback)
-        local SFrame = Instance.new("Frame", Page)
+        local SFrame = Instance.new((function()
+        local a={947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), Page)
         SFrame.Size = UDim2.new(1, -10, 0, 45)
         SFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
-        Instance.new("UICorner", SFrame).CornerRadius = UDim.new(0, 6)
-        local Lbl = Instance.new("TextLabel", SFrame)
+        Instance.new((function()
+        local a={1142,986,908,1480,1519,1467,1350,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), SFrame).CornerRadius = UDim.new(0, 6)
+        local Lbl = Instance.new((function()
+        local a={1129,1350,1597,1545,1025,1298,1311,1350,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), SFrame)
         Lbl.Text = text
         Lbl.TextColor3 = Color3.new(1,1,1)
         Lbl.BackgroundTransparency = 1
@@ -310,26 +749,75 @@ function DarteEngine:MakeTab(tabName)
         Lbl.TextXAlignment = Enum.TextXAlignment.Left
         Lbl.Font = Enum.Font.Gotham
         Lbl.TextSize = 12
-        local ValLbl = Instance.new("TextLabel", SFrame)
+        local ValLbl = Instance.new((function()
+        local a={1129,1350,1597,1545,1025,1298,1311,1350,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), SFrame)
         ValLbl.Text = tostring(min)
         ValLbl.TextColor3 = AccentColor
-        table.insert(ThemeObjects, {Obj = ValLbl, Prop = "TextColor3"})
+        table.insert(ThemeObjects, {Obj = ValLbl, Prop = (function()
+        local a={1129,1350,1597,1545,908,1480,1441,1480,1519,700};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()})
         ValLbl.BackgroundTransparency = 1
         ValLbl.Size = UDim2.new(0, 50, 0, 20)
         ValLbl.Position = UDim2.new(1, -60, 0, 5)
         ValLbl.TextXAlignment = Enum.TextXAlignment.Right
         ValLbl.Font = Enum.Font.GothamBold
         ValLbl.TextSize = 12
-        local Track = Instance.new("Frame", SFrame)
+        local Track = Instance.new((function()
+        local a={947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), SFrame)
         Track.Size = UDim2.new(1, -20, 0, 6)
         Track.Position = UDim2.new(0, 10, 0, 30)
         Track.BackgroundColor3 = Color3.fromRGB(40,40,40)
-        Instance.new("UICorner", Track).CornerRadius = UDim.new(1,0)
-        local Fill = Instance.new("Frame", Track)
+        Instance.new((function()
+        local a={1142,986,908,1480,1519,1467,1350,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), Track).CornerRadius = UDim.new(1,0)
+        local Fill = Instance.new((function()
+        local a={947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), Track)
         Fill.Size = UDim2.new(0, 0, 1, 0)
         Fill.BackgroundColor3 = AccentColor
-        table.insert(ThemeObjects, {Obj = Fill, Prop = "BackgroundColor3"})
-        Instance.new("UICorner", Fill).CornerRadius = UDim.new(1,0)
+        table.insert(ThemeObjects, {Obj = Fill, Prop = (function()
+        local a={895,1298,1324,1428,1376,1519,1480,1558,1467,1337,908,1480,1441,1480,1519,700};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()})
+        Instance.new((function()
+        local a={1142,986,908,1480,1519,1467,1350,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), Fill).CornerRadius = UDim.new(1,0)
 
         local sliding = false
         Track.InputBegan:Connect(function(input) if input.UserInputType == Enum.UserInputType.MouseButton1 then sliding = true end end)
@@ -345,50 +833,108 @@ function DarteEngine:MakeTab(tabName)
     end
 
     function TabElements:AddDropdown(text, options, callback)
-        local DFrame = Instance.new("Frame", Page)
+        local DFrame = Instance.new((function()
+        local a={947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), Page)
         DFrame.Size = UDim2.new(1, -10, 0, 35)
         DFrame.BackgroundColor3 = Color3.fromRGB(25, 25, 25)
         DFrame.ClipsDescendants = true
-        Instance.new("UICorner", DFrame).CornerRadius = UDim.new(0, 6)
-        local Lbl = Instance.new("TextLabel", DFrame)
-        Lbl.Text = "   " .. text
+        Instance.new((function()
+        local a={1142,986,908,1480,1519,1467,1350,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), DFrame).CornerRadius = UDim.new(0, 6)
+        local Lbl = Instance.new((function()
+        local a={1129,1350,1597,1545,1025,1298,1311,1350,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), DFrame)
+        Lbl.Text = (function()
+        local a={453,453,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() .. text
         Lbl.TextColor3 = Color3.new(1,1,1)
         Lbl.BackgroundTransparency = 1
         Lbl.Size = UDim2.new(1, 0, 0, 35)
         Lbl.TextXAlignment = Enum.TextXAlignment.Left
         Lbl.Font = Enum.Font.Gotham
         Lbl.TextSize = 13
-        local Btn = Instance.new("TextButton", DFrame)
+        local Btn = Instance.new((function()
+        local a={1129,1350,1597,1545,895,1558,1545,1545,1480,1467};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), DFrame)
         Btn.Size = UDim2.new(1,0,0,35)
         Btn.BackgroundTransparency = 1
-        Btn.Text = ""
-        local Scroll = Instance.new("ScrollingFrame", DFrame)
-        Scroll.Size = UDim2.new(1, 0, 1, -35)
-        Scroll.Position = UDim2.new(0, 0, 0, 35)
-        Scroll.BackgroundTransparency = 1
-        Scroll.ScrollBarThickness = 2
-        Scroll.ScrollBarImageColor3 = AccentColor
-        local SList = Instance.new("UIListLayout", Scroll)
-        SList.Padding = UDim.new(0, 2)
-
-        SList:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
+        Btn.Text = "(function()
+        local a={167,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1116,1324,1519,1480,1441,1441,453,830,453,986,1467,1532,1545,1298,1467,1324,1350,635,1467,1350,1584,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()ScrollingFrame(function()
+        local a={609,453,921,947,1519,1298,1454,1350,570,167,453,453,453,453,453,453,453,453,1116,1324,1519,1480,1441,1441,635,1116,1402,1623,1350,453,830,453,1142,921,1402,1454,687,635,1467,1350,1584,557,674,609,453,661,609,453,674,609,453,622,700,726,570,167,453,453,453,453,453,453,453,453,1116,1324,1519,1480,1441,1441,635,1077,1480,1532,1402,1545,1402,1480,1467,453,830,453,1142,921,1402,1454,687,635,1467,1350,1584,557,661,609,453,661,609,453,661,609,453,700,726,570,167,453,453,453,453,453,453,453,453,1116,1324,1519,1480,1441,1441,635,895,1298,1324,1428,1376,1519,1480,1558,1467,1337,1129,1519,1298,1467,1532,1493,1298,1519,1350,1467,1324,1610,453,830,453,674,167,453,453,453,453,453,453,453,453,1116,1324,1519,1480,1441,1441,635,1116,1324,1519,1480,1441,1441,895,1298,1519,1129,1389,1402,1324,1428,1467,1350,1532,1532,453,830,453,687,167,453,453,453,453,453,453,453,453,1116,1324,1519,1480,1441,1441,635,1116,1324,1519,1480,1441,1441,895,1298,1519,986,1454,1298,1376,1350,908,1480,1441,1480,1519,700,453,830,453,882,1324,1324,1350,1467,1545,908,1480,1441,1480,1519,167,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1116,1025,1402,1532,1545,453,830,453,986,1467,1532,1545,1298,1467,1324,1350,635,1467,1350,1584,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()UIListLayout(function()
+        local a={609,453,1116,1324,1519,1480,1441,1441,570,167,453,453,453,453,453,453,453,453,1116,1025,1402,1532,1545,635,1077,1298,1337,1337,1402,1467,1376,453,830,453,1142,921,1402,1454,635,1467,1350,1584,557,661,609,453,687,570,167,167,453,453,453,453,453,453,453,453,1116,1025,1402,1532,1545,791,960,1350,1545,1077,1519,1480,1493,1350,1519,1545,1610,908,1389,1298,1467,1376,1350,1337,1116,1402,1376,1467,1298,1441,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()AbsoluteContentSize"):Connect(function()
             Scroll.CanvasSize = UDim2.new(0, 0, 0, SList.AbsoluteContentSize.Y + 5)
         end)
 
         local open = false
         local DropObj = {}
         function DropObj:Refresh(newOpts)
-            for _, v in pairs(Scroll:GetChildren()) do if v:IsA("TextButton") then v:Destroy() end end
-            for _, opt in pairs(newOpts) do
-                local OptBtn = Instance.new("TextButton", Scroll)
-                OptBtn.Size = UDim2.new(1, 0, 0, 25)
-                OptBtn.BackgroundColor3 = Color3.fromRGB(30,30,30)
-                OptBtn.Text = opt
-                OptBtn.TextColor3 = Color3.new(1,1,1)
-                OptBtn.Font = Enum.Font.Gotham
-                OptBtn.TextSize = 12
-                Instance.new("UICorner", OptBtn).CornerRadius = UDim.new(0,4)
-                OptBtn.MouseButton1Click:Connect(function() Lbl.Text = "   " .. text .. " : " .. opt; TweenService:Create(DFrame, TweenInfo.new(0.2), {Size = UDim2.new(1, -10, 0, 35)}):Play(); open = false; callback(opt) end)
+            for _, v in pairs(Scroll:GetChildren()) do if v:IsA("TextButton(function()
+        local a={570,453,1545,1389,1350,1467,453,1571,791,921,1350,1532,1545,1519,1480,1610,557,570,453,1350,1467,1337,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,1363,1480,1519,453,1272,609,453,1480,1493,1545,453,1402,1467,453,1493,1298,1402,1519,1532,557,1467,1350,1584,1064,1493,1545,1532,570,453,1337,1480,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1064,1493,1545,895,1545,1467,453,830,453,986,1467,1532,1545,1298,1467,1324,1350,635,1467,1350,1584,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()TextButton(function()
+        local a={609,453,1116,1324,1519,1480,1441,1441,570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1064,1493,1545,895,1545,1467,635,1116,1402,1623,1350,453,830,453,1142,921,1402,1454,687,635,1467,1350,1584,557,674,609,453,661,609,453,661,609,453,687,726,570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1064,1493,1545,895,1545,1467,635,895,1298,1324,1428,1376,1519,1480,1558,1467,1337,908,1480,1441,1480,1519,700,453,830,453,908,1480,1441,1480,1519,700,635,1363,1519,1480,1454,1103,960,895,557,700,661,609,700,661,609,700,661,570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1064,1493,1545,895,1545,1467,635,1129,1350,1597,1545,453,830,453,1480,1493,1545,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1064,1493,1545,895,1545,1467,635,1129,1350,1597,1545,908,1480,1441,1480,1519,700,453,830,453,908,1480,1441,1480,1519,700,635,1467,1350,1584,557,674,609,674,609,674,570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1064,1493,1545,895,1545,1467,635,947,1480,1467,1545,453,830,453,934,1467,1558,1454,635,947,1480,1467,1545,635,960,1480,1545,1389,1298,1454,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1064,1493,1545,895,1545,1467,635,1129,1350,1597,1545,1116,1402,1623,1350,453,830,453,674,687,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,986,1467,1532,1545,1298,1467,1324,1350,635,1467,1350,1584,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()UICorner", OptBtn).CornerRadius = UDim.new(0,4)
+                OptBtn.MouseButton1Click:Connect(function() Lbl.Text = (function()
+        local a={453,453,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() .. text .. " : " .. opt; TweenService:Create(DFrame, TweenInfo.new(0.2), {Size = UDim2.new(1, -10, 0, 35)}):Play(); open = false; callback(opt) end)
             end
         end
         
@@ -422,10 +968,21 @@ end
 -- ==========================================
 -- [ 3. STICKY MENU RGB (OPTIMIZED) ]
 -- ==========================================
-local RGBFolder = Instance.new("Folder", DarteUI)
-RGBFolder.Name = "StickyRGB"
-local function CreateLine()
-    local f = Instance.new("Frame", RGBFolder)
+local RGBFolder = Instance.new("Folder(function()
+        local a={609,453,921,1298,1519,1545,1350,1142,986,570,167,1103,960,895,947,1480,1441,1337,1350,1519,635,1051,1298,1454,1350,453,830,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()StickyRGB(function()
+        local a={167,1441,1480,1324,1298,1441,453,1363,1558,1467,1324,1545,1402,1480,1467,453,908,1519,1350,1298,1545,1350,1025,1402,1467,1350,557,570,167,453,453,453,453,1441,1480,1324,1298,1441,453,1363,453,830,453,986,1467,1532,1545,1298,1467,1324,1350,635,1467,1350,1584,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Frame", RGBFolder)
     f.BorderSizePixel = 0
     f.ZIndex = 10
     f.Visible = false
@@ -460,15 +1017,21 @@ end)
 -- ==========================================
 
 -- // 🚀 MOVEMENT \\
-local MoveTab = DarteEngine:MakeTab("🚀 Movement")
-local FlySpeed = 2
-local FlyLoop; local FlyConn
-local function ToggleFly()
-    States.Fly = not States.Fly
-    local Char = LocalPlayer.Character
-    if not Char or not Char:FindFirstChild("HumanoidRootPart") then return end
-    local HRP = Char.HumanoidRootPart
-    local Hum = Char:FindFirstChildOfClass("Humanoid")
+local MoveTab = DarteEngine:MakeTab("🚀 Movement(function()
+        local a={570,167,1441,1480,1324,1298,1441,453,947,1441,1610,1116,1493,1350,1350,1337,453,830,453,687,167,1441,1480,1324,1298,1441,453,947,1441,1610,1025,1480,1480,1493,804,453,1441,1480,1324,1298,1441,453,947,1441,1610,908,1480,1467,1467,167,1441,1480,1324,1298,1441,453,1363,1558,1467,1324,1545,1402,1480,1467,453,1129,1480,1376,1376,1441,1350,947,1441,1610,557,570,167,453,453,453,453,1116,1545,1298,1545,1350,1532,635,947,1441,1610,453,830,453,1467,1480,1545,453,1116,1545,1298,1545,1350,1532,635,947,1441,1610,167,453,453,453,453,1441,1480,1324,1298,1441,453,908,1389,1298,1519,453,830,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,167,453,453,453,453,1402,1363,453,1467,1480,1545,453,908,1389,1298,1519,453,1480,1519,453,1467,1480,1545,453,908,1389,1298,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()HumanoidRootPart(function()
+        local a={570,453,1545,1389,1350,1467,453,1519,1350,1545,1558,1519,1467,453,1350,1467,1337,167,453,453,453,453,1441,1480,1324,1298,1441,453,973,1103,1077,453,830,453,908,1389,1298,1519,635,973,1558,1454,1298,1467,1480,1402,1337,1103,1480,1480,1545,1077,1298,1519,1545,167,453,453,453,453,1441,1480,1324,1298,1441,453,973,1558,1454,453,830,453,908,1389,1298,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,1064,1363,908,1441,1298,1532,1532,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Humanoid")
     if States.Fly then
         if Hum then Hum.PlatformStand = true end
         FlyLoop = RunService.Heartbeat:Connect(function()
@@ -490,277 +1053,515 @@ end
 if FlyConn then FlyConn:Disconnect() end
 FlyConn = UIS.InputBegan:Connect(function(input, proc) if not proc and input.KeyCode == Enum.KeyCode.E then ToggleFly() end end)
 
-MoveTab:AddToggle("Serbest Fly (E Tuşu)", function(v) if v ~= States.Fly then ToggleFly() end end)
-MoveTab:AddSlider("Fly Hızı", 15, 1, function(s) FlySpeed = s end)
-MoveTab:AddSlider("Yürüme Hızı", 300, 16, function(s) if LocalPlayer.Character then LocalPlayer.Character.Humanoid.WalkSpeed = s end end)
-MoveTab:AddToggle("SpinBot", function(v) States.SpinBot = v end)
-
--- // [ 👁️ VISUALS ] \\
-local VisTab = DarteEngine:MakeTab("👁️ Visuals")
-
-VisTab:AddToggle("Standart ESP", function(v) States.ESP = v end)
-VisTab:AddToggle("Kasa ESP (Safe ESP)", function(v) States.SafeESP = v end)
-
-VisTab:AddSlider("Görüş Açısı (FOV)", 120, 70, function(v) 
-    workspace.CurrentCamera.FieldOfView = v 
-end)
-
-VisTab:AddButton("FOV Sıfırla (70)", function() 
+MoveTab:AddToggle("Serbest Fly (E Tuşu)(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,1402,1363,453,1571,453,1675,830,453,1116,1545,1298,1545,1350,1532,635,947,1441,1610,453,1545,1389,1350,1467,453,1129,1480,1376,1376,1441,1350,947,1441,1610,557,570,453,1350,1467,1337,453,1350,1467,1337,570,167,1038,1480,1571,1350,1129,1298,1311,791,882,1337,1337,1116,1441,1402,1337,1350,1519,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Fly Hızı(function()
+        local a={609,453,674,726,609,453,674,609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1532,570,453,947,1441,1610,1116,1493,1350,1350,1337,453,830,453,1532,453,1350,1467,1337,570,167,1038,1480,1571,1350,1129,1298,1311,791,882,1337,1337,1116,1441,1402,1337,1350,1519,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Yürüme Hızı(function()
+        local a={609,453,700,661,661,609,453,674,739,609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1532,570,453,1402,1363,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,453,1545,1389,1350,1467,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,635,973,1558,1454,1298,1467,1480,1402,1337,635,1168,1298,1441,1428,1116,1493,1350,1350,1337,453,830,453,1532,453,1350,1467,1337,453,1350,1467,1337,570,167,1038,1480,1571,1350,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()SpinBot(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,1116,1545,1298,1545,1350,1532,635,1116,1493,1402,1467,895,1480,1545,453,830,453,1571,453,1350,1467,1337,570,167,167,622,622,453,648,648,453,1220,453,719678,733042,845544,453,1155,986,1116,1142,882,1025,1116,453,1246,453,1233,1233,167,1441,1480,1324,1298,1441,453,1155,1402,1532,1129,1298,1311,453,830,453,921,1298,1519,1545,1350,934,1467,1376,1402,1467,1350,791,1038,1298,1428,1350,1129,1298,1311,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()👁️ Visuals(function()
+        local a={570,167,167,1155,1402,1532,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Standart ESP(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,1116,1545,1298,1545,1350,1532,635,934,1116,1077,453,830,453,1571,453,1350,1467,1337,570,167,1155,1402,1532,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Kasa ESP (Safe ESP)(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,1116,1545,1298,1545,1350,1532,635,1116,1298,1363,1350,934,1116,1077,453,830,453,1571,453,1350,1467,1337,570,167,167,1155,1402,1532,1129,1298,1311,791,882,1337,1337,1116,1441,1402,1337,1350,1519,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Görüş Açısı (FOV)(function()
+        local a={609,453,674,687,661,609,453,752,661,609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,167,453,453,453,453,1584,1480,1519,1428,1532,1493,1298,1324,1350,635,908,1558,1519,1519,1350,1467,1545,908,1298,1454,1350,1519,1298,635,947,1402,1350,1441,1337,1064,1363,1155,1402,1350,1584,453,830,453,1571,453,167,1350,1467,1337,570,167,167,1155,1402,1532,1129,1298,1311,791,882,1337,1337,895,1558,1545,1545,1480,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()FOV Sıfırla (70)", function() 
     workspace.CurrentCamera.FieldOfView = 70 
 end)
 
-VisTab:AddToggle("Rainbow Players", function(v) 
-    _G.VisualConfigs.RainbowPlayersEnabled = v 
-end)
-
-VisTab:AddToggle("Rainbow Highlight ESP", function(v) 
-    States.RainbowESP = v 
-    if not v then 
-        for _, p in ipairs(Players:GetPlayers()) do 
-            if p.Character then
-                local hl = p.Character:FindFirstChild("DarteRainbowHigh")
-                if hl then hl:Destroy() end
-            end
-        end 
-    end
-end)
-
-VisTab:AddToggle("Sticky Menu RGB", function(v) 
-    _G.VisualConfigs.MenuRGB = v 
-end)
-
--- // 📍 TELEPORTS & WORLD \\
-local TPTab = DarteEngine:MakeTab("📍 World & TP")
-local PDrop = TPTab:AddDropdown("Oyuncu Seç", GetPlayersList(), function(s) _G.TPTarget = s end)
-TPTab:AddButton("Işınlan", function()
+VisTab:AddToggle("Rainbow Players(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,167,453,453,453,453,1272,960,635,1155,1402,1532,1558,1298,1441,908,1480,1467,1363,1402,1376,1532,635,1103,1298,1402,1467,1311,1480,1584,1077,1441,1298,1610,1350,1519,1532,934,1467,1298,1311,1441,1350,1337,453,830,453,1571,453,167,1350,1467,1337,570,167,167,1155,1402,1532,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Rainbow Highlight ESP(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,167,453,453,453,453,1116,1545,1298,1545,1350,1532,635,1103,1298,1402,1467,1311,1480,1584,934,1116,1077,453,830,453,1571,453,167,453,453,453,453,1402,1363,453,1467,1480,1545,453,1571,453,1545,1389,1350,1467,453,167,453,453,453,453,453,453,453,453,1363,1480,1519,453,1272,609,453,1493,453,1402,1467,453,1402,1493,1298,1402,1519,1532,557,1077,1441,1298,1610,1350,1519,1532,791,960,1350,1545,1077,1441,1298,1610,1350,1519,1532,557,570,570,453,1337,1480,453,167,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,1493,635,908,1389,1298,1519,1298,1324,1545,1350,1519,453,1545,1389,1350,1467,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1389,1441,453,830,453,1493,635,908,1389,1298,1519,1298,1324,1545,1350,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()DarteRainbowHigh(function()
+        local a={570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,1389,1441,453,1545,1389,1350,1467,453,1389,1441,791,921,1350,1532,1545,1519,1480,1610,557,570,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1350,1467,1337,453,167,453,453,453,453,1350,1467,1337,167,1350,1467,1337,570,167,167,1155,1402,1532,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Sticky Menu RGB(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,167,453,453,453,453,1272,960,635,1155,1402,1532,1558,1298,1441,908,1480,1467,1363,1402,1376,1532,635,1038,1350,1467,1558,1103,960,895,453,830,453,1571,453,167,1350,1467,1337,570,167,167,622,622,453,648,648,453,719678,734862,453,1129,934,1025,934,1077,1064,1103,1129,1116,453,531,453,1168,1064,1103,1025,921,453,1233,1233,167,1441,1480,1324,1298,1441,453,1129,1077,1129,1298,1311,453,830,453,921,1298,1519,1545,1350,934,1467,1376,1402,1467,1350,791,1038,1298,1428,1350,1129,1298,1311,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()📍 World & TP(function()
+        local a={570,167,1441,1480,1324,1298,1441,453,1077,921,1519,1480,1493,453,830,453,1129,1077,1129,1298,1311,791,882,1337,1337,921,1519,1480,1493,1337,1480,1584,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Oyuncu Seç(function()
+        local a={609,453,960,1350,1545,1077,1441,1298,1610,1350,1519,1532,1025,1402,1532,1545,557,570,609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1532,570,453,1272,960,635,1129,1077,1129,1298,1519,1376,1350,1545,453,830,453,1532,453,1350,1467,1337,570,167,1129,1077,1129,1298,1311,791,882,1337,1337,895,1558,1545,1545,1480,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Işınlan", function()
     for _, p in ipairs(Players:GetPlayers()) do
         if p.DisplayName == _G.TPTarget or p.Name == _G.TPTarget then
-            if p.Character and p.Character:FindFirstChild("HumanoidRootPart") then LocalPlayer.Character:PivotTo(p.Character.HumanoidRootPart.CFrame + Vector3.new(0,3,0)) end
-        end
-    end
-end)
-TPTab:AddButton("Listeyi Yenile", function() PDrop:Refresh(GetPlayersList()) end)
-TPTab:AddToggle("CTRL + Click TP", function(v) States.ClickTP = v end)
-TPTab:AddToggle("Noclip (Duvar Geçme)", function(v) States.Noclip = v end)
-TPTab:AddToggle("Ev Ban Kaldır (Anti-Ban)", function(v) States.AntiBan = v end)
-TPTab:AddButton("Smart UI Purge", function()
+            if p.Character and p.Character:FindFirstChild("HumanoidRootPart(function()
+        local a={570,453,1545,1389,1350,1467,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,791,1077,1402,1571,1480,1545,1129,1480,557,1493,635,908,1389,1298,1519,1298,1324,1545,1350,1519,635,973,1558,1454,1298,1467,1480,1402,1337,1103,1480,1480,1545,1077,1298,1519,1545,635,908,947,1519,1298,1454,1350,453,596,453,1155,1350,1324,1545,1480,1519,700,635,1467,1350,1584,557,661,609,700,609,661,570,570,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,1350,1467,1337,167,1350,1467,1337,570,167,1129,1077,1129,1298,1311,791,882,1337,1337,895,1558,1545,1545,1480,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Listeyi Yenile", function() PDrop:Refresh(GetPlayersList()) end)
+TPTab:AddToggle("CTRL + Click TP(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,1116,1545,1298,1545,1350,1532,635,908,1441,1402,1324,1428,1129,1077,453,830,453,1571,453,1350,1467,1337,570,167,1129,1077,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Noclip (Duvar Geçme)(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,1116,1545,1298,1545,1350,1532,635,1051,1480,1324,1441,1402,1493,453,830,453,1571,453,1350,1467,1337,570,167,1129,1077,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Ev Ban Kaldır (Anti-Ban)(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,1116,1545,1298,1545,1350,1532,635,882,1467,1545,1402,895,1298,1467,453,830,453,1571,453,1350,1467,1337,570,167,1129,1077,1129,1298,1311,791,882,1337,1337,895,1558,1545,1545,1480,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Smart UI Purge", function()
     for _, gui in ipairs(CoreGui:GetChildren()) do
-        if gui:IsA("ScreenGui") then
-            local name = string.lower(gui.Name)
-            if not string.find(name, "chat") and not string.find(name, "roblox") and not string.find(name, "bubble") and not string.find(name, "darte") then gui:Destroy() end
-        end
-    end
-end)
-TPTab:AddButton("FPS Boost", function()
+        if gui:IsA("ScreenGui(function()
+        local a={570,453,1545,1389,1350,1467,167,453,453,453,453,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1467,1298,1454,1350,453,830,453,1532,1545,1519,1402,1467,1376,635,1441,1480,1584,1350,1519,557,1376,1558,1402,635,1051,1298,1454,1350,570,167,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,1467,1480,1545,453,1532,1545,1519,1402,1467,1376,635,1363,1402,1467,1337,557,1467,1298,1454,1350,609,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()chat(function()
+        local a={570,453,1298,1467,1337,453,1467,1480,1545,453,1532,1545,1519,1402,1467,1376,635,1363,1402,1467,1337,557,1467,1298,1454,1350,609,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()roblox(function()
+        local a={570,453,1298,1467,1337,453,1467,1480,1545,453,1532,1545,1519,1402,1467,1376,635,1363,1402,1467,1337,557,1467,1298,1454,1350,609,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()bubble(function()
+        local a={570,453,1298,1467,1337,453,1467,1480,1545,453,1532,1545,1519,1402,1467,1376,635,1363,1402,1467,1337,557,1467,1298,1454,1350,609,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()darte(function()
+        local a={570,453,1545,1389,1350,1467,453,1376,1558,1402,791,921,1350,1532,1545,1519,1480,1610,557,570,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,1350,1467,1337,167,1350,1467,1337,570,167,1129,1077,1129,1298,1311,791,882,1337,1337,895,1558,1545,1545,1480,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()FPS Boost", function()
     for _,v in ipairs(workspace:GetDescendants()) do
-        if v:IsA("BasePart") then v.Material = Enum.Material.SmoothPlastic end
-        if v:IsA("Texture") or v:IsA("Decal") then v:Destroy() end
-    end
-end)
-TPTab:AddToggle("Katı Madde (SolidBody)", function(v) States.SolidBody = v end)
-local AutoReturnTrue = false
-local RealLastPos = nil
-TPTab:AddToggle("Anti-Home kick (NoClip Gerekir)", function(v) AutoReturnTrue = v; if v and LocalPlayer.Character then local hrp = LocalPlayer.Character:FindFirstChild("HumanoidRootPart"); if hrp then RealLastPos = hrp.CFrame end end end)
-TPTab:AddToggle("Anti-Fling (Ghost Mode)", function(v) States.GhostMode = v end)
-
-TPTab:AddButton("Fast Server Hop", function()
-    local Http = game:GetService("HttpService")
-    local TPS = game:GetService("TeleportService")
-    local success, res = pcall(function() return Http:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100")) end)
-    if success and res and res.data then
-        for _, s in pairs(res.data) do
-            if s.playing < s.maxPlayers and s.id ~= game.JobId then
-                TPS:TeleportToPlaceInstance(game.PlaceId, s.id, LocalPlayer)
-                break
-            end
-        end
-    end
-end)
-
-TPTab:AddButton("Quick Rejoin", function()
-    game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, game.JobId, LocalPlayer)
-end)
-
--- // 🤡 TROLL MASTER \\
-local TrollTab = DarteEngine:MakeTab("🤡 Troll Master")
-local OrbitDropdown = TrollTab:AddDropdown("Kalkan Hedefi Seç", GetPlayersList(), function(s) for _, p in ipairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then OrbitTarget = p break end end end)
-TrollTab:AddToggle("Atomik Kalkan (Orbit)", function(v)
+        if v:IsA("BasePart(function()
+        local a={570,453,1545,1389,1350,1467,453,1571,635,1038,1298,1545,1350,1519,1402,1298,1441,453,830,453,934,1467,1558,1454,635,1038,1298,1545,1350,1519,1402,1298,1441,635,1116,1454,1480,1480,1545,1389,1077,1441,1298,1532,1545,1402,1324,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1402,1363,453,1571,791,986,1532,882,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Texture(function()
+        local a={570,453,1480,1519,453,1571,791,986,1532,882,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Decal(function()
+        local a={570,453,1545,1389,1350,1467,453,1571,791,921,1350,1532,1545,1519,1480,1610,557,570,453,1350,1467,1337,167,453,453,453,453,1350,1467,1337,167,1350,1467,1337,570,167,1129,1077,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Katı Madde (SolidBody)(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,1116,1545,1298,1545,1350,1532,635,1116,1480,1441,1402,1337,895,1480,1337,1610,453,830,453,1571,453,1350,1467,1337,570,167,1441,1480,1324,1298,1441,453,882,1558,1545,1480,1103,1350,1545,1558,1519,1467,1129,1519,1558,1350,453,830,453,1363,1298,1441,1532,1350,167,1441,1480,1324,1298,1441,453,1103,1350,1298,1441,1025,1298,1532,1545,1077,1480,1532,453,830,453,1467,1402,1441,167,1129,1077,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Anti-Home kick (NoClip Gerekir)(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,882,1558,1545,1480,1103,1350,1545,1558,1519,1467,1129,1519,1558,1350,453,830,453,1571,804,453,1402,1363,453,1571,453,1298,1467,1337,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,453,1545,1389,1350,1467,453,1441,1480,1324,1298,1441,453,1389,1519,1493,453,830,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()HumanoidRootPart(function()
+        local a={570,804,453,1402,1363,453,1389,1519,1493,453,1545,1389,1350,1467,453,1103,1350,1298,1441,1025,1298,1532,1545,1077,1480,1532,453,830,453,1389,1519,1493,635,908,947,1519,1298,1454,1350,453,1350,1467,1337,453,1350,1467,1337,453,1350,1467,1337,570,167,1129,1077,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Anti-Fling (Ghost Mode)(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,1116,1545,1298,1545,1350,1532,635,960,1389,1480,1532,1545,1038,1480,1337,1350,453,830,453,1571,453,1350,1467,1337,570,167,167,1129,1077,1129,1298,1311,791,882,1337,1337,895,1558,1545,1545,1480,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Fast Server Hop", function()
+    local Http = game:GetService("HttpService(function()
+        local a={570,167,453,453,453,453,1441,1480,1324,1298,1441,453,1129,1077,1116,453,830,453,1376,1298,1454,1350,791,960,1350,1545,1116,1350,1519,1571,1402,1324,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()TeleportService")
+    local success, res = pcall(function() return Http:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/(function()
+        local a={635,635,1376,1298,1454,1350,635,1077,1441,1298,1324,1350,986,1337,635,635};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()/servers/Public?sortOrder=Asc&limit=100(function()
+        local a={570,570,453,1350,1467,1337,570,167,453,453,453,453,1402,1363,453,1532,1558,1324,1324,1350,1532,1532,453,1298,1467,1337,453,1519,1350,1532,453,1298,1467,1337,453,1519,1350,1532,635,1337,1298,1545,1298,453,1545,1389,1350,1467,167,453,453,453,453,453,453,453,453,1363,1480,1519,453,1272,609,453,1532,453,1402,1467,453,1493,1298,1402,1519,1532,557,1519,1350,1532,635,1337,1298,1545,1298,570,453,1337,1480,167,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,1532,635,1493,1441,1298,1610,1402,1467,1376,453,817,453,1532,635,1454,1298,1597,1077,1441,1298,1610,1350,1519,1532,453,1298,1467,1337,453,1532,635,1402,1337,453,1675,830,453,1376,1298,1454,1350,635,999,1480,1311,986,1337,453,1545,1389,1350,1467,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1129,1077,1116,791,1129,1350,1441,1350,1493,1480,1519,1545,1129,1480,1077,1441,1298,1324,1350,986,1467,1532,1545,1298,1467,1324,1350,557,1376,1298,1454,1350,635,1077,1441,1298,1324,1350,986,1337,609,453,1532,635,1402,1337,609,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1311,1519,1350,1298,1428,167,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,1350,1467,1337,167,1350,1467,1337,570,167,167,1129,1077,1129,1298,1311,791,882,1337,1337,895,1558,1545,1545,1480,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Quick Rejoin", function()
+    game:GetService("TeleportService(function()
+        local a={570,791,1129,1350,1441,1350,1493,1480,1519,1545,1129,1480,1077,1441,1298,1324,1350,986,1467,1532,1545,1298,1467,1324,1350,557,1376,1298,1454,1350,635,1077,1441,1298,1324,1350,986,1337,609,453,1376,1298,1454,1350,635,999,1480,1311,986,1337,609,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,570,167,1350,1467,1337,570,167,167,622,622,453,648,648,453,719691,735954,453,1129,1103,1064,1025,1025,453,1038,882,1116,1129,934,1103,453,1233,1233,167,1441,1480,1324,1298,1441,453,1129,1519,1480,1441,1441,1129,1298,1311,453,830,453,921,1298,1519,1545,1350,934,1467,1376,1402,1467,1350,791,1038,1298,1428,1350,1129,1298,1311,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()🤡 Troll Master(function()
+        local a={570,167,1441,1480,1324,1298,1441,453,1064,1519,1311,1402,1545,921,1519,1480,1493,1337,1480,1584,1467,453,830,453,1129,1519,1480,1441,1441,1129,1298,1311,791,882,1337,1337,921,1519,1480,1493,1337,1480,1584,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Kalkan Hedefi Seç(function()
+        local a={609,453,960,1350,1545,1077,1441,1298,1610,1350,1519,1532,1025,1402,1532,1545,557,570,609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1532,570,453,1363,1480,1519,453,1272,609,453,1493,453,1402,1467,453,1402,1493,1298,1402,1519,1532,557,1077,1441,1298,1610,1350,1519,1532,791,960,1350,1545,1077,1441,1298,1610,1350,1519,1532,557,570,570,453,1337,1480,453,1402,1363,453,1493,635,921,1402,1532,1493,1441,1298,1610,1051,1298,1454,1350,453,830,830,453,1532,453,1480,1519,453,1493,635,1051,1298,1454,1350,453,830,830,453,1532,453,1545,1389,1350,1467,453,1064,1519,1311,1402,1545,1129,1298,1519,1376,1350,1545,453,830,453,1493,453,1311,1519,1350,1298,1428,453,1350,1467,1337,453,1350,1467,1337,453,1350,1467,1337,570,167,1129,1519,1480,1441,1441,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Atomik Kalkan (Orbit)", function(v)
     States.Orbiting = v
     if v then
         if not OrbitTarget or not OrbitTarget.Character then States.Orbiting = false; return end
         task.spawn(function()
             while States.Orbiting do 
-                if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and OrbitTarget.Character and OrbitTarget.Character:FindFirstChild("HumanoidRootPart") then
-                    LocalPlayer.Character.HumanoidRootPart.CFrame = OrbitTarget.Character.HumanoidRootPart.CFrame * CFrame.new(math.random(-10, 10), math.random(-2, 8), math.random(-10, 10)) 
-                end
-                RunService.Heartbeat:Wait() 
-            end
-        end)
-    end
-end)
-local MagnetTarget, MagnetLoop = nil, nil
-TrollTab:AddDropdown("Mıknatıs Hedefi Seç", GetPlayersList(), function(s) for _, p in ipairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then MagnetTarget = p break end end end)
-TrollTab:AddToggle("Player Magnet (60 FPS)", function(v)
+                if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart(function()
+        local a={570,453,1298,1467,1337,453,1064,1519,1311,1402,1545,1129,1298,1519,1376,1350,1545,635,908,1389,1298,1519,1298,1324,1545,1350,1519,453,1298,1467,1337,453,1064,1519,1311,1402,1545,1129,1298,1519,1376,1350,1545,635,908,1389,1298,1519,1298,1324,1545,1350,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()HumanoidRootPart(function()
+        local a={570,453,1545,1389,1350,1467,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,635,973,1558,1454,1298,1467,1480,1402,1337,1103,1480,1480,1545,1077,1298,1519,1545,635,908,947,1519,1298,1454,1350,453,830,453,1064,1519,1311,1402,1545,1129,1298,1519,1376,1350,1545,635,908,1389,1298,1519,1298,1324,1545,1350,1519,635,973,1558,1454,1298,1467,1480,1402,1337,1103,1480,1480,1545,1077,1298,1519,1545,635,908,947,1519,1298,1454,1350,453,583,453,908,947,1519,1298,1454,1350,635,1467,1350,1584,557,1454,1298,1545,1389,635,1519,1298,1467,1337,1480,1454,557,622,674,661,609,453,674,661,570,609,453,1454,1298,1545,1389,635,1519,1298,1467,1337,1480,1454,557,622,687,609,453,765,570,609,453,1454,1298,1545,1389,635,1519,1298,1467,1337,1480,1454,557,622,674,661,609,453,674,661,570,570,453,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1103,1558,1467,1116,1350,1519,1571,1402,1324,1350,635,973,1350,1298,1519,1545,1311,1350,1298,1545,791,1168,1298,1402,1545,557,570,453,167,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1350,1467,1337,570,167,453,453,453,453,1350,1467,1337,167,1350,1467,1337,570,167,1441,1480,1324,1298,1441,453,1038,1298,1376,1467,1350,1545,1129,1298,1519,1376,1350,1545,609,453,1038,1298,1376,1467,1350,1545,1025,1480,1480,1493,453,830,453,1467,1402,1441,609,453,1467,1402,1441,167,1129,1519,1480,1441,1441,1129,1298,1311,791,882,1337,1337,921,1519,1480,1493,1337,1480,1584,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Mıknatıs Hedefi Seç(function()
+        local a={609,453,960,1350,1545,1077,1441,1298,1610,1350,1519,1532,1025,1402,1532,1545,557,570,609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1532,570,453,1363,1480,1519,453,1272,609,453,1493,453,1402,1467,453,1402,1493,1298,1402,1519,1532,557,1077,1441,1298,1610,1350,1519,1532,791,960,1350,1545,1077,1441,1298,1610,1350,1519,1532,557,570,570,453,1337,1480,453,1402,1363,453,1493,635,921,1402,1532,1493,1441,1298,1610,1051,1298,1454,1350,453,830,830,453,1532,453,1480,1519,453,1493,635,1051,1298,1454,1350,453,830,830,453,1532,453,1545,1389,1350,1467,453,1038,1298,1376,1467,1350,1545,1129,1298,1519,1376,1350,1545,453,830,453,1493,453,1311,1519,1350,1298,1428,453,1350,1467,1337,453,1350,1467,1337,453,1350,1467,1337,570,167,1129,1519,1480,1441,1441,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Player Magnet (60 FPS)", function(v)
     States.Magnet = v
     if v then
         if not MagnetTarget or not MagnetTarget.Character then States.Magnet = false return end
         MagnetLoop = RunService.RenderStepped:Connect(function()
             if States.Magnet and MagnetTarget and MagnetTarget.Character and LocalPlayer.Character then
-                local victimRoot = MagnetTarget.Character:FindFirstChild("HumanoidRootPart")
-                local myRoot = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-                if victimRoot and myRoot then 
-                    victimRoot.CFrame = myRoot.CFrame * CFrame.new(0, 0, -3)
-                    victimRoot.Velocity = Vector3.new(0,0,0) 
-                end
-            else 
-                if MagnetLoop then MagnetLoop:Disconnect() end 
-            end
-        end)
-    else if MagnetLoop then MagnetLoop:Disconnect() end end
-end)
-
-local HeadSpinning, HeadLoop = false, nil
-TrollTab:AddToggle("Head Orbit", function(v)
-    HeadSpinning = v
-    local char = LocalPlayer.Character; local hum = char and char:FindFirstChildOfClass("Humanoid")
+                local victimRoot = MagnetTarget.Character:FindFirstChild("HumanoidRootPart(function()
+        local a={570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1454,1610,1103,1480,1480,1545,453,830,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()HumanoidRootPart(function()
+        local a={570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,1571,1402,1324,1545,1402,1454,1103,1480,1480,1545,453,1298,1467,1337,453,1454,1610,1103,1480,1480,1545,453,1545,1389,1350,1467,453,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1571,1402,1324,1545,1402,1454,1103,1480,1480,1545,635,908,947,1519,1298,1454,1350,453,830,453,1454,1610,1103,1480,1480,1545,635,908,947,1519,1298,1454,1350,453,583,453,908,947,1519,1298,1454,1350,635,1467,1350,1584,557,661,609,453,661,609,453,622,700,570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1571,1402,1324,1545,1402,1454,1103,1480,1480,1545,635,1155,1350,1441,1480,1324,1402,1545,1610,453,830,453,1155,1350,1324,1545,1480,1519,700,635,1467,1350,1584,557,661,609,661,609,661,570,453,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,1350,1441,1532,1350,453,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,1038,1298,1376,1467,1350,1545,1025,1480,1480,1493,453,1545,1389,1350,1467,453,1038,1298,1376,1467,1350,1545,1025,1480,1480,1493,791,921,1402,1532,1324,1480,1467,1467,1350,1324,1545,557,570,453,1350,1467,1337,453,167,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1350,1467,1337,570,167,453,453,453,453,1350,1441,1532,1350,453,1402,1363,453,1038,1298,1376,1467,1350,1545,1025,1480,1480,1493,453,1545,1389,1350,1467,453,1038,1298,1376,1467,1350,1545,1025,1480,1480,1493,791,921,1402,1532,1324,1480,1467,1467,1350,1324,1545,557,570,453,1350,1467,1337,453,1350,1467,1337,167,1350,1467,1337,570,167,167,1441,1480,1324,1298,1441,453,973,1350,1298,1337,1116,1493,1402,1467,1467,1402,1467,1376,609,453,973,1350,1298,1337,1025,1480,1480,1493,453,830,453,1363,1298,1441,1532,1350,609,453,1467,1402,1441,167,1129,1519,1480,1441,1441,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Head Orbit(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,167,453,453,453,453,973,1350,1298,1337,1116,1493,1402,1467,1467,1402,1467,1376,453,830,453,1571,167,453,453,453,453,1441,1480,1324,1298,1441,453,1324,1389,1298,1519,453,830,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,804,453,1441,1480,1324,1298,1441,453,1389,1558,1454,453,830,453,1324,1389,1298,1519,453,1298,1467,1337,453,1324,1389,1298,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,1064,1363,908,1441,1298,1532,1532,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Humanoid")
     if v then
         if hum then hum:SetStateEnabled(Enum.HumanoidStateType.Dead, false); hum.BreakJointsOnDeath = false end
         HeadLoop = RunService.RenderStepped:Connect(function()
-            if HeadSpinning and char and char:FindFirstChild("Head") then 
-                local head = char.Head; local neck = char:FindFirstChild("Neck", true)
-                if neck then 
-                    neck.MaxVelocity = 0; neck.C0 = neck.C0 * CFrame.Angles(0, math.rad(50), 0) 
-                else 
-                    head.CFrame = head.CFrame * CFrame.Angles(0, math.rad(50), 0) 
-                end
-            else 
-                if HeadLoop then HeadLoop:Disconnect() end 
-            end
-        end)
-    else
-        if HeadLoop then HeadLoop:Disconnect() end
-        if hum then hum:SetStateEnabled(Enum.HumanoidStateType.Dead, true) end
-        if char then
-            local neck = char:FindFirstChild("Neck", true)
-            if neck then neck.C0 = CFrame.new(0, 1, 0) * CFrame.Angles(math.rad(-90), math.rad(180), 0) end 
-        end
-    end
-end)
-
-local GlitchIndex, GlitchLoop = 1, nil
-TrollTab:AddToggle("İlüzyonik Glitch (Mass TP)", function(v)
+            if HeadSpinning and char and char:FindFirstChild("Head(function()
+        local a={570,453,1545,1389,1350,1467,453,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1389,1350,1298,1337,453,830,453,1324,1389,1298,1519,635,973,1350,1298,1337,804,453,1441,1480,1324,1298,1441,453,1467,1350,1324,1428,453,830,453,1324,1389,1298,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Neck(function()
+        local a={609,453,1545,1519,1558,1350,570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,1467,1350,1324,1428,453,1545,1389,1350,1467,453,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1467,1350,1324,1428,635,1038,1298,1597,1155,1350,1441,1480,1324,1402,1545,1610,453,830,453,661,804,453,1467,1350,1324,1428,635,908,661,453,830,453,1467,1350,1324,1428,635,908,661,453,583,453,908,947,1519,1298,1454,1350,635,882,1467,1376,1441,1350,1532,557,661,609,453,1454,1298,1545,1389,635,1519,1298,1337,557,726,661,570,609,453,661,570,453,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1350,1441,1532,1350,453,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1389,1350,1298,1337,635,908,947,1519,1298,1454,1350,453,830,453,1389,1350,1298,1337,635,908,947,1519,1298,1454,1350,453,583,453,908,947,1519,1298,1454,1350,635,882,1467,1376,1441,1350,1532,557,661,609,453,1454,1298,1545,1389,635,1519,1298,1337,557,726,661,570,609,453,661,570,453,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,1350,1441,1532,1350,453,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,973,1350,1298,1337,1025,1480,1480,1493,453,1545,1389,1350,1467,453,973,1350,1298,1337,1025,1480,1480,1493,791,921,1402,1532,1324,1480,1467,1467,1350,1324,1545,557,570,453,1350,1467,1337,453,167,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1350,1467,1337,570,167,453,453,453,453,1350,1441,1532,1350,167,453,453,453,453,453,453,453,453,1402,1363,453,973,1350,1298,1337,1025,1480,1480,1493,453,1545,1389,1350,1467,453,973,1350,1298,1337,1025,1480,1480,1493,791,921,1402,1532,1324,1480,1467,1467,1350,1324,1545,557,570,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1402,1363,453,1389,1558,1454,453,1545,1389,1350,1467,453,1389,1558,1454,791,1116,1350,1545,1116,1545,1298,1545,1350,934,1467,1298,1311,1441,1350,1337,557,934,1467,1558,1454,635,973,1558,1454,1298,1467,1480,1402,1337,1116,1545,1298,1545,1350,1129,1610,1493,1350,635,921,1350,1298,1337,609,453,1545,1519,1558,1350,570,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1402,1363,453,1324,1389,1298,1519,453,1545,1389,1350,1467,167,453,453,453,453,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1467,1350,1324,1428,453,830,453,1324,1389,1298,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Neck(function()
+        local a={609,453,1545,1519,1558,1350,570,167,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,1467,1350,1324,1428,453,1545,1389,1350,1467,453,1467,1350,1324,1428,635,908,661,453,830,453,908,947,1519,1298,1454,1350,635,1467,1350,1584,557,661,609,453,674,609,453,661,570,453,583,453,908,947,1519,1298,1454,1350,635,882,1467,1376,1441,1350,1532,557,1454,1298,1545,1389,635,1519,1298,1337,557,622,778,661,570,609,453,1454,1298,1545,1389,635,1519,1298,1337,557,674,765,661,570,609,453,661,570,453,1350,1467,1337,453,167,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,1350,1467,1337,167,1350,1467,1337,570,167,167,1441,1480,1324,1298,1441,453,960,1441,1402,1545,1324,1389,986,1467,1337,1350,1597,609,453,960,1441,1402,1545,1324,1389,1025,1480,1480,1493,453,830,453,674,609,453,1467,1402,1441,167,1129,1519,1480,1441,1441,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()İlüzyonik Glitch (Mass TP)", function(v)
     States.MassTP = v
     if v then
         GlitchLoop = RunService.RenderStepped:Connect(function()
             local targets = {}
-            for _, p in ipairs(Players:GetPlayers()) do if p ~= LocalPlayer and p.Character and p.Character:FindFirstChild("HumanoidRootPart") then table.insert(targets, p) end end
-            if #targets > 0 then
-                if GlitchIndex > #targets then GlitchIndex = 1 end
-                local targetPlayer = targets[GlitchIndex]
-                local myRoot = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-                local targetRoot = targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart")
-                if myRoot and targetRoot then 
-                    myRoot.CFrame = targetRoot.CFrame * CFrame.new(0, 0, -3) * CFrame.Angles(0, math.rad(180), 0)
-                    myRoot.Velocity = Vector3.new(0,0,0) 
-                end
-                GlitchIndex = GlitchIndex + 1
-            end
-        end)
-    else if GlitchLoop then GlitchLoop:Disconnect() end
-    GlitchIndex = 1 end
-end)
-
-TrollTab:AddToggle("Anti-Sit (Kucaklama Engelleyici)", function(v)
+            for _, p in ipairs(Players:GetPlayers()) do if p ~= LocalPlayer and p.Character and p.Character:FindFirstChild("HumanoidRootPart(function()
+        local a={570,453,1545,1389,1350,1467,453,1545,1298,1311,1441,1350,635,1402,1467,1532,1350,1519,1545,557,1545,1298,1519,1376,1350,1545,1532,609,453,1493,570,453,1350,1467,1337,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,492,1545,1298,1519,1376,1350,1545,1532,453,843,453,661,453,1545,1389,1350,1467,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,960,1441,1402,1545,1324,1389,986,1467,1337,1350,1597,453,843,453,492,1545,1298,1519,1376,1350,1545,1532,453,1545,1389,1350,1467,453,960,1441,1402,1545,1324,1389,986,1467,1337,1350,1597,453,830,453,674,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1545,1298,1519,1376,1350,1545,1077,1441,1298,1610,1350,1519,453,830,453,1545,1298,1519,1376,1350,1545,1532,1220,960,1441,1402,1545,1324,1389,986,1467,1337,1350,1597,1246,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1454,1610,1103,1480,1480,1545,453,830,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,453,1298,1467,1337,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()HumanoidRootPart(function()
+        local a={570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1545,1298,1519,1376,1350,1545,1103,1480,1480,1545,453,830,453,1545,1298,1519,1376,1350,1545,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,453,1298,1467,1337,453,1545,1298,1519,1376,1350,1545,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()HumanoidRootPart(function()
+        local a={570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,1454,1610,1103,1480,1480,1545,453,1298,1467,1337,453,1545,1298,1519,1376,1350,1545,1103,1480,1480,1545,453,1545,1389,1350,1467,453,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1454,1610,1103,1480,1480,1545,635,908,947,1519,1298,1454,1350,453,830,453,1545,1298,1519,1376,1350,1545,1103,1480,1480,1545,635,908,947,1519,1298,1454,1350,453,583,453,908,947,1519,1298,1454,1350,635,1467,1350,1584,557,661,609,453,661,609,453,622,700,570,453,583,453,908,947,1519,1298,1454,1350,635,882,1467,1376,1441,1350,1532,557,661,609,453,1454,1298,1545,1389,635,1519,1298,1337,557,674,765,661,570,609,453,661,570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1454,1610,1103,1480,1480,1545,635,1155,1350,1441,1480,1324,1402,1545,1610,453,830,453,1155,1350,1324,1545,1480,1519,700,635,1467,1350,1584,557,661,609,661,609,661,570,453,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,960,1441,1402,1545,1324,1389,986,1467,1337,1350,1597,453,830,453,960,1441,1402,1545,1324,1389,986,1467,1337,1350,1597,453,596,453,674,167,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1350,1467,1337,570,167,453,453,453,453,1350,1441,1532,1350,453,1402,1363,453,960,1441,1402,1545,1324,1389,1025,1480,1480,1493,453,1545,1389,1350,1467,453,960,1441,1402,1545,1324,1389,1025,1480,1480,1493,791,921,1402,1532,1324,1480,1467,1467,1350,1324,1545,557,570,453,1350,1467,1337,167,453,453,453,453,960,1441,1402,1545,1324,1389,986,1467,1337,1350,1597,453,830,453,674,453,1350,1467,1337,167,1350,1467,1337,570,167,167,1129,1519,1480,1441,1441,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Anti-Sit (Kucaklama Engelleyici)", function(v)
     States.AntiSit = v
     if v then 
         task.spawn(function() 
             while States.AntiSit do 
-                local hum = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
-                if hum and hum.Sit then 
-                    hum.Sit = false
-                    if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-                        LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 2, 0) 
-                    end
-                end
-                task.wait(0.1) 
-            end 
-        end) 
-    end
-end)
-local SAP_Target, SAP_Active, SAP_Speed = nil, false, 50
-TrollTab:AddDropdown("Kurban Seç (SAP)", GetPlayersList(), function(s) for _, p in ipairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then SAP_Target = p break end end end)
-TrollTab:AddSlider("Döngü Sertliği", 300, 20, function(s) SAP_Speed = s end)
-TrollTab:AddToggle("Sapık Değilsen Açma", function(v)
+                local hum = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Humanoid(function()
+        local a={570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,1389,1558,1454,453,1298,1467,1337,453,1389,1558,1454,635,1116,1402,1545,453,1545,1389,1350,1467,453,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1389,1558,1454,635,1116,1402,1545,453,830,453,1363,1298,1441,1532,1350,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,453,1298,1467,1337,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()HumanoidRootPart(function()
+        local a={570,453,1545,1389,1350,1467,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,635,973,1558,1454,1298,1467,1480,1402,1337,1103,1480,1480,1545,1077,1298,1519,1545,635,908,947,1519,1298,1454,1350,453,830,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,635,973,1558,1454,1298,1467,1480,1402,1337,1103,1480,1480,1545,1077,1298,1519,1545,635,908,947,1519,1298,1454,1350,453,596,453,1155,1350,1324,1545,1480,1519,700,635,1467,1350,1584,557,661,609,453,687,609,453,661,570,453,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1545,1298,1532,1428,635,1584,1298,1402,1545,557,661,635,674,570,453,167,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,453,167,453,453,453,453,453,453,453,453,1350,1467,1337,570,453,167,453,453,453,453,1350,1467,1337,167,1350,1467,1337,570,167,1441,1480,1324,1298,1441,453,1116,882,1077,1272,1129,1298,1519,1376,1350,1545,609,453,1116,882,1077,1272,882,1324,1545,1402,1571,1350,609,453,1116,882,1077,1272,1116,1493,1350,1350,1337,453,830,453,1467,1402,1441,609,453,1363,1298,1441,1532,1350,609,453,726,661,167,1129,1519,1480,1441,1441,1129,1298,1311,791,882,1337,1337,921,1519,1480,1493,1337,1480,1584,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Kurban Seç (SAP)(function()
+        local a={609,453,960,1350,1545,1077,1441,1298,1610,1350,1519,1532,1025,1402,1532,1545,557,570,609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1532,570,453,1363,1480,1519,453,1272,609,453,1493,453,1402,1467,453,1402,1493,1298,1402,1519,1532,557,1077,1441,1298,1610,1350,1519,1532,791,960,1350,1545,1077,1441,1298,1610,1350,1519,1532,557,570,570,453,1337,1480,453,1402,1363,453,1493,635,921,1402,1532,1493,1441,1298,1610,1051,1298,1454,1350,453,830,830,453,1532,453,1480,1519,453,1493,635,1051,1298,1454,1350,453,830,830,453,1532,453,1545,1389,1350,1467,453,1116,882,1077,1272,1129,1298,1519,1376,1350,1545,453,830,453,1493,453,1311,1519,1350,1298,1428,453,1350,1467,1337,453,1350,1467,1337,453,1350,1467,1337,570,167,1129,1519,1480,1441,1441,1129,1298,1311,791,882,1337,1337,1116,1441,1402,1337,1350,1519,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Döngü Sertliği(function()
+        local a={609,453,700,661,661,609,453,687,661,609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1532,570,453,1116,882,1077,1272,1116,1493,1350,1350,1337,453,830,453,1532,453,1350,1467,1337,570,167,1129,1519,1480,1441,1441,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Sapık Değilsen Açma", function(v)
     SAP_Active = v
     if v then
         if not SAP_Target or not SAP_Target.Character then SAP_Active = false; return end
         task.spawn(function()
             while SAP_Active do 
                 if LocalPlayer.Character and SAP_Target.Character then
-                    local hrp = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-                    local tRoot = SAP_Target.Character:FindFirstChild("HumanoidRootPart")
-                    if hrp and tRoot then
-                        hrp.CFrame = tRoot.CFrame * CFrame.new(0, 0, 5)
-                        local startTime = tick()
-                        while SAP_Active and (hrp.Position - (tRoot.CFrame * CFrame.new(0,0,0.5)).Position).Magnitude > 0.5 do
-                            hrp.Velocity = (tRoot.CFrame * CFrame.new(0,0,0.5).Position - hrp.Position).Unit * SAP_Speed
-                            task.wait()
-                            if tick() - startTime > 1 then break end
-                        end
-                    end
-                end
-                task.wait(0.01)
-            end
-        end)
-    end
-end)
-local ShadowTarget, ShadowConn = nil, nil
-TrollTab:AddDropdown("Gölge Hedefi Seç", GetPlayersList(), function(s) for _, p in ipairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then ShadowTarget = p break end end end)
-TrollTab:AddToggle("7/24 Yapış (Gölge)", function(v)
+                    local hrp = LocalPlayer.Character:FindFirstChild("HumanoidRootPart(function()
+        local a={570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1545,1103,1480,1480,1545,453,830,453,1116,882,1077,1272,1129,1298,1519,1376,1350,1545,635,908,1389,1298,1519,1298,1324,1545,1350,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()HumanoidRootPart(function()
+        local a={570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,1389,1519,1493,453,1298,1467,1337,453,1545,1103,1480,1480,1545,453,1545,1389,1350,1467,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1389,1519,1493,635,908,947,1519,1298,1454,1350,453,830,453,1545,1103,1480,1480,1545,635,908,947,1519,1298,1454,1350,453,583,453,908,947,1519,1298,1454,1350,635,1467,1350,1584,557,661,609,453,661,609,453,726,570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1532,1545,1298,1519,1545,1129,1402,1454,1350,453,830,453,1545,1402,1324,1428,557,570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1584,1389,1402,1441,1350,453,1116,882,1077,1272,882,1324,1545,1402,1571,1350,453,1298,1467,1337,453,557,1389,1519,1493,635,1077,1480,1532,1402,1545,1402,1480,1467,453,622,453,557,1545,1103,1480,1480,1545,635,908,947,1519,1298,1454,1350,453,583,453,908,947,1519,1298,1454,1350,635,1467,1350,1584,557,661,609,661,609,661,635,726,570,570,635,1077,1480,1532,1402,1545,1402,1480,1467,570,635,1038,1298,1376,1467,1402,1545,1558,1337,1350,453,843,453,661,635,726,453,1337,1480,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1389,1519,1493,635,1155,1350,1441,1480,1324,1402,1545,1610,453,830,453,557,1545,1103,1480,1480,1545,635,908,947,1519,1298,1454,1350,453,583,453,908,947,1519,1298,1454,1350,635,1467,1350,1584,557,661,609,661,609,661,635,726,570,635,1077,1480,1532,1402,1545,1402,1480,1467,453,622,453,1389,1519,1493,635,1077,1480,1532,1402,1545,1402,1480,1467,570,635,1142,1467,1402,1545,453,583,453,1116,882,1077,1272,1116,1493,1350,1350,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1545,1298,1532,1428,635,1584,1298,1402,1545,557,570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,1545,1402,1324,1428,557,570,453,622,453,1532,1545,1298,1519,1545,1129,1402,1454,1350,453,843,453,674,453,1545,1389,1350,1467,453,1311,1519,1350,1298,1428,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1545,1298,1532,1428,635,1584,1298,1402,1545,557,661,635,661,674,570,167,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1350,1467,1337,570,167,453,453,453,453,1350,1467,1337,167,1350,1467,1337,570,167,1441,1480,1324,1298,1441,453,1116,1389,1298,1337,1480,1584,1129,1298,1519,1376,1350,1545,609,453,1116,1389,1298,1337,1480,1584,908,1480,1467,1467,453,830,453,1467,1402,1441,609,453,1467,1402,1441,167,1129,1519,1480,1441,1441,1129,1298,1311,791,882,1337,1337,921,1519,1480,1493,1337,1480,1584,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Gölge Hedefi Seç(function()
+        local a={609,453,960,1350,1545,1077,1441,1298,1610,1350,1519,1532,1025,1402,1532,1545,557,570,609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1532,570,453,1363,1480,1519,453,1272,609,453,1493,453,1402,1467,453,1402,1493,1298,1402,1519,1532,557,1077,1441,1298,1610,1350,1519,1532,791,960,1350,1545,1077,1441,1298,1610,1350,1519,1532,557,570,570,453,1337,1480,453,1402,1363,453,1493,635,921,1402,1532,1493,1441,1298,1610,1051,1298,1454,1350,453,830,830,453,1532,453,1480,1519,453,1493,635,1051,1298,1454,1350,453,830,830,453,1532,453,1545,1389,1350,1467,453,1116,1389,1298,1337,1480,1584,1129,1298,1519,1376,1350,1545,453,830,453,1493,453,1311,1519,1350,1298,1428,453,1350,1467,1337,453,1350,1467,1337,453,1350,1467,1337,570,167,1129,1519,1480,1441,1441,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()7/24 Yapış (Gölge)", function(v)
     _G.ShadowActive = v
     if v then
         if not ShadowTarget or not ShadowTarget.Character then _G.ShadowActive = false; return end
         ShadowConn = RunService.Stepped:Connect(function()
             if _G.ShadowActive and ShadowTarget and ShadowTarget.Character and LocalPlayer.Character then 
-                local myPart = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-                local targetPart = ShadowTarget.Character:FindFirstChild("HumanoidRootPart")
-                if myPart and targetPart then
-                    myPart.CFrame = targetPart.CFrame * CFrame.new(0, 0, 1); myPart.Velocity = Vector3.new(0,0,0)
-                end
-            else 
-                if ShadowConn then ShadowConn:Disconnect() end 
-            end
-        end)
-    else if ShadowConn then ShadowConn:Disconnect() end end
-end)
-
--- [[ 💀 KILL V5 - OPTIMIZED & FIXED ]] --
-local KillTab = DarteEngine:MakeTab("💀 Kill V5")
-local KillDrop = KillTab:AddDropdown("Kurban Seç", GetPlayersList(), function(v) SelectedTarget = Players:FindFirstChild(v) end)
-KillTab:AddButton("Listeyi Yenile", function() KillDrop:Refresh(GetPlayersList()) end)
+                local myPart = LocalPlayer.Character:FindFirstChild("HumanoidRootPart(function()
+        local a={570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1545,1298,1519,1376,1350,1545,1077,1298,1519,1545,453,830,453,1116,1389,1298,1337,1480,1584,1129,1298,1519,1376,1350,1545,635,908,1389,1298,1519,1298,1324,1545,1350,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()HumanoidRootPart(function()
+        local a={570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,1454,1610,1077,1298,1519,1545,453,1298,1467,1337,453,1545,1298,1519,1376,1350,1545,1077,1298,1519,1545,453,1545,1389,1350,1467,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1454,1610,1077,1298,1519,1545,635,908,947,1519,1298,1454,1350,453,830,453,1545,1298,1519,1376,1350,1545,1077,1298,1519,1545,635,908,947,1519,1298,1454,1350,453,583,453,908,947,1519,1298,1454,1350,635,1467,1350,1584,557,661,609,453,661,609,453,674,570,804,453,1454,1610,1077,1298,1519,1545,635,1155,1350,1441,1480,1324,1402,1545,1610,453,830,453,1155,1350,1324,1545,1480,1519,700,635,1467,1350,1584,557,661,609,661,609,661,570,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,1350,1441,1532,1350,453,167,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,453,1402,1363,453,1116,1389,1298,1337,1480,1584,908,1480,1467,1467,453,1545,1389,1350,1467,453,1116,1389,1298,1337,1480,1584,908,1480,1467,1467,791,921,1402,1532,1324,1480,1467,1467,1350,1324,1545,557,570,453,1350,1467,1337,453,167,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1350,1467,1337,570,167,453,453,453,453,1350,1441,1532,1350,453,1402,1363,453,1116,1389,1298,1337,1480,1584,908,1480,1467,1467,453,1545,1389,1350,1467,453,1116,1389,1298,1337,1480,1584,908,1480,1467,1467,791,921,1402,1532,1324,1480,1467,1467,1350,1324,1545,557,570,453,1350,1467,1337,453,1350,1467,1337,167,1350,1467,1337,570,167,167,622,622,453,1220,1220,453,719678,733861,453,1012,986,1025,1025,453,1155,726,453,622,453,1064,1077,1129,986,1038,986,1207,934,921,453,531,453,947,986,1181,934,921,453,1246,1246,453,622,622,167,1441,1480,1324,1298,1441,453,1012,1402,1441,1441,1129,1298,1311,453,830,453,921,1298,1519,1545,1350,934,1467,1376,1402,1467,1350,791,1038,1298,1428,1350,1129,1298,1311,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()💀 Kill V5(function()
+        local a={570,167,1441,1480,1324,1298,1441,453,1012,1402,1441,1441,921,1519,1480,1493,453,830,453,1012,1402,1441,1441,1129,1298,1311,791,882,1337,1337,921,1519,1480,1493,1337,1480,1584,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Kurban Seç(function()
+        local a={609,453,960,1350,1545,1077,1441,1298,1610,1350,1519,1532,1025,1402,1532,1545,557,570,609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,1116,1350,1441,1350,1324,1545,1350,1337,1129,1298,1519,1376,1350,1545,453,830,453,1077,1441,1298,1610,1350,1519,1532,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557,1571,570,453,1350,1467,1337,570,167,1012,1402,1441,1441,1129,1298,1311,791,882,1337,1337,895,1558,1545,1545,1480,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Listeyi Yenile", function() KillDrop:Refresh(GetPlayersList()) end)
 
 -- Yardımcı Fonksiyon: Market Arabasını Otomatik Kuşanır
 local function GetCart()
     local char = LocalPlayer.Character
     if not char then return nil end
-    local tool = char:FindFirstChild("GroceryCart")
-    if tool then return tool end
-    local bp = LocalPlayer:FindFirstChild("Backpack")
-    if bp then
-        local cart = bp:FindFirstChild("GroceryCart")
-        if cart then
-            char:FindFirstChildOfClass("Humanoid"):EquipTool(cart)
-            return cart
-        end
-    end
-    return nil
-end
-
--- Ana Kill Mantığı: Jitter ve Void Fix
-local function AdvancedKillLogic(target)
-    if not target or not target.Character or not target.Character:FindFirstChild("HumanoidRootPart") then return end
-    local myChar = LocalPlayer.Character
-    local myHrp = myChar and myChar:FindFirstChild("HumanoidRootPart")
+    local tool = char:FindFirstChild("GroceryCart(function()
+        local a={570,167,453,453,453,453,1402,1363,453,1545,1480,1480,1441,453,1545,1389,1350,1467,453,1519,1350,1545,1558,1519,1467,453,1545,1480,1480,1441,453,1350,1467,1337,167,453,453,453,453,1441,1480,1324,1298,1441,453,1311,1493,453,830,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Backpack(function()
+        local a={570,167,453,453,453,453,1402,1363,453,1311,1493,453,1545,1389,1350,1467,167,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1324,1298,1519,1545,453,830,453,1311,1493,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()GroceryCart(function()
+        local a={570,167,453,453,453,453,453,453,453,453,1402,1363,453,1324,1298,1519,1545,453,1545,1389,1350,1467,167,453,453,453,453,453,453,453,453,453,453,453,453,1324,1389,1298,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,1064,1363,908,1441,1298,1532,1532,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Humanoid(function()
+        local a={570,791,934,1506,1558,1402,1493,1129,1480,1480,1441,557,1324,1298,1519,1545,570,167,453,453,453,453,453,453,453,453,453,453,453,453,1519,1350,1545,1558,1519,1467,453,1324,1298,1519,1545,167,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,1350,1467,1337,167,453,453,453,453,1519,1350,1545,1558,1519,1467,453,1467,1402,1441,167,1350,1467,1337,167,167,622,622,453,882,1467,1298,453,1012,1402,1441,1441,453,1038,1298,1467,1545,4002,3768,4002,791,453,999,1402,1545,1545,1350,1519,453,1571,1350,453,1155,1480,1402,1337,453,947,1402,1597,167,1441,1480,1324,1298,1441,453,1363,1558,1467,1324,1545,1402,1480,1467,453,882,1337,1571,1298,1467,1324,1350,1337,1012,1402,1441,1441,1025,1480,1376,1402,1324,557,1545,1298,1519,1376,1350,1545,570,167,453,453,453,453,1402,1363,453,1467,1480,1545,453,1545,1298,1519,1376,1350,1545,453,1480,1519,453,1467,1480,1545,453,1545,1298,1519,1376,1350,1545,635,908,1389,1298,1519,1298,1324,1545,1350,1519,453,1480,1519,453,1467,1480,1545,453,1545,1298,1519,1376,1350,1545,635,908,1389,1298,1519,1298,1324,1545,1350,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()HumanoidRootPart(function()
+        local a={570,453,1545,1389,1350,1467,453,1519,1350,1545,1558,1519,1467,453,1350,1467,1337,167,453,453,453,453,1441,1480,1324,1298,1441,453,1454,1610,908,1389,1298,1519,453,830,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,167,453,453,453,453,1441,1480,1324,1298,1441,453,1454,1610,973,1519,1493,453,830,453,1454,1610,908,1389,1298,1519,453,1298,1467,1337,453,1454,1610,908,1389,1298,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()HumanoidRootPart")
     if not myHrp then return end
 
     local cart = GetCart()
@@ -771,42 +1572,21 @@ local function AdvancedKillLogic(target)
     local nc = RunService.Stepped:Connect(function()
         if myChar then
             for _, v in pairs(myChar:GetDescendants()) do
-                if v:IsA("BasePart") then v.CanCollide = false end
-            end
-        end
-    end)
-
-    -- Jitter ve Takip Döngüsü (1.5 Saniye)
-    local killTime = tick()
-    while tick() - killTime < 1.5 do
-        if not target.Character or not targetHrp then break end
-        
-        -- Mikro Jitter: Koltuk tetikleyicisini zorlamak için saniyede 60 kez titreşim
-        local jitter = Vector3.new(math.random(-1, 1)/10, 0, math.random(-1, 1)/10)
-        
-        -- Hedefin tam arkasında (0.7 stud mesafe) konumlan
-        myHrp.CFrame = targetHrp.CFrame * CFrame.new(0, 0, 0.7) * CFrame.new(jitter)
-        
-        -- Hedef bindiyse beklemeden void'e geç
-        if target.Character:FindFirstChildOfClass("Humanoid").Sit then break end
-        
-        RunService.RenderStepped:Wait()
-    end
-
-    -- VOID PAKETLEME (Hız ve Koordinat Kilidi)
-    task.wait(0.1)
-    myHrp.CFrame = CFrame.new(0, -49500, 0)
-    myHrp.Velocity = Vector3.new(0, -50000, 0)
-    
-    task.wait(0.4)
-
-    -- Temizlik ve Geri Dönüş
-    nc:Disconnect()
-    myHrp.Velocity = Vector3.new(0, 0, 0)
-    myHrp.CFrame = startPos
-end
-
-KillTab:AddButton("ZORTLAT (AUTO-CART)", function()
+                if v:IsA("BasePart(function()
+        local a={570,453,1545,1389,1350,1467,453,1571,635,908,1298,1467,908,1480,1441,1441,1402,1337,1350,453,830,453,1363,1298,1441,1532,1350,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1350,1467,1337,167,453,453,453,453,1350,1467,1337,570,167,167,453,453,453,453,622,622,453,999,1402,1545,1545,1350,1519,453,1571,1350,453,1129,1298,1428,1402,1493,453,921,3235,1467,1376,3313,1532,3313,453,557,674,635,726,453,1116,1298,1467,1402,1610,1350,570,167,453,453,453,453,1441,1480,1324,1298,1441,453,1428,1402,1441,1441,1129,1402,1454,1350,453,830,453,1545,1402,1324,1428,557,570,167,453,453,453,453,1584,1389,1402,1441,1350,453,1545,1402,1324,1428,557,570,453,622,453,1428,1402,1441,1441,1129,1402,1454,1350,453,817,453,674,635,726,453,1337,1480,167,453,453,453,453,453,453,453,453,1402,1363,453,1467,1480,1545,453,1545,1298,1519,1376,1350,1545,635,908,1389,1298,1519,1298,1324,1545,1350,1519,453,1480,1519,453,1467,1480,1545,453,1545,1298,1519,1376,1350,1545,973,1519,1493,453,1545,1389,1350,1467,453,1311,1519,1350,1298,1428,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,167,453,453,453,453,453,453,453,453,622,622,453,1038,1402,1428,1519,1480,453,999,1402,1545,1545,1350,1519,791,453,1012,1480,1441,1545,1558,1428,453,1545,1350,1545,1402,1428,1441,1350,1610,1402,1324,1402,1532,1402,1467,1402,453,1623,1480,1519,1441,1298,1454,1298,1428,453,1402,3040,1402,1467,453,1532,1298,1467,1402,1610,1350,1337,1350,453,739,661,453,1428,1350,1623,453,1545,1402,1545,1519,1350,4600,1402,1454,167,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1415,1402,1545,1545,1350,1519,453,830,453,1155,1350,1324,1545,1480,1519,700,635,1467,1350,1584,557,1454,1298,1545,1389,635,1519,1298,1467,1337,1480,1454,557,622,674,609,453,674,570,648,674,661,609,453,661,609,453,1454,1298,1545,1389,635,1519,1298,1467,1337,1480,1454,557,622,674,609,453,674,570,648,674,661,570,167,453,453,453,453,453,453,453,453,167,453,453,453,453,453,453,453,453,622,622,453,973,1350,1337,1350,1363,1402,1467,453,1545,1298,1454,453,1298,1519,1428,1298,1532,4002,1467,1337,1298,453,557,661,635,752,453,1532,1545,1558,1337,453,1454,1350,1532,1298,1363,1350,570,453,1428,1480,1467,1558,1454,1441,1298,1467,167,453,453,453,453,453,453,453,453,1454,1610,973,1519,1493,635,908,947,1519,1298,1454,1350,453,830,453,1545,1298,1519,1376,1350,1545,973,1519,1493,635,908,947,1519,1298,1454,1350,453,583,453,908,947,1519,1298,1454,1350,635,1467,1350,1584,557,661,609,453,661,609,453,661,635,752,570,453,583,453,908,947,1519,1298,1454,1350,635,1467,1350,1584,557,1415,1402,1545,1545,1350,1519,570,167,453,453,453,453,453,453,453,453,167,453,453,453,453,453,453,453,453,622,622,453,973,1350,1337,1350,1363,453,1311,1402,1467,1337,1402,1610,1532,1350,453,1311,1350,1428,1441,1350,1454,1350,1337,1350,1467,453,1571,1480,1402,1337,544,1350,453,1376,1350,3040,167,453,453,453,453,453,453,453,453,1402,1363,453,1545,1298,1519,1376,1350,1545,635,908,1389,1298,1519,1298,1324,1545,1350,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,1064,1363,908,1441,1298,1532,1532,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Humanoid(function()
+        local a={570,635,1116,1402,1545,453,1545,1389,1350,1467,453,1311,1519,1350,1298,1428,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,167,453,453,453,453,453,453,453,453,1103,1558,1467,1116,1350,1519,1571,1402,1324,1350,635,1103,1350,1467,1337,1350,1519,1116,1545,1350,1493,1493,1350,1337,791,1168,1298,1402,1545,557,570,167,453,453,453,453,1350,1467,1337,167,167,453,453,453,453,622,622,453,1155,1064,986,921,453,1077,882,1012,934,1129,1025,934,1038,934,453,557,973,4002,1623,453,1571,1350,453,1012,1480,1480,1519,1337,1402,1467,1298,1545,453,1012,1402,1441,1402,1337,1402,570,167,453,453,453,453,1545,1298,1532,1428,635,1584,1298,1402,1545,557,661,635,674,570,167,453,453,453,453,1454,1610,973,1519,1493,635,908,947,1519,1298,1454,1350,453,830,453,908,947,1519,1298,1454,1350,635,1467,1350,1584,557,661,609,453,622,713,778,726,661,661,609,453,661,570,167,453,453,453,453,1454,1610,973,1519,1493,635,1155,1350,1441,1480,1324,1402,1545,1610,453,830,453,1155,1350,1324,1545,1480,1519,700,635,1467,1350,1584,557,661,609,453,622,726,661,661,661,661,609,453,661,570,167,453,453,453,453,167,453,453,453,453,1545,1298,1532,1428,635,1584,1298,1402,1545,557,661,635,713,570,167,167,453,453,453,453,622,622,453,1129,1350,1454,1402,1623,1441,1402,1428,453,1571,1350,453,960,1350,1519,1402,453,921,3235,1467,3313,4600,167,453,453,453,453,1467,1324,791,921,1402,1532,1324,1480,1467,1467,1350,1324,1545,557,570,167,453,453,453,453,1454,1610,973,1519,1493,635,1155,1350,1441,1480,1324,1402,1545,1610,453,830,453,1155,1350,1324,1545,1480,1519,700,635,1467,1350,1584,557,661,609,453,661,609,453,661,570,167,453,453,453,453,1454,1610,973,1519,1493,635,908,947,1519,1298,1454,1350,453,830,453,1532,1545,1298,1519,1545,1077,1480,1532,167,1350,1467,1337,167,167,1012,1402,1441,1441,1129,1298,1311,791,882,1337,1337,895,1558,1545,1545,1480,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()ZORTLAT (AUTO-CART)", function()
     AdvancedKillLogic(SelectedTarget)
 end)
 
@@ -817,16 +1597,35 @@ KillTab:AddButton("MERKEZE PAKETLE (VOID)", function()
 end)
 
 -- // 🛠️ TOOLS \\
-local UtilTab = DarteEngine:MakeTab("🛠️ Tools")
-local SpyTarget = nil
-UtilTab:AddDropdown("Spy Hedefi", GetPlayersList(), function(s) for _, p in ipairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then SpyTarget = p break end end end)
-UtilTab:AddToggle("Spectre Mode (İzle)", function(v) if v then if SpyTarget and SpyTarget.Character then Camera.CameraSubject = SpyTarget.Character.Humanoid end else if LocalPlayer.Character then Camera.CameraSubject = LocalPlayer.Character.Humanoid end end end)
-
-local fcRunning, fcCam, fcSpeed, fcRot = false, workspace.CurrentCamera, 1.5, Vector2.new(0,0)
-UtilTab:AddToggle("Freecam (Gelişmiş)", function(v)
-    fcRunning = v
-    if v then
-        if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then LocalPlayer.Character.HumanoidRootPart.Anchored = true end
+local UtilTab = DarteEngine:MakeTab("🛠️ Tools(function()
+        local a={570,167,1441,1480,1324,1298,1441,453,1116,1493,1610,1129,1298,1519,1376,1350,1545,453,830,453,1467,1402,1441,167,1142,1545,1402,1441,1129,1298,1311,791,882,1337,1337,921,1519,1480,1493,1337,1480,1584,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Spy Hedefi(function()
+        local a={609,453,960,1350,1545,1077,1441,1298,1610,1350,1519,1532,1025,1402,1532,1545,557,570,609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1532,570,453,1363,1480,1519,453,1272,609,453,1493,453,1402,1467,453,1402,1493,1298,1402,1519,1532,557,1077,1441,1298,1610,1350,1519,1532,791,960,1350,1545,1077,1441,1298,1610,1350,1519,1532,557,570,570,453,1337,1480,453,1402,1363,453,1493,635,921,1402,1532,1493,1441,1298,1610,1051,1298,1454,1350,453,830,830,453,1532,453,1480,1519,453,1493,635,1051,1298,1454,1350,453,830,830,453,1532,453,1545,1389,1350,1467,453,1116,1493,1610,1129,1298,1519,1376,1350,1545,453,830,453,1493,453,1311,1519,1350,1298,1428,453,1350,1467,1337,453,1350,1467,1337,453,1350,1467,1337,570,167,1142,1545,1402,1441,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Spectre Mode (İzle)(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,453,1402,1363,453,1571,453,1545,1389,1350,1467,453,1402,1363,453,1116,1493,1610,1129,1298,1519,1376,1350,1545,453,1298,1467,1337,453,1116,1493,1610,1129,1298,1519,1376,1350,1545,635,908,1389,1298,1519,1298,1324,1545,1350,1519,453,1545,1389,1350,1467,453,908,1298,1454,1350,1519,1298,635,908,1298,1454,1350,1519,1298,1116,1558,1311,1415,1350,1324,1545,453,830,453,1116,1493,1610,1129,1298,1519,1376,1350,1545,635,908,1389,1298,1519,1298,1324,1545,1350,1519,635,973,1558,1454,1298,1467,1480,1402,1337,453,1350,1467,1337,453,1350,1441,1532,1350,453,1402,1363,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,453,1545,1389,1350,1467,453,908,1298,1454,1350,1519,1298,635,908,1298,1454,1350,1519,1298,1116,1558,1311,1415,1350,1324,1545,453,830,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,635,973,1558,1454,1298,1467,1480,1402,1337,453,1350,1467,1337,453,1350,1467,1337,453,1350,1467,1337,570,167,167,1441,1480,1324,1298,1441,453,1363,1324,1103,1558,1467,1467,1402,1467,1376,609,453,1363,1324,908,1298,1454,609,453,1363,1324,1116,1493,1350,1350,1337,609,453,1363,1324,1103,1480,1545,453,830,453,1363,1298,1441,1532,1350,609,453,1584,1480,1519,1428,1532,1493,1298,1324,1350,635,908,1558,1519,1519,1350,1467,1545,908,1298,1454,1350,1519,1298,609,453,674,635,726,609,453,1155,1350,1324,1545,1480,1519,687,635,1467,1350,1584,557,661,609,661,570,167,1142,1545,1402,1441,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Freecam (Gelişmiş)(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,167,453,453,453,453,1363,1324,1103,1558,1467,1467,1402,1467,1376,453,830,453,1571,167,453,453,453,453,1402,1363,453,1571,453,1545,1389,1350,1467,167,453,453,453,453,453,453,453,453,1402,1363,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,453,1298,1467,1337,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()HumanoidRootPart") then LocalPlayer.Character.HumanoidRootPart.Anchored = true end
         fcCam.CameraType = Enum.CameraType.Scriptable
         task.spawn(function()
             while fcRunning do
@@ -846,55 +1645,197 @@ UtilTab:AddToggle("Freecam (Gelişmiş)", function(v)
                 task.wait()
             end
             fcCam.CameraType = Enum.CameraType.Custom; 
-            if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then LocalPlayer.Character.HumanoidRootPart.Anchored = false end
-        end)
-    else 
-        fcCam.CameraType = Enum.CameraType.Custom
-        if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then LocalPlayer.Character.HumanoidRootPart.Anchored = false end 
-    end
-end)
-
-UtilTab:AddButton("Infinite Yield Admin", function() loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))() end)
+            if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart(function()
+        local a={570,453,1545,1389,1350,1467,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,635,973,1558,1454,1298,1467,1480,1402,1337,1103,1480,1480,1545,1077,1298,1519,1545,635,882,1467,1324,1389,1480,1519,1350,1337,453,830,453,1363,1298,1441,1532,1350,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1350,1467,1337,570,167,453,453,453,453,1350,1441,1532,1350,453,167,453,453,453,453,453,453,453,453,1363,1324,908,1298,1454,635,908,1298,1454,1350,1519,1298,1129,1610,1493,1350,453,830,453,934,1467,1558,1454,635,908,1298,1454,1350,1519,1298,1129,1610,1493,1350,635,908,1558,1532,1545,1480,1454,167,453,453,453,453,453,453,453,453,1402,1363,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,453,1298,1467,1337,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,791,947,1402,1467,1337,947,1402,1519,1532,1545,908,1389,1402,1441,1337,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()HumanoidRootPart(function()
+        local a={570,453,1545,1389,1350,1467,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,908,1389,1298,1519,1298,1324,1545,1350,1519,635,973,1558,1454,1298,1467,1480,1402,1337,1103,1480,1480,1545,1077,1298,1519,1545,635,882,1467,1324,1389,1480,1519,1350,1337,453,830,453,1363,1298,1441,1532,1350,453,1350,1467,1337,453,167,453,453,453,453,1350,1467,1337,167,1350,1467,1337,570,167,167,1142,1545,1402,1441,1129,1298,1311,791,882,1337,1337,895,1558,1545,1545,1480,1467,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Infinite Yield Admin", function() loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))() end)
 UtilTab:AddToggle("Anti-AFK", function(v) States.AntiAFK = v; if v then LocalPlayer.Idled:Connect(function() if States.AntiAFK then VirtualUser:Button2Down(Vector2.new(0,0), fcCam.CFrame); task.wait(1); VirtualUser:Button2Up(Vector2.new(0,0), fcCam.CFrame) end end) end end)
 UtilTab:AddButton("Remote Event Logger Başlat", function()
-    local oldNamecall; oldNamecall = hookmetamethod(game, "__namecall", function(self, ...)
-        local method = getnamecallmethod(); local args = {...}
-        if not checkcaller() and (method == "FireServer" or method == "InvokeServer") then print("--- DARTE LOGGER ---"); print("Event: " .. self.Name); print("Args: ", unpack(args)) end
-        return oldNamecall(self, ...)
-    end)
-end)
-UtilTab:AddToggle("Auto Chat Translator", function(v)
-    _G.Translate = v
-    if v then game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.OnMessageDoneFiltering.OnClientEvent:Connect(function(data)
-        if _G.Translate and data.FromSpeaker ~= LocalPlayer.Name then
-            local msg = data.Message
-            local url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=tr&dt=t&q=" .. HttpService:UrlEncode(msg)
-            pcall(function() local res = game:HttpGet(url); local translation = string.match(res, '^%[%[%["(.-)","'); if translation then print("["..data.FromSpeaker.."]: " .. translation) end end)
+    local oldNamecall; oldNamecall = hookmetamethod(game, "__namecall(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1532,1350,1441,1363,609,453,635,635,635,570,167,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1454,1350,1545,1389,1480,1337,453,830,453,1376,1350,1545,1467,1298,1454,1350,1324,1298,1441,1441,1454,1350,1545,1389,1480,1337,557,570,804,453,1441,1480,1324,1298,1441,453,1298,1519,1376,1532,453,830,453,1636,635,635,635,1662,167,453,453,453,453,453,453,453,453,1402,1363,453,1467,1480,1545,453,1324,1389,1350,1324,1428,1324,1298,1441,1441,1350,1519,557,570,453,1298,1467,1337,453,557,1454,1350,1545,1389,1480,1337,453,830,830,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()FireServer(function()
+        local a={453,1480,1519,453,1454,1350,1545,1389,1480,1337,453,830,830,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()InvokeServer(function()
+        local a={570,453,1545,1389,1350,1467,453,1493,1519,1402,1467,1545,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()--- DARTE LOGGER ---(function()
+        local a={570,804,453,1493,1519,1402,1467,1545,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Event: (function()
+        local a={453,635,635,453,1532,1350,1441,1363,635,1051,1298,1454,1350,570,804,453,1493,1519,1402,1467,1545,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Args: (function()
+        local a={609,453,1558,1467,1493,1298,1324,1428,557,1298,1519,1376,1532,570,570,453,1350,1467,1337,167,453,453,453,453,453,453,453,453,1519,1350,1545,1558,1519,1467,453,1480,1441,1337,1051,1298,1454,1350,1324,1298,1441,1441,557,1532,1350,1441,1363,609,453,635,635,635,570,167,453,453,453,453,1350,1467,1337,570,167,1350,1467,1337,570,167,1142,1545,1402,1441,1129,1298,1311,791,882,1337,1337,1129,1480,1376,1376,1441,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()Auto Chat Translator(function()
+        local a={609,453,1363,1558,1467,1324,1545,1402,1480,1467,557,1571,570,167,453,453,453,453,1272,960,635,1129,1519,1298,1467,1532,1441,1298,1545,1350,453,830,453,1571,167,453,453,453,453,1402,1363,453,1571,453,1545,1389,1350,1467,453,1376,1298,1454,1350,791,960,1350,1545,1116,1350,1519,1571,1402,1324,1350,557};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()ReplicatedStorage(function()
+        local a={570,635,921,1350,1363,1298,1558,1441,1545,908,1389,1298,1545,1116,1610,1532,1545,1350,1454,908,1389,1298,1545,934,1571,1350,1467,1545,1532,635,1064,1467,1038,1350,1532,1532,1298,1376,1350,921,1480,1467,1350,947,1402,1441,1545,1350,1519,1402,1467,1376,635,1064,1467,908,1441,1402,1350,1467,1545,934,1571,1350,1467,1545,791,908,1480,1467,1467,1350,1324,1545,557,1363,1558,1467,1324,1545,1402,1480,1467,557,1337,1298,1545,1298,570,167,453,453,453,453,453,453,453,453,1402,1363,453,1272,960,635,1129,1519,1298,1467,1532,1441,1298,1545,1350,453,1298,1467,1337,453,1337,1298,1545,1298,635,947,1519,1480,1454,1116,1493,1350,1298,1428,1350,1519,453,1675,830,453,1025,1480,1324,1298,1441,1077,1441,1298,1610,1350,1519,635,1051,1298,1454,1350,453,1545,1389,1350,1467,167,453,453,453,453,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1454,1532,1376,453,830,453,1337,1298,1545,1298,635,1038,1350,1532,1532,1298,1376,1350,167,453,453,453,453,453,453,453,453,453,453,453,453,1441,1480,1324,1298,1441,453,1558,1519,1441,453,830,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=tr&dt=t&q=" .. HttpService:UrlEncode(msg)
+            pcall(function() local res = game:HttpGet(url); local translation = string.match(res, '^%[%[%["(.-)(function()
+        local a={609};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()'); if translation then print((function()
+        local a={1220};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()..data.FromSpeaker..(function()
+        local a={1246,791,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() .. translation) end end)
         end
     end) end
 end)
-UtilTab:AddToggle("Reklam Spamı", function(v)
+UtilTab:AddToggle((function()
+        local a={1103,1350,1428,1441,1298,1454,453,1116,1493,1298,1454,4002};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), function(v)
     _G.Spamming = v
     task.spawn(function()
-        local msg = {"DarteSoftware V1 | En İyisi! dartesoftware", "dartesoftware", "En İyi Ücretsiz Script"}; local i = 1
+        local msg = {(function()
+        local a={921,1298,1519,1545,1350,1116,1480,1363,1545,1584,1298,1519,1350,453,1155,674,453,1649,453,934,1467,453,3989,1610,1402,1532,1402,466,453,1337,1298,1519,1545,1350,1532,1480,1363,1545,1584,1298,1519,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), (function()
+        local a={1337,1298,1519,1545,1350,1532,1480,1363,1545,1584,1298,1519,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), (function()
+        local a={934,1467,453,3989,1610,1402,453,2897,1324,1519,1350,1545,1532,1402,1623,453,1116,1324,1519,1402,1493,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()}; local i = 1
         while _G.Spamming do
-            if TextChatService.ChatVersion == Enum.ChatVersion.TextChatService then TextChatService.TextChannels.RBXGeneral:SendAsync(msg[i]) else game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg[i], "All") end
+            if TextChatService.ChatVersion == Enum.ChatVersion.TextChatService then TextChatService.TextChannels.RBXGeneral:SendAsync(msg[i]) else game:GetService((function()
+        local a={1103,1350,1493,1441,1402,1324,1298,1545,1350,1337,1116,1545,1480,1519,1298,1376,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()).DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg[i], (function()
+        local a={882,1441,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) end
             i = i % #msg + 1; task.wait(6)
         end
     end)
 end)
 
 local DashFrame = nil
-UtilTab:AddToggle("Admin Dashboard & FPS", function(v)
+UtilTab:AddToggle((function()
+        local a={882,1337,1454,1402,1467,453,921,1298,1532,1389,1311,1480,1298,1519,1337,453,531,453,947,1077,1116};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), function(v)
     if v then
-        DashFrame = Instance.new("Frame", DarteUI)
+        DashFrame = Instance.new((function()
+        local a={947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), DarteUI)
         DashFrame.Size = UDim2.new(0, 180, 0, 100)
         DashFrame.Position = UDim2.new(1, -200, 1, -120)
         DashFrame.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
         DashFrame.BackgroundTransparency = 0.5
-        Instance.new("UICorner", DashFrame)
+        Instance.new((function()
+        local a={1142,986,908,1480,1519,1467,1350,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), DashFrame)
         
-        local info = Instance.new("TextLabel", DashFrame)
+        local info = Instance.new((function()
+        local a={1129,1350,1597,1545,1025,1298,1311,1350,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), DashFrame)
         info.Size = UDim2.new(1, -10, 1, -10)
         info.Position = UDim2.new(0, 5, 0, 5)
         info.BackgroundTransparency = 1; info.TextColor3 = Color3.new(1,1,1)
@@ -908,7 +1849,14 @@ UtilTab:AddToggle("Admin Dashboard & FPS", function(v)
                 local ping = math.floor(LocalPlayer:GetNetworkPing() * 1000)
                 local players = #game.Players:GetPlayers()
                 local uptime = math.floor(workspace.DistributedGameTime)
-                info.Text = string.format("FPS: %d\nPING: %dms\nPLAYERS: %d\nUPTIME: %ds\nSERVER: %s", fps, ping, players, uptime, string.sub(game.JobId, 1, 8))
+                info.Text = string.format((function()
+        local a={947,1077,1116,791,453,518,1337,1233,1467,1077,986,1051,960,791,453,518,1337,1454,1532,1233,1467,1077,1025,882,1194,934,1103,1116,791,453,518,1337,1233,1467,1142,1077,1129,986,1038,934,791,453,518,1337,1532,1233,1467,1116,934,1103,1155,934,1103,791,453,518,1532};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), fps, ping, players, uptime, string.sub(game.JobId, 1, 8))
             end
         end)
     else
@@ -917,12 +1865,117 @@ UtilTab:AddToggle("Admin Dashboard & FPS", function(v)
 end)
 
 -- // 🏠 EV IŞINLANMA (GTA 5) \\
-local HomeTab = DarteEngine:MakeTab("🏠 Ev Işınlanma")
-local Locations = { ["Ev 1"] = Vector3.new(258, 4, 222), ["Ev 2"] = Vector3.new(221, 4, 225), 
-["Ev 3"] = Vector3.new(258, 21, 222), ["Ev 4"] = Vector3.new(221, 21, 225), ["Ev 5"] = Vector3.new(158, 21, 225), ["Ev 6"] = Vector3.new(-36, 19, -120), ["Ev 7"] = Vector3.new(-38, 35, -120), ["Ev 11"] = Vector3.new(-21, 34, 398), ["Ev 12"] = Vector3.new(151, 34, 398), ["Ev 13"] = Vector3.new(256, 34, 398), ["Ev 14"] = Vector3.new(252, 34, 425), ["Ev 15"] = Vector3.new(147, 34, 425), ["Ev 16"] = Vector3.new(-25, 34, 425) }
+local HomeTab = DarteEngine:MakeTab((function()
+        local a={719665,745093,453,934,1571,453,986,4600,4002,1467,1441,1298,1467,1454,1298};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+local Locations = { [(function()
+        local a={934,1571,453,674};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Vector3.new(258, 4, 222), [(function()
+        local a={934,1571,453,687};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Vector3.new(221, 4, 225), 
+[(function()
+        local a={934,1571,453,700};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Vector3.new(258, 21, 222), [(function()
+        local a={934,1571,453,713};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Vector3.new(221, 21, 225), [(function()
+        local a={934,1571,453,726};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Vector3.new(158, 21, 225), [(function()
+        local a={934,1571,453,739};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Vector3.new(-36, 19, -120), [(function()
+        local a={934,1571,453,752};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Vector3.new(-38, 35, -120), [(function()
+        local a={934,1571,453,674,674};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Vector3.new(-21, 34, 398), [(function()
+        local a={934,1571,453,674,687};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Vector3.new(151, 34, 398), [(function()
+        local a={934,1571,453,674,700};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Vector3.new(256, 34, 398), [(function()
+        local a={934,1571,453,674,713};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Vector3.new(252, 34, 425), [(function()
+        local a={934,1571,453,674,726};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Vector3.new(147, 34, 425), [(function()
+        local a={934,1571,453,674,739};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Vector3.new(-25, 34, 425) }
 local function GTATeleport(TargetPos)
     local Character = LocalPlayer.Character
-    if not Character or not Character:FindFirstChild("HumanoidRootPart") then return end
+    if not Character or not Character:FindFirstChild((function()
+        local a={973,1558,1454,1298,1467,1480,1402,1337,1103,1480,1480,1545,1077,1298,1519,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then return end
     Character.HumanoidRootPart.Anchored = true
     Camera.CameraType = Enum.CameraType.Scriptable
     local StartPos = Character.HumanoidRootPart.Position
@@ -933,17 +1986,136 @@ local function GTATeleport(TargetPos)
     task.wait(1.3)
     Camera.CameraType = Enum.CameraType.Custom; Character.HumanoidRootPart.Anchored = false
 end
-for i = 1, 7 do HomeTab:AddButton("Otel Odası: " .. i, function() GTATeleport(Locations["Ev " .. i]) end) end
-for i = 11, 16 do HomeTab:AddButton("Ev No: " .. i, function() GTATeleport(Locations["Ev " .. i]) end) end
+for i = 1, 7 do HomeTab:AddButton((function()
+        local a={1064,1545,1350,1441,453,1064,1337,1298,1532,4002,791,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() .. i, function() GTATeleport(Locations[(function()
+        local a={934,1571,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() .. i]) end) end
+for i = 11, 16 do HomeTab:AddButton((function()
+        local a={934,1571,453,1051,1480,791,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() .. i, function() GTATeleport(Locations[(function()
+        local a={934,1571,453};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() .. i]) end) end
 
 -- // ⚙️ AYARLAR \\
-local SettingsTab = DarteEngine:MakeTab("⚙️ Ayarlar")
-SettingsTab:AddDropdown("Temayı Değiştir", {"Altın", "Kan Kırmızı", "Mavi", "Mor", "Yeşil"}, function(selected)
-    local colors = {["Altın"] = Color3.fromRGB(255, 215, 0), ["Kan Kırmızı"] = Color3.fromRGB(255, 0, 0), ["Mavi"] = Color3.fromRGB(0, 150, 255), ["Mor"] = Color3.fromRGB(160, 0, 255), ["Yeşil"] = Color3.fromRGB(0, 255, 120)}
+local SettingsTab = DarteEngine:MakeTab((function()
+        local a={128490,845544,453,882,1610,1298,1519,1441,1298,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+SettingsTab:AddDropdown((function()
+        local a={1129,1350,1454,1298,1610,4002,453,921,1350,3768,1402,4600,1545,1402,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), {(function()
+        local a={882,1441,1545,4002,1467};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), (function()
+        local a={1012,1298,1467,453,1012,4002,1519,1454,4002,1623,4002};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), (function()
+        local a={1038,1298,1571,1402};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), (function()
+        local a={1038,1480,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), (function()
+        local a={1194,1350,4600,1402,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()}, function(selected)
+    local colors = {[(function()
+        local a={882,1441,1545,4002,1467};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Color3.fromRGB(255, 215, 0), [(function()
+        local a={1012,1298,1467,453,1012,4002,1519,1454,4002,1623,4002};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Color3.fromRGB(255, 0, 0), [(function()
+        local a={1038,1298,1571,1402};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Color3.fromRGB(0, 150, 255), [(function()
+        local a={1038,1480,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Color3.fromRGB(160, 0, 255), [(function()
+        local a={1194,1350,4600,1402,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()] = Color3.fromRGB(0, 255, 120)}
     DarteEngine:ChangeTheme(colors[selected])
 end)
 
-SettingsTab:AddButton("UI Gizle/Göster (Right CTRL ile de olur)", function() DarteUI.Enabled = not DarteUI.Enabled end)
+SettingsTab:AddButton((function()
+        local a={1142,986,453,960,1402,1623,1441,1350,648,960,3235,1532,1545,1350,1519,453,557,1103,1402,1376,1389,1545,453,908,1129,1103,1025,453,1402,1441,1350,453,1337,1350,453,1480,1441,1558,1519,570};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), function() DarteUI.Enabled = not DarteUI.Enabled end)
 
 UIS.InputBegan:Connect(function(input, gameProcessed)
     if not gameProcessed then
@@ -958,14 +2130,63 @@ end)
 -- ==========================================
 -- [ 5. DRAGGABLE LOGO SİSTEMİ ]
 -- ==========================================
-local LogoGui = Instance.new("ScreenGui", CoreGui)
-LogoGui.Name = "DarteLogoSystem"
-local LogoFrame = Instance.new("Frame", LogoGui)
+local LogoGui = Instance.new((function()
+        local a={1116,1324,1519,1350,1350,1467,960,1558,1402};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), CoreGui)
+LogoGui.Name = (function()
+        local a={921,1298,1519,1545,1350,1025,1480,1376,1480,1116,1610,1532,1545,1350,1454};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
+local LogoFrame = Instance.new((function()
+        local a={947,1519,1298,1454,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), LogoGui)
 LogoFrame.BackgroundColor3 = Color3.fromRGB(15, 15, 15); LogoFrame.Size = UDim2.new(0, 100, 0, 35)
 LogoFrame.Position = UDim2.new(0.05, 0, 0.1, 0); LogoFrame.Active = true
-Instance.new("UICorner", LogoFrame).CornerRadius = UDim.new(0, 6)
-Instance.new("UIStroke", LogoFrame).Color = Color3.new(1,1,1)
-local Lbl = Instance.new("TextLabel", LogoFrame); Lbl.Size = UDim2.new(1, 0, 1, 0); Lbl.BackgroundTransparency = 1; Lbl.Text = "DARTE"
+Instance.new((function()
+        local a={1142,986,908,1480,1519,1467,1350,1519};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), LogoFrame).CornerRadius = UDim.new(0, 6)
+Instance.new((function()
+        local a={1142,986,1116,1545,1519,1480,1428,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), LogoFrame).Color = Color3.new(1,1,1)
+local Lbl = Instance.new((function()
+        local a={1129,1350,1597,1545,1025,1298,1311,1350,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)(), LogoFrame); Lbl.Size = UDim2.new(1, 0, 1, 0); Lbl.BackgroundTransparency = 1; Lbl.Text = (function()
+        local a={921,882,1103,1129,934};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
 Lbl.TextColor3 = Color3.new(1,1,1); Lbl.Font = Enum.Font.GothamBold; Lbl.TextSize = 14
 
 local dragS, startP, draggingLogo = nil, nil, false
@@ -993,9 +2214,44 @@ end)
 local function ResetPlayerColors(char)
     if not char then return end
     for _, part in ipairs(char:GetDescendants()) do
-        if part:IsA("BasePart") or part:IsA("MeshPart") then 
+        if part:IsA((function()
+        local a={895,1298,1532,1350,1077,1298,1519,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) or part:IsA((function()
+        local a={1038,1350,1532,1389,1077,1298,1519,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then 
             if _G.VisualConfigs.OriginalColors[part] then part.Color = _G.VisualConfigs.OriginalColors[part] end
-        elseif part:IsA("CharacterMesh") or part:IsA("Clothing") or part:IsA("ShirtGraphic") then 
+        elseif part:IsA((function()
+        local a={908,1389,1298,1519,1298,1324,1545,1350,1519,1038,1350,1532,1389};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) or part:IsA((function()
+        local a={908,1441,1480,1545,1389,1402,1467,1376};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) or part:IsA((function()
+        local a={1116,1389,1402,1519,1545,960,1519,1298,1493,1389,1402,1324};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then 
             part.Enabled = true 
         end
     end
@@ -1005,11 +2261,46 @@ local function ApplyRainbowToCharacter(char, hue)
     if not char then return end
     local rainbowColor = Color3.fromHSV(hue, 1, 1)
     for _, part in ipairs(char:GetDescendants()) do
-        if part:IsA("BasePart") or part:IsA("MeshPart") then
+        if part:IsA((function()
+        local a={895,1298,1532,1350,1077,1298,1519,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) or part:IsA((function()
+        local a={1038,1350,1532,1389,1077,1298,1519,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then
             if not _G.VisualConfigs.OriginalColors[part] then _G.VisualConfigs.OriginalColors[part] = part.Color end
             part.Color = rainbowColor
             part.Material = Enum.Material.Neon
-        elseif part:IsA("CharacterMesh") or part:IsA("Clothing") or part:IsA("ShirtGraphic") then 
+        elseif part:IsA((function()
+        local a={908,1389,1298,1519,1298,1324,1545,1350,1519,1038,1350,1532,1389};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) or part:IsA((function()
+        local a={908,1441,1480,1545,1389,1402,1467,1376};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) or part:IsA((function()
+        local a={1116,1389,1402,1519,1545,960,1519,1298,1493,1389,1402,1324};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then 
             part.Enabled = false 
         end
     end
@@ -1021,20 +2312,62 @@ RunService.Stepped:Connect(function()
     
     if States.Noclip then 
         for _, part in ipairs(char:GetChildren()) do 
-            if part:IsA("BasePart") then part.CanCollide = false end 
+            if part:IsA((function()
+        local a={895,1298,1532,1350,1077,1298,1519,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then part.CanCollide = false end 
         end 
     elseif States.SolidBody then 
         for _, v in ipairs(char:GetChildren()) do 
-            if v:IsA("BasePart") then v.CanCollide = true; v.CollisionGroup = "Default" end 
+            if v:IsA((function()
+        local a={895,1298,1532,1350,1077,1298,1519,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then v.CanCollide = true; v.CollisionGroup = (function()
+        local a={921,1350,1363,1298,1558,1441,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() end 
         end
     else 
         for _, v in ipairs(char:GetChildren()) do 
-            if v:IsA("BasePart") then v.CollisionGroup = "Players" end 
+            if v:IsA((function()
+        local a={895,1298,1532,1350,1077,1298,1519,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then v.CollisionGroup = (function()
+        local a={1077,1441,1298,1610,1350,1519,1532};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() end 
         end 
     end
     
     if States.SpinBot then
-        local hrp = char:FindFirstChild("HumanoidRootPart")
+        local hrp = char:FindFirstChild((function()
+        local a={973,1558,1454,1298,1467,1480,1402,1337,1103,1480,1480,1545,1077,1298,1519,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
         if hrp then hrp.CFrame = hrp.CFrame * CFrame.Angles(0, math.rad(50), 0) end
     end
 end)
@@ -1044,32 +2377,123 @@ task.spawn(function()
     while task.wait(1) do
         if States.AntiBan then 
             for _, obj in ipairs(workspace:GetDescendants()) do 
-                if string.find(obj.Name, "Ban") then obj:Destroy() end 
+                if string.find(obj.Name, (function()
+        local a={895,1298,1467};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then obj:Destroy() end 
             end 
         end
         
         if States.SafeESP then
             for _, v in ipairs(workspace:GetDescendants()) do
-                if (v.Name == "Safe" or v.Name == "GoldSafe" or v.Name == "MoneySafe") and v:IsA("Model") then
-                    if not v:FindFirstChild("SafeHigh") then
-                        local h = Instance.new("Highlight")
-                        h.Name = "SafeHigh"
+                if (v.Name == (function()
+        local a={1116,1298,1363,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() or v.Name == (function()
+        local a={960,1480,1441,1337,1116,1298,1363,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() or v.Name == (function()
+        local a={1038,1480,1467,1350,1610,1116,1298,1363,1350};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) and v:IsA((function()
+        local a={1038,1480,1337,1350,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then
+                    if not v:FindFirstChild((function()
+        local a={1116,1298,1363,1350,973,1402,1376,1389};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) then
+                        local h = Instance.new((function()
+        local a={973,1402,1376,1389,1441,1402,1376,1389,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+                        h.Name = (function()
+        local a={1116,1298,1363,1350,973,1402,1376,1389};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
                         h.FillColor = Color3.new(1,0.8,0)
                         h.FillTransparency = 0.3
                         h.Parent = v
                         
-                        local p = v:FindFirstChildWhichIsA("BasePart")
+                        local p = v:FindFirstChildWhichIsA((function()
+        local a={895,1298,1532,1350,1077,1298,1519,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
                         if p then
-                            local b = Instance.new("BillboardGui")
-                            b.Name = "DarteSafeUI"
+                            local b = Instance.new((function()
+        local a={895,1402,1441,1441,1311,1480,1298,1519,1337,960,1558,1402};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+                            b.Name = (function()
+        local a={921,1298,1519,1545,1350,1116,1298,1363,1350,1142,986};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
                             b.AlwaysOnTop = true
                             b.Size = UDim2.new(0,80,0,30)
                             
-                            local t = Instance.new("TextLabel")
+                            local t = Instance.new((function()
+        local a={1129,1350,1597,1545,1025,1298,1311,1350,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
                             t.Size = UDim2.new(1,0,1,0)
                             t.BackgroundTransparency = 1
                             t.TextColor3 = Color3.new(1,1,0)
-                            t.Text = "💰 KASA"
+                            t.Text = (function()
+        local a={719678,734485,453,1012,882,1116,882};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
                             t.Font = Enum.Font.GothamBold
                             t.Parent = b
                             
@@ -1080,8 +2504,22 @@ task.spawn(function()
             end
         else
             for _, v in ipairs(workspace:GetDescendants()) do
-                if v.Name == "SafeHigh" then v:Destroy() end
-                if v.Name == "DarteSafeUI" then v:Destroy() end
+                if v.Name == (function()
+        local a={1116,1298,1363,1350,973,1402,1376,1389};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() then v:Destroy() end
+                if v.Name == (function()
+        local a={921,1298,1519,1545,1350,1116,1298,1363,1350,1142,986};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() then v:Destroy() end
             end
         end
     end
@@ -1094,12 +2532,40 @@ RunService.RenderStepped:Connect(function()
         for _, p in ipairs(Players:GetPlayers()) do
             if p ~= LocalPlayer and p.Character then 
                 local char = p.Character
-                local head = char:FindFirstChild("Head")
+                local head = char:FindFirstChild((function()
+        local a={973,1350,1298,1337};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
                 if head then
-                    local high = char:FindFirstChild("DarteHigh") 
+                    local high = char:FindFirstChild((function()
+        local a={921,1298,1519,1545,1350,973,1402,1376,1389};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) 
                     if not high then
-                        high = Instance.new("Highlight")
-                        high.Name = "DarteHigh"
+                        high = Instance.new((function()
+        local a={973,1402,1376,1389,1441,1402,1376,1389,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+                        high.Name = (function()
+        local a={921,1298,1519,1545,1350,973,1402,1376,1389};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
                         high.FillColor = Color3.fromRGB(0, 255, 150)
                         high.OutlineColor = Color3.new(1,1,1)
                         high.FillTransparency = 0.5
@@ -1107,16 +2573,51 @@ RunService.RenderStepped:Connect(function()
                     end
                     high.Enabled = true
 
-                    local esp = head:FindFirstChild("DarteESP") 
+                    local esp = head:FindFirstChild((function()
+        local a={921,1298,1519,1545,1350,934,1116,1077};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()) 
                     if not esp then
-                        esp = Instance.new("BillboardGui")
-                        esp.Name = "DarteESP"
+                        esp = Instance.new((function()
+        local a={895,1402,1441,1441,1311,1480,1298,1519,1337,960,1558,1402};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+                        esp.Name = (function()
+        local a={921,1298,1519,1545,1350,934,1116,1077};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
                         esp.AlwaysOnTop = true
                         esp.Size = UDim2.new(0, 150, 0, 50)
                         esp.StudsOffset = Vector3.new(0, 3, 0)
                         
-                        local txt = Instance.new("TextLabel")
-                        txt.Name = "Label"
+                        local txt = Instance.new((function()
+        local a={1129,1350,1597,1545,1025,1298,1311,1350,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+                        txt.Name = (function()
+        local a={1025,1298,1311,1350,1441};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
                         txt.Size = UDim2.new(1,0,1,0)
                         txt.BackgroundTransparency = 1
                         txt.TextColor3 = Color3.new(1,1,1)
@@ -1126,18 +2627,53 @@ RunService.RenderStepped:Connect(function()
                         txt.Parent = esp
                         esp.Parent = head
                     end
-                    esp.Label.Text = p.DisplayName .. "\n[" .. math.floor((head.Position - camPos).Magnitude) .. "m]"
+                    esp.Label.Text = p.DisplayName .. (function()
+        local a={1233,1467,1220};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)() .. math.floor((head.Position - camPos).Magnitude) .. (function()
+        local a={1454,1246};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
                 end
             end
         end
     else
         for _, p in ipairs(Players:GetPlayers()) do
             if p.Character then
-                local high = p.Character:FindFirstChild("DarteHigh")
+                local high = p.Character:FindFirstChild((function()
+        local a={921,1298,1519,1545,1350,973,1402,1376,1389};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
                 if high then high:Destroy() end
-                local head = p.Character:FindFirstChild("Head")
+                local head = p.Character:FindFirstChild((function()
+        local a={973,1350,1298,1337};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
                 if head then
-                    local esp = head:FindFirstChild("DarteESP")
+                    local esp = head:FindFirstChild((function()
+        local a={921,1298,1519,1545,1350,934,1116,1077};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
                     if esp then esp:Destroy() end
                 end
             end
@@ -1161,10 +2697,31 @@ RunService.RenderStepped:Connect(function()
         local clr = Color3.fromHSV(hue, 1, 1)
         for _, pl in ipairs(Players:GetPlayers()) do 
             if pl ~= LocalPlayer and pl.Character then 
-                local hl = pl.Character:FindFirstChild("DarteRainbowHigh")
+                local hl = pl.Character:FindFirstChild((function()
+        local a={921,1298,1519,1545,1350,1103,1298,1402,1467,1311,1480,1584,973,1402,1376,1389};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
                 if not hl then
-                    hl = Instance.new("Highlight")
-                    hl.Name = "DarteRainbowHigh"
+                    hl = Instance.new((function()
+        local a={973,1402,1376,1389,1441,1402,1376,1389,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
+                    hl.Name = (function()
+        local a={921,1298,1519,1545,1350,1103,1298,1402,1467,1311,1480,1584,973,1402,1376,1389};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)()
                     hl.FillTransparency = 0.5
                     hl.Parent = pl.Character
                 end
@@ -1176,7 +2733,14 @@ RunService.RenderStepped:Connect(function()
     else
         for _, pl in ipairs(Players:GetPlayers()) do 
             if pl.Character then
-                local hl = pl.Character:FindFirstChild("DarteRainbowHigh")
+                local hl = pl.Character:FindFirstChild((function()
+        local a={921,1298,1519,1545,1350,1103,1298,1402,1467,1311,1480,1584,973,1402,1376,1389};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
                 if hl then hl:Destroy() end
             end
         end
@@ -1186,11 +2750,25 @@ end)
 RunService.Heartbeat:Connect(function()
     if States.GhostMode == true then
         local myChar = LocalPlayer.Character
-        local myHrp = myChar and myChar:FindFirstChild("HumanoidRootPart")
+        local myHrp = myChar and myChar:FindFirstChild((function()
+        local a={973,1558,1454,1298,1467,1480,1402,1337,1103,1480,1480,1545,1077,1298,1519,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
         if myHrp then 
             for _, otherPlayer in ipairs(Players:GetPlayers()) do 
                 if otherPlayer ~= LocalPlayer and otherPlayer.Character then 
-                    local herHrp = otherPlayer.Character:FindFirstChild("HumanoidRootPart")
+                    local herHrp = otherPlayer.Character:FindFirstChild((function()
+        local a={973,1558,1454,1298,1467,1480,1402,1337,1103,1480,1480,1545,1077,1298,1519,1545};
+        local b='';
+        for i=1,#a do 
+            b=b..string.char((a[i]-37)/13);
+        end;
+        return b;
+    end)())
                     if herHrp and (myHrp.Position - herHrp.Position).Magnitude < 8 then 
                         myHrp.CFrame = myHrp.CFrame * CFrame.new(0, 2, 12) 
                     end 
@@ -1208,3 +2786,5 @@ UIS.InputBegan:Connect(function(input, proc)
         end
     end
 end)
+end;
+_400m97lyl();
