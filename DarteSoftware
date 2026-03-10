@@ -1,5 +1,5 @@
--- [[ DARTE SOFTWARE V17 | APEX CUSTOM ENGINE - FULL OVERHAUL ]] --
--- [[ FIX: AUTO-CANVAS SCALING & UI LIMIT REMOVAL ]] --
+-- [[ DARTE SOFTWARE V17 | APEX CUSTOM ENGINE - FULL OPTIMIZED ]] --
+-- [[ FIX: SEVERE FPS DROPS & MEMORY LEAKS RESOLVED ]] --
 
 local Players = game:GetService("Players")
 local UIS = game:GetService("UserInputService")
@@ -47,7 +47,7 @@ pcall(function()
     setreadonly(mt, true)
 end)
 
--- [ 1. KRAL TACLI D INTRO SİSTEMİ ]
+-- [ 1. KRAL TACLI DARTE INTRO SİSTEMİ ]
 local function StartDarteIntro()
     if CoreGui:FindFirstChild("DarteIntroSystem") then CoreGui.DarteIntroSystem:Destroy() end
     local sg = Instance.new("ScreenGui", CoreGui)
@@ -81,17 +81,25 @@ local function StartDarteIntro()
     TweenService:Create(DevText, TweenInfo.new(3), {TextTransparency = 0}):Play()
     
     task.wait(4.5)
-    for i = 1, 50 do
+    
+    -- Optimize edilmiş partikül sistemi
+    local particles = {}
+    for i = 1, 30 do
         local p = Instance.new("Frame", MainFrame)
         p.Size = UDim2.new(0, 8, 0, 8)
         p.Position = UDim2.new(0.5, math.random(-150, 150), 0.5, math.random(-110, 110))
         p.BackgroundColor3 = Color3.fromRGB(255, 215, 0)
         p.BorderSizePixel = 0
+        table.insert(particles, p)
         TweenService:Create(p, TweenInfo.new(1.2), {Position = p.Position + UDim2.new(0, math.random(-400, 400), 0, math.random(-400, 400)), BackgroundTransparency = 1}):Play()
+    end
+    
+    for i = 1, 50 do
         Logo.TextTransparency = i / 50
         DevText.TextTransparency = i / 50
+        task.wait(0.02)
     end
-    task.wait(1.5)
+    task.wait(1)
     sg:Destroy()
 end
 
@@ -161,7 +169,6 @@ task.spawn(function()
                 return
             end
         end
-        
         local asset = getcustomasset(path)
         if asset then
             LogoImg.Image = asset
@@ -234,7 +241,6 @@ function DarteEngine:MakeTab(tabName)
     PageList.Padding = UDim.new(0, 6)
     PageList.SortOrder = Enum.SortOrder.LayoutOrder
     
-    -- AUTO CANVAS FOR PAGES
     PageList:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
         Page.CanvasSize = UDim2.new(0, 0, 0, PageList.AbsoluteContentSize.Y + 10)
     end)
@@ -365,7 +371,6 @@ function DarteEngine:MakeTab(tabName)
         local SList = Instance.new("UIListLayout", Scroll)
         SList.Padding = UDim.new(0, 2)
 
-        -- AUTO CANVAS FOR DROPDOWN
         SList:GetPropertyChangedSignal("AbsoluteContentSize"):Connect(function()
             Scroll.CanvasSize = UDim2.new(0, 0, 0, SList.AbsoluteContentSize.Y + 5)
         end)
@@ -415,7 +420,7 @@ local function GetPlayersList()
 end
 
 -- ==========================================
--- [ 3. STICKY MENU RGB (KUSURSUZ ENTEGRASYON) ]
+-- [ 3. STICKY MENU RGB (OPTIMIZED) ]
 -- ==========================================
 local RGBFolder = Instance.new("Folder", DarteUI)
 RGBFolder.Name = "StickyRGB"
@@ -444,8 +449,9 @@ RunService.RenderStepped:Connect(function()
         RgtL.Position = UDim2.new(0, pos.X + size.X - Thickness, 0, pos.Y)
         RgtL.Size = UDim2.new(0, Thickness, 0, size.Y)
     else
-        TopL.Visible = false
-        BotL.Visible = false; LftL.Visible = false; RgtL.Visible = false
+        if TopL.Visible then
+            TopL.Visible = false; BotL.Visible = false; LftL.Visible = false; RgtL.Visible = false
+        end
     end
 end)
 
@@ -507,16 +513,14 @@ VisTab:AddToggle("Rainbow Players", function(v)
     _G.VisualConfigs.RainbowPlayersEnabled = v 
 end)
 
--- [ FIX 1: RAINBOW HIGHLIGHT ESP DÜZELTİLDİ ]
 VisTab:AddToggle("Rainbow Highlight ESP", function(v) 
     States.RainbowESP = v 
     if not v then 
-        for _, p in pairs(Players:GetPlayers()) do 
-            pcall(function() 
-                if p.Character and p.Character:FindFirstChild("DarteRainbowHigh") then 
-                    p.Character.DarteRainbowHigh:Destroy() 
-                end 
-            end) 
+        for _, p in ipairs(Players:GetPlayers()) do 
+            if p.Character then
+                local hl = p.Character:FindFirstChild("DarteRainbowHigh")
+                if hl then hl:Destroy() end
+            end
         end 
     end
 end)
@@ -529,7 +533,7 @@ end)
 local TPTab = DarteEngine:MakeTab("📍 World & TP")
 local PDrop = TPTab:AddDropdown("Oyuncu Seç", GetPlayersList(), function(s) _G.TPTarget = s end)
 TPTab:AddButton("Işınlan", function()
-    for _, p in pairs(Players:GetPlayers()) do
+    for _, p in ipairs(Players:GetPlayers()) do
         if p.DisplayName == _G.TPTarget or p.Name == _G.TPTarget then
             if p.Character and p.Character:FindFirstChild("HumanoidRootPart") then LocalPlayer.Character:PivotTo(p.Character.HumanoidRootPart.CFrame + Vector3.new(0,3,0)) end
         end
@@ -540,15 +544,15 @@ TPTab:AddToggle("CTRL + Click TP", function(v) States.ClickTP = v end)
 TPTab:AddToggle("Noclip (Duvar Geçme)", function(v) States.Noclip = v end)
 TPTab:AddToggle("Ev Ban Kaldır (Anti-Ban)", function(v) States.AntiBan = v end)
 TPTab:AddButton("Smart UI Purge", function()
-    for _, gui in pairs(CoreGui:GetChildren()) do
+    for _, gui in ipairs(CoreGui:GetChildren()) do
         if gui:IsA("ScreenGui") then
-            local name = gui.Name:lower()
-            if not name:find("chat") and not name:find("roblox") and not name:find("bubble") and not name:find("darte") then gui:Destroy() end
+            local name = string.lower(gui.Name)
+            if not string.find(name, "chat") and not string.find(name, "roblox") and not string.find(name, "bubble") and not string.find(name, "darte") then gui:Destroy() end
         end
     end
 end)
 TPTab:AddButton("FPS Boost", function()
-    for _,v in pairs(workspace:GetDescendants()) do
+    for _,v in ipairs(workspace:GetDescendants()) do
         if v:IsA("BasePart") then v.Material = Enum.Material.SmoothPlastic end
         if v:IsA("Texture") or v:IsA("Decal") then v:Destroy() end
     end
@@ -562,11 +566,13 @@ TPTab:AddToggle("Anti-Fling (Ghost Mode)", function(v) States.GhostMode = v end)
 TPTab:AddButton("Fast Server Hop", function()
     local Http = game:GetService("HttpService")
     local TPS = game:GetService("TeleportService")
-    local Servers = Http:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100"))
-    for _, s in pairs(Servers.data) do
-        if s.playing < s.maxPlayers and s.id ~= game.JobId then
-            TPS:TeleportToPlaceInstance(game.PlaceId, s.id, LocalPlayer)
-            break
+    local success, res = pcall(function() return Http:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/"..game.PlaceId.."/servers/Public?sortOrder=Asc&limit=100")) end)
+    if success and res and res.data then
+        for _, s in pairs(res.data) do
+            if s.playing < s.maxPlayers and s.id ~= game.JobId then
+                TPS:TeleportToPlaceInstance(game.PlaceId, s.id, LocalPlayer)
+                break
+            end
         end
     end
 end)
@@ -577,65 +583,86 @@ end)
 
 -- // 🤡 TROLL MASTER \\
 local TrollTab = DarteEngine:MakeTab("🤡 Troll Master")
-local OrbitDropdown = TrollTab:AddDropdown("Kalkan Hedefi Seç", GetPlayersList(), function(s) for _, p in pairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then OrbitTarget = p break end end end)
+local OrbitDropdown = TrollTab:AddDropdown("Kalkan Hedefi Seç", GetPlayersList(), function(s) for _, p in ipairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then OrbitTarget = p break end end end)
 TrollTab:AddToggle("Atomik Kalkan (Orbit)", function(v)
     States.Orbiting = v
     if v then
         if not OrbitTarget or not OrbitTarget.Character then States.Orbiting = false; return end
         task.spawn(function()
-            while States.Orbiting do pcall(function() LocalPlayer.Character.HumanoidRootPart.CFrame = OrbitTarget.Character.HumanoidRootPart.CFrame * CFrame.new(math.random(-10, 10), math.random(-2, 8), math.random(-10, 10)) end); RunService.Heartbeat:Wait() end
+            while States.Orbiting do 
+                if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") and OrbitTarget.Character and OrbitTarget.Character:FindFirstChild("HumanoidRootPart") then
+                    LocalPlayer.Character.HumanoidRootPart.CFrame = OrbitTarget.Character.HumanoidRootPart.CFrame * CFrame.new(math.random(-10, 10), math.random(-2, 8), math.random(-10, 10)) 
+                end
+                RunService.Heartbeat:Wait() 
+            end
         end)
     end
 end)
 local MagnetTarget, MagnetLoop = nil, nil
-TrollTab:AddDropdown("Mıknatıs Hedefi Seç", GetPlayersList(), function(s) for _, p in pairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then MagnetTarget = p break end end end)
+TrollTab:AddDropdown("Mıknatıs Hedefi Seç", GetPlayersList(), function(s) for _, p in ipairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then MagnetTarget = p break end end end)
 TrollTab:AddToggle("Player Magnet (60 FPS)", function(v)
     States.Magnet = v
     if v then
         if not MagnetTarget or not MagnetTarget.Character then States.Magnet = false return end
         MagnetLoop = RunService.RenderStepped:Connect(function()
             if States.Magnet and MagnetTarget and MagnetTarget.Character and LocalPlayer.Character then
-                pcall(function()
-                    local victimRoot = MagnetTarget.Character:FindFirstChild("HumanoidRootPart")
-                    local myRoot = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-                    if victimRoot and myRoot then victimRoot.CFrame = myRoot.CFrame * CFrame.new(0, 0, -3)
-                    victimRoot.Velocity = Vector3.new(0,0,0) end
-                end)
-            else if MagnetLoop then MagnetLoop:Disconnect() end end
+                local victimRoot = MagnetTarget.Character:FindFirstChild("HumanoidRootPart")
+                local myRoot = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+                if victimRoot and myRoot then 
+                    victimRoot.CFrame = myRoot.CFrame * CFrame.new(0, 0, -3)
+                    victimRoot.Velocity = Vector3.new(0,0,0) 
+                end
+            else 
+                if MagnetLoop then MagnetLoop:Disconnect() end 
+            end
         end)
     else if MagnetLoop then MagnetLoop:Disconnect() end end
 end)
+
 local HeadSpinning, HeadLoop = false, nil
 TrollTab:AddToggle("Head Orbit", function(v)
     HeadSpinning = v
-    local char = LocalPlayer.Character; local hum = char:FindFirstChildOfClass("Humanoid")
+    local char = LocalPlayer.Character; local hum = char and char:FindFirstChildOfClass("Humanoid")
     if v then
         if hum then hum:SetStateEnabled(Enum.HumanoidStateType.Dead, false); hum.BreakJointsOnDeath = false end
         HeadLoop = RunService.RenderStepped:Connect(function()
-            if HeadSpinning and char and char:FindFirstChild("Head") then pcall(function()
+            if HeadSpinning and char and char:FindFirstChild("Head") then 
                 local head = char.Head; local neck = char:FindFirstChild("Neck", true)
-                if neck then neck.MaxVelocity = 0; neck.C0 = neck.C0 * CFrame.Angles(0, math.rad(50), 0) else head.CFrame = head.CFrame * CFrame.Angles(0, math.rad(50), 0) end
-            end) else if HeadLoop then HeadLoop:Disconnect() end end
+                if neck then 
+                    neck.MaxVelocity = 0; neck.C0 = neck.C0 * CFrame.Angles(0, math.rad(50), 0) 
+                else 
+                    head.CFrame = head.CFrame * CFrame.Angles(0, math.rad(50), 0) 
+                end
+            else 
+                if HeadLoop then HeadLoop:Disconnect() end 
+            end
         end)
     else
         if HeadLoop then HeadLoop:Disconnect() end
         if hum then hum:SetStateEnabled(Enum.HumanoidStateType.Dead, true) end
-        pcall(function() local neck = char:FindFirstChild("Neck", true)
-        if neck then neck.C0 = CFrame.new(0, 1, 0) * CFrame.Angles(math.rad(-90), math.rad(180), 0) end end)
+        if char then
+            local neck = char:FindFirstChild("Neck", true)
+            if neck then neck.C0 = CFrame.new(0, 1, 0) * CFrame.Angles(math.rad(-90), math.rad(180), 0) end 
+        end
     end
 end)
+
 local GlitchIndex, GlitchLoop = 1, nil
 TrollTab:AddToggle("İlüzyonik Glitch (Mass TP)", function(v)
     States.MassTP = v
     if v then
         GlitchLoop = RunService.RenderStepped:Connect(function()
             local targets = {}
-            for _, p in pairs(Players:GetPlayers()) do if p ~= LocalPlayer and p.Character and p.Character:FindFirstChild("HumanoidRootPart") then table.insert(targets, p) end end
+            for _, p in ipairs(Players:GetPlayers()) do if p ~= LocalPlayer and p.Character and p.Character:FindFirstChild("HumanoidRootPart") then table.insert(targets, p) end end
             if #targets > 0 then
                 if GlitchIndex > #targets then GlitchIndex = 1 end
                 local targetPlayer = targets[GlitchIndex]
-                local myRoot = LocalPlayer.Character:FindFirstChild("HumanoidRootPart"); local targetRoot = targetPlayer.Character.HumanoidRootPart
-                if myRoot and targetRoot then pcall(function() myRoot.CFrame = targetRoot.CFrame * CFrame.new(0, 0, -3) * CFrame.Angles(0, math.rad(180), 0); myRoot.Velocity = Vector3.new(0,0,0) end) end
+                local myRoot = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+                local targetRoot = targetPlayer.Character and targetPlayer.Character:FindFirstChild("HumanoidRootPart")
+                if myRoot and targetRoot then 
+                    myRoot.CFrame = targetRoot.CFrame * CFrame.new(0, 0, -3) * CFrame.Angles(0, math.rad(180), 0)
+                    myRoot.Velocity = Vector3.new(0,0,0) 
+                end
                 GlitchIndex = GlitchIndex + 1
             end
         end)
@@ -643,7 +670,6 @@ TrollTab:AddToggle("İlüzyonik Glitch (Mass TP)", function(v)
     GlitchIndex = 1 end
 end)
 
--- [ FIX: Anti-Sit DÜZELTİLDİ ]
 TrollTab:AddToggle("Anti-Sit (Kucaklama Engelleyici)", function(v)
     States.AntiSit = v
     if v then 
@@ -652,7 +678,9 @@ TrollTab:AddToggle("Anti-Sit (Kucaklama Engelleyici)", function(v)
                 local hum = LocalPlayer.Character and LocalPlayer.Character:FindFirstChildOfClass("Humanoid")
                 if hum and hum.Sit then 
                     hum.Sit = false
-                    LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 2, 0) 
+                    if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+                        LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame + Vector3.new(0, 2, 0) 
+                    end
                 end
                 task.wait(0.1) 
             end 
@@ -660,39 +688,48 @@ TrollTab:AddToggle("Anti-Sit (Kucaklama Engelleyici)", function(v)
     end
 end)
 local SAP_Target, SAP_Active, SAP_Speed = nil, false, 50
-TrollTab:AddDropdown("Kurban Seç (SAP)", GetPlayersList(), function(s) for _, p in pairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then SAP_Target = p break end end end)
+TrollTab:AddDropdown("Kurban Seç (SAP)", GetPlayersList(), function(s) for _, p in ipairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then SAP_Target = p break end end end)
 TrollTab:AddSlider("Döngü Sertliği", 300, 20, function(s) SAP_Speed = s end)
 TrollTab:AddToggle("Sapık Değilsen Açma", function(v)
     SAP_Active = v
     if v then
         if not SAP_Target or not SAP_Target.Character then SAP_Active = false; return end
         task.spawn(function()
-            while SAP_Active do pcall(function()
-                local hrp = LocalPlayer.Character.HumanoidRootPart
-                local tRoot = SAP_Target.Character.HumanoidRootPart
-                hrp.CFrame = tRoot.CFrame * CFrame.new(0, 0, 5)
-                local startTime = tick()
-                while SAP_Active and (hrp.Position - (tRoot.CFrame * CFrame.new(0,0,0.5)).Position).Magnitude > 0.5 do
-                    hrp.Velocity = (tRoot.CFrame * CFrame.new(0,0,0.5).Position - hrp.Position).Unit * SAP_Speed
-                    task.wait()
-                    if tick() - startTime > 1 then break end
+            while SAP_Active do 
+                if LocalPlayer.Character and SAP_Target.Character then
+                    local hrp = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+                    local tRoot = SAP_Target.Character:FindFirstChild("HumanoidRootPart")
+                    if hrp and tRoot then
+                        hrp.CFrame = tRoot.CFrame * CFrame.new(0, 0, 5)
+                        local startTime = tick()
+                        while SAP_Active and (hrp.Position - (tRoot.CFrame * CFrame.new(0,0,0.5)).Position).Magnitude > 0.5 do
+                            hrp.Velocity = (tRoot.CFrame * CFrame.new(0,0,0.5).Position - hrp.Position).Unit * SAP_Speed
+                            task.wait()
+                            if tick() - startTime > 1 then break end
+                        end
+                    end
                 end
-            end)
-            task.wait(0.01) end
+                task.wait(0.01)
+            end
         end)
     end
 end)
 local ShadowTarget, ShadowConn = nil, nil
-TrollTab:AddDropdown("Gölge Hedefi Seç", GetPlayersList(), function(s) for _, p in pairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then ShadowTarget = p break end end end)
+TrollTab:AddDropdown("Gölge Hedefi Seç", GetPlayersList(), function(s) for _, p in ipairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then ShadowTarget = p break end end end)
 TrollTab:AddToggle("7/24 Yapış (Gölge)", function(v)
     _G.ShadowActive = v
     if v then
         if not ShadowTarget or not ShadowTarget.Character then _G.ShadowActive = false; return end
         ShadowConn = RunService.Stepped:Connect(function()
-            if _G.ShadowActive and ShadowTarget and ShadowTarget.Character then pcall(function()
-                local myPart = LocalPlayer.Character.HumanoidRootPart; local targetPart = ShadowTarget.Character.HumanoidRootPart
-                myPart.CFrame = targetPart.CFrame * CFrame.new(0, 0, 1); myPart.Velocity = Vector3.new(0,0,0)
-            end) else if ShadowConn then ShadowConn:Disconnect() end end
+            if _G.ShadowActive and ShadowTarget and ShadowTarget.Character and LocalPlayer.Character then 
+                local myPart = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+                local targetPart = ShadowTarget.Character:FindFirstChild("HumanoidRootPart")
+                if myPart and targetPart then
+                    myPart.CFrame = targetPart.CFrame * CFrame.new(0, 0, 1); myPart.Velocity = Vector3.new(0,0,0)
+                end
+            else 
+                if ShadowConn then ShadowConn:Disconnect() end 
+            end
         end)
     else if ShadowConn then ShadowConn:Disconnect() end end
 end)
@@ -702,11 +739,10 @@ local KillTab = DarteEngine:MakeTab("💀 Kill V5")
 local KillDrop = KillTab:AddDropdown("Kurban Seç", GetPlayersList(), function(v) SelectedTarget = game.Players:FindFirstChild(v) end)
 KillTab:AddButton("Listeyi Yenile", function() KillDrop:Refresh(GetPlayersList()) end)
 
--- [ FIX 2: ZORTLAT (ANTI-TP BYPASS) DÜZELTİLDİ ]
 KillTab:AddButton("ZORTLAT (ANTI-TP BYPASS)", function()
     local target = SelectedTarget
     if target and target.Character and target.Character:FindFirstChild("HumanoidRootPart") then
-        local myRoot = LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+        local myRoot = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
         if not myRoot then return end
         
         local oldPos = myRoot.CFrame
@@ -726,19 +762,17 @@ KillTab:AddButton("ZORTLAT (ANTI-TP BYPASS)", function()
     end
 end)
 
--- [ FIX 4: MERKEZE PAKETLE DÜZELTİLDİ ]
 KillTab:AddButton("MERKEZE PAKETLE", function()
-    local lp = game.Players.LocalPlayer
-    local char = lp.Character
+    local char = LocalPlayer.Character
     local hrp = char and char:FindFirstChild("HumanoidRootPart")
-    if not SelectedTarget or not SelectedTarget.Character then return end
+    if not SelectedTarget or not SelectedTarget.Character or not hrp then return end
     local targetHrp = SelectedTarget.Character:FindFirstChild("HumanoidRootPart")
     
     local startPos = hrp.CFrame
     task.spawn(function()
-        local connection = game:GetService("RunService").Stepped:Connect(function() 
+        local connection = RunService.Stepped:Connect(function() 
             if char then 
-                for _, v in pairs(char:GetDescendants()) do 
+                for _, v in ipairs(char:GetChildren()) do 
                     if v:IsA("BasePart") then v.CanCollide = false end 
                 end 
             end 
@@ -769,14 +803,15 @@ end)
 -- // 🛠️ TOOLS \\
 local UtilTab = DarteEngine:MakeTab("🛠️ Tools")
 local SpyTarget = nil
-UtilTab:AddDropdown("Spy Hedefi", GetPlayersList(), function(s) for _, p in pairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then SpyTarget = p break end end end)
-UtilTab:AddToggle("Spectre Mode (İzle)", function(v) if v then if SpyTarget and SpyTarget.Character then Camera.CameraSubject = SpyTarget.Character.Humanoid end else Camera.CameraSubject = LocalPlayer.Character.Humanoid end end)
+UtilTab:AddDropdown("Spy Hedefi", GetPlayersList(), function(s) for _, p in ipairs(Players:GetPlayers()) do if p.DisplayName == s or p.Name == s then SpyTarget = p break end end end)
+UtilTab:AddToggle("Spectre Mode (İzle)", function(v) if v then if SpyTarget and SpyTarget.Character then Camera.CameraSubject = SpyTarget.Character.Humanoid end else if LocalPlayer.Character then Camera.CameraSubject = LocalPlayer.Character.Humanoid end end end)
 
 local fcRunning, fcCam, fcSpeed, fcRot = false, workspace.CurrentCamera, 1.5, Vector2.new(0,0)
 UtilTab:AddToggle("Freecam (Gelişmiş)", function(v)
     fcRunning = v
     if v then
-        LocalPlayer.Character.HumanoidRootPart.Anchored = true; fcCam.CameraType = Enum.CameraType.Scriptable
+        if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then LocalPlayer.Character.HumanoidRootPart.Anchored = true end
+        fcCam.CameraType = Enum.CameraType.Scriptable
         task.spawn(function()
             while fcRunning do
                 local move = Vector3.new(0,0,0)
@@ -794,10 +829,13 @@ UtilTab:AddToggle("Freecam (Gelişmiş)", function(v)
                 else UIS.MouseBehavior = Enum.MouseBehavior.Default end
                 task.wait()
             end
-            fcCam.CameraType = Enum.CameraType.Custom; LocalPlayer.Character.HumanoidRootPart.Anchored = false
+            fcCam.CameraType = Enum.CameraType.Custom; 
+            if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then LocalPlayer.Character.HumanoidRootPart.Anchored = false end
         end)
-    else fcCam.CameraType = Enum.CameraType.Custom
-    if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then LocalPlayer.Character.HumanoidRootPart.Anchored = false end end
+    else 
+        fcCam.CameraType = Enum.CameraType.Custom
+        if LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then LocalPlayer.Character.HumanoidRootPart.Anchored = false end 
+    end
 end)
 
 UtilTab:AddButton("Infinite Yield Admin", function() loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))() end)
@@ -815,14 +853,14 @@ UtilTab:AddToggle("Auto Chat Translator", function(v)
         if _G.Translate and data.FromSpeaker ~= LocalPlayer.Name then
             local msg = data.Message
             local url = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=tr&dt=t&q=" .. HttpService:UrlEncode(msg)
-            pcall(function() local res = game:HttpGet(url); local translation = res:match('^%[%[%["(.-)","'); if translation then print("["..data.FromSpeaker.."]: " .. translation) end end)
+            pcall(function() local res = game:HttpGet(url); local translation = string.match(res, '^%[%[%["(.-)","'); if translation then print("["..data.FromSpeaker.."]: " .. translation) end end)
         end
     end) end
 end)
 UtilTab:AddToggle("Reklam Spamı", function(v)
     _G.Spamming = v
     task.spawn(function()
-        local msg = {"DarteSoftware V1 | En İyisi! /dartesoftware", "/dartesoftware", "En İyi Ücretsiz Script"}; local i = 1
+        local msg = {"DarteSoftware V1 | En İyisi! dartesoftware", "dartesoftware", "En İyi Ücretsiz Script"}; local i = 1
         while _G.Spamming do
             if TextChatService.ChatVersion == Enum.ChatVersion.TextChatService then TextChatService.TextChannels.RBXGeneral:SendAsync(msg[i]) else game:GetService("ReplicatedStorage").DefaultChatSystemChatEvents.SayMessageRequest:FireServer(msg[i], "All") end
             i = i % #msg + 1; task.wait(6)
@@ -854,7 +892,7 @@ UtilTab:AddToggle("Admin Dashboard & FPS", function(v)
                 local ping = math.floor(LocalPlayer:GetNetworkPing() * 1000)
                 local players = #game.Players:GetPlayers()
                 local uptime = math.floor(workspace.DistributedGameTime)
-                info.Text = string.format("FPS: %d\nPING: %dms\nPLAYERS: %d\nUPTIME: %ds\nSERVER: %s", fps, ping, players, uptime, game.JobId:sub(1,8))
+                info.Text = string.format("FPS: %d\nPING: %dms\nPLAYERS: %d\nUPTIME: %ds\nSERVER: %s", fps, ping, players, uptime, string.sub(game.JobId, 1, 8))
             end
         end)
     else
@@ -889,10 +927,8 @@ SettingsTab:AddDropdown("Temayı Değiştir", {"Altın", "Kan Kırmızı", "Mavi
     DarteEngine:ChangeTheme(colors[selected])
 end)
 
--- [ FIX: Right CTRL Eklendi ]
 SettingsTab:AddButton("UI Gizle/Göster (Right CTRL ile de olur)", function() DarteUI.Enabled = not DarteUI.Enabled end)
 
--- UI GİZLE/GÖSTER TUŞ ATAMASI (RightControl)
 UIS.InputBegan:Connect(function(input, gameProcessed)
     if not gameProcessed then
         if input.KeyCode == Enum.KeyCode.RightControl then
@@ -936,129 +972,169 @@ UIS.InputChanged:Connect(function(input)
 end)
 
 -- ==========================================
--- [ 6. ANA DÖNGÜLER (PHYSICS & VISUALS) ]
+-- [ 6. ANA DÖNGÜLER (PHYSICS & VISUALS - OPTIMIZED) ]
 -- ==========================================
 local function ResetPlayerColors(char)
     if not char then return end
-    for _, part in pairs(char:GetDescendants()) do
-        if part:IsA("BasePart") or part:IsA("MeshPart") then if _G.VisualConfigs.OriginalColors[part] then part.Color = _G.VisualConfigs.OriginalColors[part] end
-        elseif part:IsA("CharacterMesh") or part:IsA("Clothing") or part:IsA("ShirtGraphic") then part.Enabled = true end
+    for _, part in ipairs(char:GetDescendants()) do
+        if part:IsA("BasePart") or part:IsA("MeshPart") then 
+            if _G.VisualConfigs.OriginalColors[part] then part.Color = _G.VisualConfigs.OriginalColors[part] end
+        elseif part:IsA("CharacterMesh") or part:IsA("Clothing") or part:IsA("ShirtGraphic") then 
+            part.Enabled = true 
+        end
     end
 end
 
 local function ApplyRainbowToCharacter(char, hue)
     if not char then return end
     local rainbowColor = Color3.fromHSV(hue, 1, 1)
-    for _, part in pairs(char:GetDescendants()) do
+    for _, part in ipairs(char:GetDescendants()) do
         if part:IsA("BasePart") or part:IsA("MeshPart") then
             if not _G.VisualConfigs.OriginalColors[part] then _G.VisualConfigs.OriginalColors[part] = part.Color end
             part.Color = rainbowColor
             part.Material = Enum.Material.Neon
-        elseif part:IsA("CharacterMesh") or part:IsA("Clothing") or part:IsA("ShirtGraphic") then part.Enabled = false end
+        elseif part:IsA("CharacterMesh") or part:IsA("Clothing") or part:IsA("ShirtGraphic") then 
+            part.Enabled = false 
+        end
     end
 end
 
 RunService.Stepped:Connect(function()
-    pcall(function()
-        if States.Noclip and LocalPlayer.Character then for _, part in pairs(LocalPlayer.Character:GetDescendants()) do if part:IsA("BasePart") then part.CanCollide = false end end end
-        if States.SolidBody and LocalPlayer.Character then for _, v in pairs(LocalPlayer.Character:GetDescendants()) do if v:IsA("BasePart") then v.CanCollide = true; v.CollisionGroup = "Default" end end
-        elseif LocalPlayer.Character and not States.Noclip then for _, v in pairs(LocalPlayer.Character:GetDescendants()) do if v:IsA("BasePart") then v.CollisionGroup = "Players" end end end
-        if States.AntiBan then for _, obj in pairs(workspace:GetDescendants()) do if obj.Name:find("Ban") then obj:Destroy() end end end
-        if States.SpinBot and LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(50), 0) end
-    end)
+    local char = LocalPlayer.Character
+    if not char then return end
+    
+    if States.Noclip then 
+        for _, part in ipairs(char:GetChildren()) do 
+            if part:IsA("BasePart") then part.CanCollide = false end 
+        end 
+    elseif States.SolidBody then 
+        for _, v in ipairs(char:GetChildren()) do 
+            if v:IsA("BasePart") then v.CanCollide = true; v.CollisionGroup = "Default" end 
+        end
+    else 
+        for _, v in ipairs(char:GetChildren()) do 
+            if v:IsA("BasePart") then v.CollisionGroup = "Players" end 
+        end 
+    end
+    
+    if States.SpinBot then
+        local hrp = char:FindFirstChild("HumanoidRootPart")
+        if hrp then hrp.CFrame = hrp.CFrame * CFrame.Angles(0, math.rad(50), 0) end
+    end
 end)
 
--- [ FIX 3: ESP DÖNGÜSÜ DÜZELTİLDİ ]
+-- [ FIX: FPS KATİLİ OLAN AĞIR TARAMALAR YAVAŞ DÖNGÜYE ALINDI ]
+task.spawn(function()
+    while task.wait(1) do
+        if States.AntiBan then 
+            for _, obj in ipairs(workspace:GetDescendants()) do 
+                if string.find(obj.Name, "Ban") then obj:Destroy() end 
+            end 
+        end
+        
+        if States.SafeESP then
+            for _, v in ipairs(workspace:GetDescendants()) do
+                if (v.Name == "Safe" or v.Name == "GoldSafe" or v.Name == "MoneySafe") and v:IsA("Model") then
+                    if not v:FindFirstChild("SafeHigh") then
+                        local h = Instance.new("Highlight")
+                        h.Name = "SafeHigh"
+                        h.FillColor = Color3.new(1,0.8,0)
+                        h.FillTransparency = 0.3
+                        h.Parent = v
+                        
+                        local p = v:FindFirstChildWhichIsA("BasePart")
+                        if p then
+                            local b = Instance.new("BillboardGui")
+                            b.Name = "DarteSafeUI"
+                            b.AlwaysOnTop = true
+                            b.Size = UDim2.new(0,80,0,30)
+                            
+                            local t = Instance.new("TextLabel")
+                            t.Size = UDim2.new(1,0,1,0)
+                            t.BackgroundTransparency = 1
+                            t.TextColor3 = Color3.new(1,1,0)
+                            t.Text = "💰 KASA"
+                            t.Font = Enum.Font.GothamBold
+                            t.Parent = b
+                            
+                            b.Parent = p
+                        end
+                    end
+                end
+            end
+        else
+            for _, v in ipairs(workspace:GetDescendants()) do
+                if v.Name == "SafeHigh" then v:Destroy() end
+                if v.Name == "DarteSafeUI" then v:Destroy() end
+            end
+        end
+    end
+end)
+
+-- [ OPTIMIZED ESP LOOP ]
 RunService.RenderStepped:Connect(function()
+    local camPos = Camera.CFrame.Position
     if States.ESP then
-        for _, p in pairs(Players:GetPlayers()) do
+        for _, p in ipairs(Players:GetPlayers()) do
             if p ~= LocalPlayer and p.Character then 
-                pcall(function()
-                    local high = p.Character:FindFirstChild("DarteHigh") 
+                local char = p.Character
+                local head = char:FindFirstChild("Head")
+                if head then
+                    local high = char:FindFirstChild("DarteHigh") 
                     if not high then
-                        high = Instance.new("Highlight", p.Character)
+                        high = Instance.new("Highlight")
                         high.Name = "DarteHigh"
                         high.FillColor = Color3.fromRGB(0, 255, 150)
                         high.OutlineColor = Color3.new(1,1,1)
                         high.FillTransparency = 0.5
+                        high.Parent = char
                     end
                     high.Enabled = true
 
-                    local head = p.Character:FindFirstChild("Head")
-                    if head then
-                        local esp = head:FindFirstChild("DarteESP") 
-                        if not esp then
-                            esp = Instance.new("BillboardGui", head)
-                            esp.Name = "DarteESP"
-                            esp.AlwaysOnTop = true
-                            esp.Size = UDim2.new(0, 150, 0, 50)
-                            esp.StudsOffset = Vector3.new(0, 3, 0)
-                            
-                            local txt = Instance.new("TextLabel", esp)
-                            txt.Name = "Label"
-                            txt.Size = UDim2.new(1,0,1,0)
-                            txt.BackgroundTransparency = 1
-                            txt.TextColor3 = Color3.new(1,1,1)
-                            txt.Font = Enum.Font.GothamBold
-                            txt.TextSize = 14
-                            txt.TextStrokeTransparency = 0
-                        end
-                        esp.Label.Text = p.DisplayName .. "\n[" .. math.floor((head.Position - Camera.CFrame.Position).Magnitude) .. "m]"
-                    end
-                end) 
-            end
-        end
-    else
-        for _, p in pairs(Players:GetPlayers()) do
-            if p.Character then
-                if p.Character:FindFirstChild("DarteHigh") then p.Character.DarteHigh:Destroy() end
-                if p.Character:FindFirstChild("Head") and p.Character.Head:FindFirstChild("DarteESP") then p.Character.Head.DarteESP:Destroy() end
-            end
-        end
-    end
-
-    if States.SafeESP then
-        for _, v in pairs(workspace:GetDescendants()) do
-            if (v.Name == "Safe" or v.Name == "GoldSafe" or v.Name == "MoneySafe") and v:IsA("Model") then
-                if not v:FindFirstChild("SafeHigh") then
-                    local h = Instance.new("Highlight", v)
-                    h.Name = "SafeHigh"
-                    h.FillColor = Color3.new(1,0.8,0)
-                    h.FillTransparency = 0.3
-                    
-                    local p = v:FindFirstChildWhichIsA("BasePart")
-                    if p then
-                        local b = Instance.new("BillboardGui", p)
-                        b.Name = "DarteSafeUI"
-                        b.AlwaysOnTop = true
-                        b.Size = UDim2.new(0,80,0,30)
+                    local esp = head:FindFirstChild("DarteESP") 
+                    if not esp then
+                        esp = Instance.new("BillboardGui")
+                        esp.Name = "DarteESP"
+                        esp.AlwaysOnTop = true
+                        esp.Size = UDim2.new(0, 150, 0, 50)
+                        esp.StudsOffset = Vector3.new(0, 3, 0)
                         
-                        local t = Instance.new("TextLabel", b)
-                        t.Size = UDim2.new(1,0,1,0)
-                        t.BackgroundTransparency = 1
-                        t.TextColor3 = Color3.new(1,1,0)
-                        t.Text = "💰 KASA"
-                        t.Font = Enum.Font.GothamBold
+                        local txt = Instance.new("TextLabel")
+                        txt.Name = "Label"
+                        txt.Size = UDim2.new(1,0,1,0)
+                        txt.BackgroundTransparency = 1
+                        txt.TextColor3 = Color3.new(1,1,1)
+                        txt.Font = Enum.Font.GothamBold
+                        txt.TextSize = 14
+                        txt.TextStrokeTransparency = 0
+                        txt.Parent = esp
+                        esp.Parent = head
                     end
+                    esp.Label.Text = p.DisplayName .. "\n[" .. math.floor((head.Position - camPos).Magnitude) .. "m]"
                 end
             end
         end
     else
-        for _, v in pairs(workspace:GetDescendants()) do
-            if v:FindFirstChild("SafeHigh") then v.SafeHigh:Destroy() end
-            for _, p in pairs(v:GetChildren()) do
-                if p:IsA("BasePart") and p:FindFirstChild("DarteSafeUI") then p.DarteSafeUI:Destroy() end
+        for _, p in ipairs(Players:GetPlayers()) do
+            if p.Character then
+                local high = p.Character:FindFirstChild("DarteHigh")
+                if high then high:Destroy() end
+                local head = p.Character:FindFirstChild("Head")
+                if head then
+                    local esp = head:FindFirstChild("DarteESP")
+                    if esp then esp:Destroy() end
+                end
             end
         end
     end
-    
+
     local hue = tick() % 3 / 3
-    for _, player in pairs(Players:GetPlayers()) do
+    for _, player in ipairs(Players:GetPlayers()) do
         if player ~= LocalPlayer and player.Character then
             if _G.VisualConfigs.RainbowPlayersEnabled then 
                 ApplyRainbowToCharacter(player.Character, hue) 
             else 
-                if _G.VisualConfigs.OriginalColors[next(_G.VisualConfigs.OriginalColors)] then ResetPlayerColors(player.Character) end 
+                if next(_G.VisualConfigs.OriginalColors) then ResetPlayerColors(player.Character) end 
             end 
         end
     end
@@ -1067,13 +1143,14 @@ RunService.RenderStepped:Connect(function()
     
     if States.RainbowESP then
         local clr = Color3.fromHSV(hue, 1, 1)
-        for _, pl in pairs(Players:GetPlayers()) do 
+        for _, pl in ipairs(Players:GetPlayers()) do 
             if pl ~= LocalPlayer and pl.Character then 
                 local hl = pl.Character:FindFirstChild("DarteRainbowHigh")
                 if not hl then
-                    hl = Instance.new("Highlight", pl.Character)
+                    hl = Instance.new("Highlight")
                     hl.Name = "DarteRainbowHigh"
                     hl.FillTransparency = 0.5
+                    hl.Parent = pl.Character
                 end
                 hl.FillColor = clr
                 hl.OutlineColor = clr
@@ -1081,9 +1158,10 @@ RunService.RenderStepped:Connect(function()
             end 
         end
     else
-        for _, pl in pairs(Players:GetPlayers()) do 
-            if pl.Character and pl.Character:FindFirstChild("DarteRainbowHigh") then
-                pl.Character.DarteRainbowHigh:Destroy()
+        for _, pl in ipairs(Players:GetPlayers()) do 
+            if pl.Character then
+                local hl = pl.Character:FindFirstChild("DarteRainbowHigh")
+                if hl then hl:Destroy() end
             end
         end
     end
@@ -1094,7 +1172,7 @@ RunService.Heartbeat:Connect(function()
         local myChar = LocalPlayer.Character
         local myHrp = myChar and myChar:FindFirstChild("HumanoidRootPart")
         if myHrp then 
-            for _, otherPlayer in pairs(Players:GetPlayers()) do 
+            for _, otherPlayer in ipairs(Players:GetPlayers()) do 
                 if otherPlayer ~= LocalPlayer and otherPlayer.Character then 
                     local herHrp = otherPlayer.Character:FindFirstChild("HumanoidRootPart")
                     if herHrp and (myHrp.Position - herHrp.Position).Magnitude < 8 then 
@@ -1108,6 +1186,9 @@ end)
 
 UIS.InputBegan:Connect(function(input, proc)
     if not proc and States.ClickTP and input.UserInputType == Enum.UserInputType.MouseButton1 and UIS:IsKeyDown(Enum.KeyCode.LeftControl) then
-        if Mouse.Hit then LocalPlayer.Character:PivotTo(CFrame.new(Mouse.Hit.p + Vector3.new(0,3,0))) end
+        if Mouse.Hit then 
+            local char = LocalPlayer.Character
+            if char then char:PivotTo(CFrame.new(Mouse.Hit.p + Vector3.new(0,3,0))) end
+        end
     end
 end)
