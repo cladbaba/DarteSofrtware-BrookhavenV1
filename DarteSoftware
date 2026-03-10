@@ -734,69 +734,85 @@ TrollTab:AddToggle("7/24 Yapış (Gölge)", function(v)
     else if ShadowConn then ShadowConn:Disconnect() end end
 end)
 
--- // 💀 KILL V5 \\
+-- [[ 💀 KILL V5 - OPTIMIZED & FIXED ]] --
 local KillTab = DarteEngine:MakeTab("💀 Kill V5")
-local KillDrop = KillTab:AddDropdown("Kurban Seç", GetPlayersList(), function(v) SelectedTarget = game.Players:FindFirstChild(v) end)
+local KillDrop = KillTab:AddDropdown("Kurban Seç", GetPlayersList(), function(v) SelectedTarget = Players:FindFirstChild(v) end)
 KillTab:AddButton("Listeyi Yenile", function() KillDrop:Refresh(GetPlayersList()) end)
 
-KillTab:AddButton("ZORTLAT (ANTI-TP BYPASS)", function()
-    local target = SelectedTarget
-    if target and target.Character and target.Character:FindFirstChild("HumanoidRootPart") then
-        local myRoot = LocalPlayer.Character and LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
-        if not myRoot then return end
-        
-        local oldPos = myRoot.CFrame
-        local spinLoop = RunService.RenderStepped:Connect(function()
-            if target.Character and target.Character:FindFirstChild("HumanoidRootPart") then
-                myRoot.CFrame = target.Character.HumanoidRootPart.CFrame * CFrame.new(0,0,0)
-                myRoot.Velocity = Vector3.new(0, 10000, 0)
-                myRoot.RotVelocity = Vector3.new(10000, 10000, 10000)
-            end
-        end)
-        
-        task.wait(1.5)
-        spinLoop:Disconnect()
-        myRoot.CFrame = oldPos
-        myRoot.Velocity = Vector3.new(0,0,0)
-        myRoot.RotVelocity = Vector3.new(0,0,0)
+-- Yardımcı Fonksiyon: Market Arabasını Otomatik Kuşanır
+local function GetCart()
+    local char = LocalPlayer.Character
+    if not char then return nil end
+    local tool = char:FindFirstChild("GroceryCart")
+    if tool then return tool end
+    local bp = LocalPlayer:FindFirstChild("Backpack")
+    if bp then
+        local cart = bp:FindFirstChild("GroceryCart")
+        if cart then
+            char:FindFirstChildOfClass("Humanoid"):EquipTool(cart)
+            return cart
+        end
     end
+    return nil
+end
+
+-- Ana Kill Mantığı: Jitter ve Void Fix
+local function AdvancedKillLogic(target)
+    if not target or not target.Character or not target.Character:FindFirstChild("HumanoidRootPart") then return end
+    local myChar = LocalPlayer.Character
+    local myHrp = myChar and myChar:FindFirstChild("HumanoidRootPart")
+    if not myHrp then return end
+
+    local cart = GetCart()
+    local targetHrp = target.Character.HumanoidRootPart
+    local startPos = myHrp.CFrame
+    
+    -- Noclip Aktif Et (Temasın kesilmemesi için)
+    local nc = RunService.Stepped:Connect(function()
+        if myChar then
+            for _, v in pairs(myChar:GetDescendants()) do
+                if v:IsA("BasePart") then v.CanCollide = false end
+            end
+        end
+    end)
+
+    -- Jitter ve Takip Döngüsü (1.5 Saniye)
+    local killTime = tick()
+    while tick() - killTime < 1.5 do
+        if not target.Character or not targetHrp then break end
+        
+        -- Mikro Jitter: Koltuk tetikleyicisini zorlamak için saniyede 60 kez titreşim
+        local jitter = Vector3.new(math.random(-1, 1)/10, 0, math.random(-1, 1)/10)
+        
+        -- Hedefin tam arkasında (0.7 stud mesafe) konumlan
+        myHrp.CFrame = targetHrp.CFrame * CFrame.new(0, 0, 0.7) * CFrame.new(jitter)
+        
+        -- Hedef bindiyse beklemeden void'e geç
+        if target.Character:FindFirstChildOfClass("Humanoid").Sit then break end
+        
+        RunService.RenderStepped:Wait()
+    end
+
+    -- VOID PAKETLEME (Hız ve Koordinat Kilidi)
+    task.wait(0.1)
+    myHrp.CFrame = CFrame.new(0, -49500, 0)
+    myHrp.Velocity = Vector3.new(0, -50000, 0)
+    
+    task.wait(0.4)
+
+    -- Temizlik ve Geri Dönüş
+    nc:Disconnect()
+    myHrp.Velocity = Vector3.new(0, 0, 0)
+    myHrp.CFrame = startPos
+end
+
+KillTab:AddButton("ZORTLAT (AUTO-CART)", function()
+    AdvancedKillLogic(SelectedTarget)
 end)
 
-KillTab:AddButton("MERKEZE PAKETLE", function()
-    local char = LocalPlayer.Character
-    local hrp = char and char:FindFirstChild("HumanoidRootPart")
-    if not SelectedTarget or not SelectedTarget.Character or not hrp then return end
-    local targetHrp = SelectedTarget.Character:FindFirstChild("HumanoidRootPart")
-    
-    local startPos = hrp.CFrame
+KillTab:AddButton("MERKEZE PAKETLE (VOID)", function()
     task.spawn(function()
-        local connection = RunService.Stepped:Connect(function() 
-            if char then 
-                for _, v in ipairs(char:GetChildren()) do 
-                    if v:IsA("BasePart") then v.CanCollide = false end 
-                end 
-            end 
-        end)
-        
-        for i = 1, 15 do 
-            if targetHrp then hrp.CFrame = targetHrp.CFrame * CFrame.new(0, 0, 1.8) * CFrame.Angles(0, math.rad(180), 0) end
-            task.wait(0.01) 
-        end
-        local t = tick()
-        while tick() - t < 0.5 do 
-            if targetHrp then hrp.CFrame = targetHrp.CFrame * CFrame.new(0, 0, 1.8) end
-            task.wait() 
-        end
-        
-        hrp.CFrame = startPos
-        local sTime = tick()
-        while tick() - sTime < 0.4 do 
-            hrp.CFrame = startPos * CFrame.new(math.random(-1,1)/10, 0, math.random(-1,1)/10)
-            task.wait() 
-        end
-        
-        hrp.CFrame = startPos
-        connection:Disconnect()
+        AdvancedKillLogic(SelectedTarget)
     end)
 end)
 
